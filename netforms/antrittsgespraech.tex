@@ -5,7 +5,7 @@
 \usepackage{tumcommon/tumcontact}
 % \usepackage{scrpage2}
 
-\documentclass[tikz]{standalone}
+% \documentclass[tikz]{standalone}
 
 %
 % This is a direct copy of the codes in section 2.9 of the package
@@ -16,6 +16,7 @@
 \usepackage{pgfgantt}
 \usepackage{xcolor}
 \usepackage[utf8]{inputenc}
+\usepackage{placeins}
 
 \definecolor{barblue}{RGB}{153,204,254}
 \definecolor{groupblue}{RGB}{51,102,254}
@@ -73,54 +74,51 @@
 \subsection*{Topic}
 
 This Master's Thesis shall implement a capacity estimation method for Hop-by-Hop measurements.
-The intended field of application is, for instance, enhancing the performance of network, traffic analysis, network monitoring, etc.  Our main motivation is to improve the quality of the network and for that we require proper measurements of network capacity in order to, for instance, diagnose possible problems in it.
+The intended field of application is, for instance, enhancing the performance of network, traffic analysis, network monitoring, etc.  Our main motivation is to improve the ways of measuring the capacity of networks in the internet. As this would serve to enhance the quality of networks for which proper measurements of network capacity are required, in order to, for instance, diagnose potential problems in it.
 
-There are quite a few measurement tools available, such as, PPrate, Pathrate, Pathchar, etc. However the current State-of-the-Art methods have some significant flaws and limitations, such as: 
+There are quite a few measurement tools available, such as, PPrate\cite{PPrate}, Pathrate\cite{AbutOverview}, Pathchar\cite{AbutOverview}, etc. However the current State-of-the-Art methods have some significant flaws and limitations regarding our measurement goals, such as: 
 \begin{itemize}
-    \item Active tools require considerable amount of probes and this might cause network overload\cite{BrzozaThesis} which might result in lost packets, queue delays, etc.\cite{AbutOverview}
-    \item Passive tools analyze only ongoing traffic, therefore they're dependent on the traffic they observe. Also they require TCP server to respond
-    Although they're widely used in practice and deliver reliable results, they're not enough to deliver all the desired information, such as the location of the narrow link, the exact path of the packets, etc.
-    \item Trade-offs between intrusion and accuracy is hard to define.
+    \item Active tools require considerable amount of probes and this might cause network overload\cite{BrzozaThesis} which might, for example, result in lost packets and/or quyeue delays\cite{AbutOverview}.
+    \item Passive tools analyze only ongoing traffic, therefore they're dependent on the traffic they observe. Also they require TCP servers to respond.
+    Although they're widely used in practice and deliver reliable results, they're not sufficient to deliver all the desired information, such as the location of the narrow link.
 \end{itemize}
 
-Therefore our goal is to develop a new solution based on an active measurement technique that will employ the better parts of both passive and active tools, namely it will try to implement the least possible intrusion without compromising accuracy. Also it will be able to find the narrow link of the path by measuring the capacity of each hop in the network.
-This new solution will be tested and evaluated by comparing it to the results of the existing capacity measurement tools.
-
-
-The thesis is thematically related to the Bachelor's Thesis \emph{Implementation and Evaluation of Passive Capacity Estimation} \cite{BrzozaThesis} by Patryk Brzoza, but in contrast to Brzoza's passive approach our tool will be based on active measurement methodology. Moreover Brzoza's measurement tool was trying to find end-to-end capacity, while this thesis is concerned about measuring the capacity of each hop in the network and finding the narrow link. Hop-by-Hop measurement provides a better picture of the network and helps us take a look at the existing and possible issues more closely.
-The thesis will go through the following research questions:
+Therefore our goal is to develop a new solution based on an active measurement technique that provides required features of both passive and active tools regarding our measurement objectives. We will try to implement the least possible intrusion without compromising accuracy. Also it will be able to find the first narrow link of the path by measuring the capacity of each hop in the network.
+This new solution will be tested and evaluated by comparing it to the results of existing capacity measurement tools, i.e. PPrate implementation by Patryk Brzoza\cite{BrzozaThesis}, but in contrast to Brzoza's passive approach our tool will be based on an active measurement methodology. Moreover Brzoza's measurement tool was trying to find end-to-end capacity, while this thesis is concerned about measuring the capacity of each hop in the network and finding the narrow link. Hop-by-Hop measurements provide a better picture of a network and enables to take a closer look at potential issues.
+This thesis is supposed to answer the following research questions:
 \begin{itemize}
     \item How to measure network capacity hop-by-hop?
-    \item How to optimize the trade-off between accuracy and intrusiveness?
-    \item How robust is the proposed solution?
-    \item Are we able to locate the bottlenecks of the network?
+    \item How to optimize the trade-off between accuracy and intrusiveness regarding large-scale measurements?
+    \item How robust is the proposed solution regarding the handling of cross-traffic, flow-interference and sudden path parameter changes?
+    \item Are we able to locate the capacity bottlenecks of a network?
 \end{itemize}
 
 
 
 \subsection*{Approach}
-The thesis will be divided into two main parts:
+This thesis includes three main parts: A, B and C:
 
-The first part is the implementation of the tool. It will use active probing in order to generate the traffic to the routers and gather the received ICMP messages. Afterwards a passive measurement method will be applied to the gathered data. However, passive techniques are used for measuring end-to-end capacity and the main point of our approach is that we assume that each router of the network where packets pass is an endpoint. Hence, we basically measure End-to-End capacity of each hop. 
-For example, on Figure 1, we will measure the capacity of C_1$ and assume it is the narrow link. Afterwards C_1$+C_2$ will be measured and checked if its capacity is smaller than the current narrow link. The measurement will continue to the following ones until it reaches the final endpoint.
+Part A is the implementation of the tool. It will use active probing in order to generate TCP traffic to routers and gather the corresponding received ICMP messages. Afterwards a passive measurement method (based on PPrate\cite{PPrate}) will be applied to the gathered data. However, passive techniques are used for measuring end-to-end capacity. Therefore the main point of our approach is sending TCP packets with manipulated TTC values in a Traceroute-like manner.
+For example, on Figure 1, we measure the capacity of C_1$ which is the narrow link of the path between the client C and the server S. Afterwards C_1$+C_2$ will be measured and checked if its capacity is smaller than the current narrow link. The measurement will continue to the following ones until it reaches the final endpoint.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{images/NetworkDiag.png}
-    \caption{Sample Network}
+    \includegraphics[scale=0.25]{images/NetworkDiag.png}
+    \caption{Capacity measurement workflow  }
     \label{fig:mesh1}
 \end{figure}
 
 
-The second part of the thesis will be the evaluation. 
-The first evaluation will be performed in the test environment using virtual network tool \textbf{\textit{mininet}}. For the maximum effectiveness various combinations of test parameters will be used. 
+Part B is the evaluation. 
+The first evaluation will be performed in a test environment using virtual network tool \textbf{\textit{mininet}}\cite{mininet}. For the maximum effectiveness various combinations of test parameters will be used, such as path lengths, cross traffic, capacities and delays.
 
 
-We will compare the new solution with the existing ones, such as, PPrate\cite{PPrate} and Brzoza's solution\cite{BrzozaThesis}. The different measurements will be conducted using the tools mentioned above and the results will be analyzed based on different test parameters, such as path lengths, cross traffic, capacities, delays and how these parameters influence the accuracy of measurements. Then these results will be compared to those of existing tools and methodologies, mainly the Passive Capacity Estimation by Brzoza \cite{BrzozaThesis}. 
+We will compare the new solution with the existing TCP-based one, such as, Brzoza\cite{BrzozaThesis}. The different measurements will be conducted using the tools mentioned above and the results will be analyzed based on different test parameters and how these parameters influence the accuracy of measurements. 
 
+Part C is the large-scale internet measurements conducted on the campus network. 
 The second evaluation will be conducted on a real network by taking additional factors into consideration, such as size of traffic at different times and hours. 
 
-The measurement tool will be developed in Python and all the necessary operations will be performed on Ubuntu operating system.
+The measurement tool will be developed in Python and C will be used for traffic generation. All the necessary operations will be performed on Ubuntu operating system.
 
 The estimated timetable for this thesis can be seen below\colon
 
@@ -133,51 +131,6 @@ The estimated timetable for this thesis can be seen below\colon
 
 
 
-% \begin{ganttchart}[
-%     \width=\linewidth,
-%     y unit title=0.4cm,
-%     y unit chart=0.5cm,
-%     vgrid,
-%     time slot format=isodate-yearmonth,
-%     compress calendar,
-%     title/.append style={draw=none, fill=barblue},
-%     title label font=\sffamily\bfseries\color{white},
-%     title label node/.append style={below=-1.6ex},
-%     title left shift=.05,
-%     title right shift=-.05,
-%     title height=1,
-%     bar/.append style={draw=none, fill=groupblue},
-%     bar height=.6,
-%     bar label font=\normalsize\color{black!50},
-%     group right shift=0,
-%     group top shift=.6,
-%     group height=.3,
-%     group peaks height=.2,
-%     bar incomplete/.append style={fill=green}
-%   ]{2010-09}{2011-12}
-%   \gantttitlecalendar{year}\\
-%   \ganttbar[
-%     progress=100,
-%     bar progress label font=\small\color{barblue},
-%     bar progress label node/.append style={right=4pt},
-%     bar label font=\normalsize\color{barblue},
-%     name=pp
-%   ]{Preliminary Project}{2010-09}{2010-12} \\
-% \ganttset{progress label text={}, link/.style={black, -to}}
-% \ganttgroup{Objective 1}{2011-01}{2011-12} \\
-% \ganttbar[progress=4, name=T1A]{Task A}{2011-01}{2011-06} \\
-% \ganttlinkedbar[progress=0]{Task B}{2011-07}{2011-12} \\
-% \ganttgroup{Objective 2}{2011-01}{2011-12} \\
-% \ganttbar[progress=15, name=T2A]{Task A}{2011-01}{2011-09} \\
-% \ganttlinkedbar[progress=0]{Task B}{2011-10}{2011-12} \\
-% \ganttgroup{Objective 3}{2011-05}{2011-08} \\
-%   \ganttbar[progress=0]{Task A}{2011-05}{2011-08}
-%   \ganttset{link/.style={green}}
-%   \ganttlink[link mid=.4]{pp}{T1A}
-%   \ganttlink[link mid=.159]{pp}{T2A}
-% \end{ganttchart}
-
-
 % \subsection*{Additional hardware requirements}
 % \begin{itemize}
 % 	\item 2 chassis for the USRPs \cite{chassiusrp}
@@ -185,6 +138,8 @@ The estimated timetable for this thesis can be seen below\colon
 
 % \bibliographystyle{IEEEtran}
 % \bibliography{IEEEabrv,lit}
+% \clearpage
+\FloatBarrier
 \begin{thebibliography}{9}
 \bibitem{PPrate} 
 Taoufik En-Najjary, Guillaume Urvoy-Keller: PPrate: A Passive Capacity Estimation Tool. France, 2006
@@ -207,6 +162,8 @@ Patryk Brzoza, et al.: Accuracy Optimization of Passive Capacity Estimation
 
 \bibitem{mininet}
 R.L.S. De Oliveira, et.al. “Using Mininet for Emulation and Prototyping Software-Defined Networks" 2014
+
+
 \end{thebibliography}
 
 \end{document}
