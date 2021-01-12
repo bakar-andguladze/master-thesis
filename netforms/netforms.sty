@@ -40,6 +40,7 @@
 \def\thetaetigkeit{}
 \def\thetitleenglish{}
 \def\thetitlegerman{}
+\def\thesprache{}
 \def\thethemensteller{}
 \def\thestudiengang{}
 \def\themail{}
@@ -195,6 +196,7 @@
 	\def\thetitleenglish{#1}
 	\def\thetitlegerman{#2}
 }
+\DeclareDocumentCommand{\sprache}{m}{\def\thesprache{#1}}
 \DeclareDocumentCommand{\themensteller}{m}{\def\thethemensteller{#1}}
 \DeclareDocumentCommand{\studiengang}{m}{\def\thestudiengang{#1}}
 
@@ -340,19 +342,19 @@
 	\vskip-1.25ex
 	\LARGE\bfseries
 	Anmeldung einer \ifmaster%
-        Master%
+        Master's Thesis %
         \else%
-        Bachelor%
+        Bachelor-Arbeit %
         \fi%
-        -Arbeit\\[0cm]
-	im Studiengang \ifmaster M.Sc. \else B.Sc. \fi Informatik % no space in B.Sc.
+        \ifmaster im Studiengang \fi\\[0cm]
+	\ifbachelor im Studiengang B.Sc. \else \fi \thestudiengang % no space in B.Sc.
 \end{center}
 
 % remove enough line space to make it look weird...
 Thema (deutsch \textbf{und} englisch):
 
 \frame{%
-\begin{minipage}[t][5cm][c]{\textwidth}
+\begin{minipage}[t][4cm][c]{\textwidth}
 \begin{center}
 \hskip1ex\thetitlegerman\\[2ex]
 \end{center}
@@ -371,6 +373,19 @@ Thema (deutsch \textbf{und} englisch):
 % ----------------------------------------------------------------------------
 \DeclareDocumentCommand{\thesisfooter}{}{%
 \begin{tikzpicture}[yscale=.9]
+	\ifbachelor%
+	\node[right] (x) at (0,1) {Sprache der B.Sc.-Arbeit:};%
+	\node[right] at ([xshift=5cm] x.east) (german) {Deutsch};%
+	\node[anchor=south east, draw, very thick, minimum width=.32cm, minimum height=.32cm, inner sep=0] (germanmark) at (german.base west) {};%
+	%
+	\node[right] at ([xshift=1.3cm] german.east) (english) {Englisch};%
+	\node[anchor=south east, draw, very thick, minimum width=.32cm, minimum height=.32cm, inner sep=0] (englishmark) at (english.base west) {};%
+	%
+	\ifthenelse{\equal{\thesprache}{deutsch}}%
+		{\node at (germanmark) {\footnotesize \checkmark};}%
+                {\node at (englishmark) {\footnotesize \checkmark};}%
+	\fi%
+
 	\node[right] (x) at (0,0) {Themensteller:};
 	\node[box,text width=5.5cm] (x) at ($(x.west)+(3,0)$)
 		{\thethemensteller};
@@ -406,8 +421,8 @@ Thema (deutsch \textbf{und} englisch):
 
 \vskip4ex
 Dieses Formblatt ist im Einvernehmen mit Themensteller/-in Betreuer/-in
-auszuf\"ullen und sp\"atestens 8 Tage vor Beginn der Bachelor-Arbeit an den
-Pr\"ufungsausschauss (Frau Oeckl, SB-S-IN) zu senden.
+auszuf\"ullen und sp\"atestens 8 Tage vor Beginn der \ifbachelor Bachelor-Arbeit \else Master's Thesis \fi an den
+Pr\"ufungsausschauss \ifbachelor (Frau Oeckl, SB-S-IN) \else (Frau Kinzel, SB-S-IN) \fi zu senden.
 }
 % ----------------------------------------------------------------------------
 

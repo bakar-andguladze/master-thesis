@@ -1,27 +1,9 @@
-\documentclass[NET,a4,12pt,ngerman]{netforms}
+\documentclass[NET,a4paper,12pt,ngerman]{netforms}
 
 \usepackage[utf8]{inputenc}
-\usepackage{tumcommon/tumlang}
-\usepackage{tumcommon/tumcontact}
-% \usepackage{scrpage2}
-
-% \documentclass[tikz]{standalone}
-
-%
-% This is a direct copy of the codes in section 2.9 of the package
-% documentation (See page 45) https://mirrors.tuna.tsinghua.edu.cn/CTAN/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf 
-% except the color setting
-
-
-\usepackage{pgfgantt}
-\usepackage{xcolor}
-\usepackage[utf8]{inputenc}
-\usepackage{placeins}
-
-\definecolor{barblue}{RGB}{153,204,254}
-\definecolor{groupblue}{RGB}{51,102,254}
-\definecolor{linkred}{RGB}{165,0,33} 
-
+\usepackage{tumlang}
+\usepackage{tumcontact}
+\usepackage{scrlayer-scrpage}
 
 \geometry{%
 	top=10mm,
@@ -31,16 +13,11 @@
 	headsep=1.5cm,
 	includehead,
 }
-% /////////////////////////////////////////////////
-% \documentclass{article}
-\usepackage{graphicx}
-\graphicspath{ {./images/} }
-
 \input{studentdefs}
 
-% \pagestyle{scrheadings}
-% \clearscrheadfoot
-% \chead{\TUMheader{1cm}}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\chead{\TUMheader{1cm}}
 
 \renewcommand{\maketitle}{%
 	\begin{center}
@@ -99,7 +76,7 @@ This thesis is supposed to answer the following research questions:
 This thesis includes three main parts: A, B and C:
 
 Part A is the implementation of the tool. It will use active probing in order to generate TCP traffic to routers and gather the corresponding received ICMP messages. Afterwards a passive measurement method (based on PPrate\cite{PPrate}) will be applied to the gathered data. However, passive techniques are used for measuring end-to-end capacity. Therefore the main point of our approach is sending TCP packets with manipulated TTC values in a Traceroute-like manner.
-For example, on Figure 1, we measure the capacity of C_1$ which is the narrow link of the path between the client C and the server S. Afterwards C_1$+C_2$ will be measured and checked if its capacity is smaller than the current narrow link. The measurement will continue to the following ones until it reaches the final endpoint.
+For example, on Figure 1, we measure the capacity of $C_1$ which is the narrow link of the path between the client C and the server S. Afterwards $C_1$+$C_2$ will be measured and checked if its capacity is smaller than the current narrow link. The measurement will continue to the following ones until it reaches the final endpoint.
 
 \begin{figure}[h]
     \centering
@@ -120,7 +97,7 @@ The second evaluation will be conducted on a real network by taking additional f
 
 The measurement tool will be developed in Python and C will be used for traffic generation. All the necessary operations will be performed on Ubuntu operating system.
 
-The estimated timetable for this thesis can be seen below\colon
+The estimated timetable for this thesis can be seen below $\colon$
 
 \begin{figure}[h]
     \centering
@@ -139,7 +116,7 @@ The estimated timetable for this thesis can be seen below\colon
 % \bibliographystyle{IEEEtran}
 % \bibliography{IEEEabrv,lit}
 % \clearpage
-\FloatBarrier
+%\FloatBarrier
 \begin{thebibliography}{9}
 \bibitem{PPrate} 
 Taoufik En-Najjary, Guillaume Urvoy-Keller: PPrate: A Passive Capacity Estimation Tool. France, 2006
