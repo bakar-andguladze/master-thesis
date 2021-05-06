@@ -8,9 +8,9 @@
 #include <arpa/inet.h> // inet_addr
 #include <unistd.h> // sleep()
 
-#include <headers/TrafficGenerator.h>
-
-/* 	96 bit (12 bytes) pseudo header needed for tcp header checksum calculation  */
+/* 
+	96 bit (12 bytes) pseudo header needed for tcp header checksum calculation 
+*/
 struct pseudo_header
 {
 	u_int32_t source_address;
@@ -19,23 +19,6 @@ struct pseudo_header
 	u_int8_t protocol;
 	u_int16_t tcp_length;
 };
-
-/* 
-    declare variables:
-    source ip address;
-    destination ip address;
-    ttl;
-
-*/
-
-void generateTraffic() 
-{
-    
-    printf("traffic is being generated...\n");
-    
-}
-
-
 
 /*
 	Generic checksum calculation function
@@ -64,7 +47,12 @@ unsigned short csum(unsigned short *ptr,int nbytes)
 	return(answer);
 }
 
+// int main(void)
+// {
+// 	createRawSocket();
 
+// 	return 0;
+// }
 
 int main (void)
 {
@@ -180,3 +168,4 @@ int main (void)
 	return 0;
 }
 
+//Complete
