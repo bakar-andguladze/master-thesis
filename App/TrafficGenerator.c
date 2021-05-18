@@ -8,7 +8,7 @@
 #include <arpa/inet.h> // inet_addr
 #include <unistd.h> // sleep()
 
-#include <headers/TrafficGenerator.h>
+// #include <headers/TrafficGenerator.h>
 
 /* 	96 bit (12 bytes) pseudo header needed for tcp header checksum calculation  */
 struct pseudo_header
