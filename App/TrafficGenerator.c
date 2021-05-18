@@ -25,15 +25,8 @@ struct pseudo_header
     source ip address;
     destination ip address;
     ttl;
-
 */
 
-void generateTraffic() 
-{
-    
-    printf("traffic is being generated...\n");
-    
-}
 
 
 
