@@ -90,10 +90,10 @@ int main (void)
 	strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	
 	//some address resolution
-	strcpy(source_ip , "192.168.1.2");
+	strcpy(source_ip , "10.0.0.1"); //"192.168.1.2");
 	sin.sin_family = AF_INET;
-	sin.sin_port = htons(80);
-	sin.sin_addr.s_addr = inet_addr ("1.2.3.4");
+	sin.sin_port = htons(4222); //(80);
+	sin.sin_addr.s_addr = inet_addr ("10.0.0.2"); //("1.2.3.4");
 	
 	//Fill in the IP Header
 	iph->ihl = 5;
@@ -112,8 +112,8 @@ int main (void)
 	iph->check = csum ((unsigned short *) datagram, iph->tot_len);
 	
 	//TCP Header
-	tcph->source = htons (1234);
-	tcph->dest = htons (80);
+	tcph->source = htons (4220); //(1234);
+	tcph->dest = htons (4222); //(80);
 	tcph->seq = 0;
 	tcph->ack_seq = 0;
 	tcph->doff = 5;	//tcp header size
