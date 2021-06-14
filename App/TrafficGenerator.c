@@ -90,10 +90,10 @@ int main (void)
 	strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	
 	//some address resolution
-	strcpy(source_ip , "10.0.0.1"); //"192.168.1.2");
+	strcpy(source_ip , "localhost"); //"192.168.1.2");
 	sin.sin_family = AF_INET;
 	sin.sin_port = htons(4222); //(80);
-	sin.sin_addr.s_addr = inet_addr ("10.0.0.2"); //("1.2.3.4");
+	sin.sin_addr.s_addr = inet_addr ("8.8.8.8"); //("1.2.3.4");
 	
 	//Fill in the IP Header
 	iph->ihl = 5;
@@ -102,7 +102,7 @@ int main (void)
 	iph->tot_len = sizeof (struct iphdr) + sizeof (struct tcphdr) + strlen(data);
 	iph->id = htonl (54321);	//Id of this packet
 	iph->frag_off = 0;
-	iph->ttl = 255;
+	iph->ttl = 1; //255
 	iph->protocol = IPPROTO_TCP;
 	iph->check = 0;		//Set to 0 before calculating checksum
 	iph->saddr = inet_addr ( source_ip );	//Spoof the source ip address
@@ -112,8 +112,8 @@ int main (void)
 	iph->check = csum ((unsigned short *) datagram, iph->tot_len);
 	
 	//TCP Header
-	tcph->source = htons (4220); //(1234);
-	tcph->dest = htons (4222); //(80);
+	tcph->source = htons (1234); //(1234);4220
+	tcph->dest = htons (80); //(80);4222
 	tcph->seq = 0;
 	tcph->ack_seq = 0;
 	tcph->doff = 5;	//tcp header size
