@@ -8,9 +8,9 @@
 #include <arpa/inet.h> // inet_addr
 #include <unistd.h> // sleep()
 
-// #include <headers/TrafficGenerator.h>
-
-/* 	96 bit (12 bytes) pseudo header needed for tcp header checksum calculation  */
+/* 
+	96 bit (12 bytes) pseudo header needed for tcp header checksum calculation 
+*/
 struct pseudo_header
 {
 	u_int32_t source_address;
@@ -19,16 +19,6 @@ struct pseudo_header
 	u_int8_t protocol;
 	u_int16_t tcp_length;
 };
-
-/* 
-    declare variables:
-    source ip address;
-    destination ip address;
-    ttl;
-*/
-
-
-
 
 /*
 	Generic checksum calculation function
@@ -57,10 +47,17 @@ unsigned short csum(unsigned short *ptr,int nbytes)
 	return(answer);
 }
 
-
-
 int main (void)
 {
+    char SRC_IP[32];
+    char HOST_IP[13];
+
+    printf("Enter source address\n");
+    scanf("%s", SRC_IP);
+    printf("Enter host address\n");
+    scanf("%s", HOST_IP);
+   
+
 	//Create a raw socket
 	int s = socket (PF_INET, SOCK_RAW, IPPROTO_TCP);
 	
@@ -90,10 +87,12 @@ int main (void)
 	strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	
 	//some address resolution
-	strcpy(source_ip , "localhost"); //"192.168.1.2");
+	strcpy(source_ip , SRC_IP);
+	// strcpy(source_ip , "192.168.1.2");
 	sin.sin_family = AF_INET;
-	sin.sin_port = htons(4222); //(80);
-	sin.sin_addr.s_addr = inet_addr ("8.8.8.8"); //("1.2.3.4");
+	sin.sin_port = htons(80);
+	sin.sin_addr.s_addr = inet_addr (HOST_IP);
+	// sin.sin_addr.s_addr = inet_addr ("1.2.3.4");
 	
 	//Fill in the IP Header
 	iph->ihl = 5;
@@ -102,7 +101,7 @@ int main (void)
 	iph->tot_len = sizeof (struct iphdr) + sizeof (struct tcphdr) + strlen(data);
 	iph->id = htonl (54321);	//Id of this packet
 	iph->frag_off = 0;
-	iph->ttl = 1; //255
+	iph->ttl = 2;
 	iph->protocol = IPPROTO_TCP;
 	iph->check = 0;		//Set to 0 before calculating checksum
 	iph->saddr = inet_addr ( source_ip );	//Spoof the source ip address
@@ -112,8 +111,8 @@ int main (void)
 	iph->check = csum ((unsigned short *) datagram, iph->tot_len);
 	
 	//TCP Header
-	tcph->source = htons (1234); //(1234);4220
-	tcph->dest = htons (80); //(80);4222
+	tcph->source = htons (1234);
+	tcph->dest = htons (80);
 	tcph->seq = 0;
 	tcph->ack_seq = 0;
 	tcph->doff = 5;	//tcp header size
@@ -152,24 +151,24 @@ int main (void)
 		exit(0);
 	}
 	
-	int counter = 1;
-	while (counter <= 100)
+	//loop if you want to flood :)
+	while (1)
 	{
 		//Send the packet
 		if (sendto (s, datagram, iph->tot_len ,	0, (struct sockaddr *) &sin, sizeof (sin)) < 0)
 		{
 			perror("sendto failed");
 		}
-		//Data send successfully
+		//Data sent successfully
 		else
 		{
-			printf ("Packet Send. Length : %d \n" , iph->tot_len);
+			printf ("Packet Sent. Length : %d \n" , iph->tot_len);
 		}
-        // sleep for 1 seconds
-        sleep(1);
-		counter++;
+        // sleep for 10 seconds
+        sleep(10);
 	}
 	
 	return 0;
 }
 
+//Complete
