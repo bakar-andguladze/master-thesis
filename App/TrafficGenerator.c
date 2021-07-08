@@ -84,7 +84,7 @@ int main (void)
 	
 	//Data part
 	data = datagram + sizeof(struct iphdr) + sizeof(struct tcphdr);
-	strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	
 	//some address resolution
 	strcpy(source_ip , SRC_IP);
@@ -101,7 +101,7 @@ int main (void)
 	iph->tot_len = sizeof (struct iphdr) + sizeof (struct tcphdr) + strlen(data);
 	iph->id = htonl (54321);	//Id of this packet
 	iph->frag_off = 0;
-	iph->ttl = 2;
+	iph->ttl = 1;
 	iph->protocol = IPPROTO_TCP;
 	iph->check = 0;		//Set to 0 before calculating checksum
 	iph->saddr = inet_addr ( source_ip );	//Spoof the source ip address
@@ -151,7 +151,7 @@ int main (void)
 		exit(0);
 	}
 	
-	//loop if you want to flood :)
+	// flood the network
 	while (1)
 	{
 		//Send the packet
@@ -164,11 +164,10 @@ int main (void)
 		{
 			printf ("Packet Sent. Length : %d \n" , iph->tot_len);
 		}
-        // sleep for 10 seconds
-        sleep(10);
+		iph->ttl++;
+        // sleep for 1 second
+        sleep(1);
 	}
 	
 	return 0;
 }
-
-//Complete
