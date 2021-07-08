@@ -5,11 +5,11 @@ class customTopo(Topo):
         super(customTopo,self).__init__()
 
         # add hosts
-        leftHost = self.addHost('h1', ip='10.0.0.1/24',mac='00:00:00:00:00:01')        
-        rightHost = self.addHost('h2', ip='10.0.1.2/24',mac='00:00:00:00:00:02')
+        leftHost = self.addHost('h1', ip='10.0.0.1/24')        
+        rightHost = self.addHost('h2', ip='10.0.1.2/24')
         
         # add routers
-        r1 = self.addHost('r1', ip='10.0.0.1')
+        r1 = self.addHost('r1')
         
         
         # switch1 = self.addRouter('r1')
