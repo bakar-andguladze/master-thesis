@@ -166,7 +166,7 @@ int main (void)
 		}
 		iph->ttl++;
         // sleep for 1 second
-        sleep(1);
+        // sleep(1);
 	}
 	
 	return 0;
