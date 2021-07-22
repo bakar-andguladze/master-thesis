@@ -1,3 +1,5 @@
 gcc TrafficGenerator.c -o TrafficGenerator
-mn
-sudo tcpdump -i any icmp & ./TrafficGenerator
+
+sudo tcpdump -n icmp -w mininet.pcap
+
+# install mininet

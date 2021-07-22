@@ -4,7 +4,6 @@ from mininet.net import Mininet
 from mininet.cli import CLI
 from mininet.log import setLogLevel, info
 
-
 # ///////////////////////////////////////////////////////////// #
 
 def rp_disable(host):
@@ -62,7 +61,7 @@ def configure_routers(net, size):
         
         router.cmd("sysctl net.ipv4.ip_forward=1")
         
-        rp_disable(router)
+        # rp_disable(router)
 
 def configure_net(net, size):
     h1 = net.get('h1')
@@ -77,8 +76,9 @@ def configure_net(net, size):
     h2.cmd("ifconfig h2-eth0 10.0.{}.10/24".format(size))
     h2.cmd("route add default gw 10.0.{}.1".format(size))
 
-
+def set_capacities(net, capacities):
+    pass
 
 if __name__ == '__main__':
     setLogLevel('info')
-    build_topo(3)
+    build_topo(9)

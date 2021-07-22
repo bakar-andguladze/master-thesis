@@ -164,7 +164,16 @@ int main (void)
 		{
 			printf ("Packet Sent. Length : %d \n" , iph->tot_len);
 		}
+		/*
+			constraints can be set here, how often ttl should be incremented.		
+			if i%10==0
+		*/
+		
 		iph->ttl++;
+		if(iph->ttl==64)
+		{
+			iph->ttl = 1;
+		}
         // sleep for 1 second
         // sleep(1);
 	}
