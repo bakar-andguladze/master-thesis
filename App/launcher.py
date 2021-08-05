@@ -12,3 +12,5 @@ def fetch_host_IPs():
 def run_traffic_generator(ip1, ip2):
     pass
 
+if __name__ == '__main__':
+    pass

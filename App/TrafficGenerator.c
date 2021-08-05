@@ -49,13 +49,14 @@ unsigned short csum(unsigned short *ptr,int nbytes)
 
 int main (void)
 {
-    char SRC_IP[32];
-    char HOST_IP[13];
+    // char SRC_IP[32];
+	char SRC_IP[] = "10.0.0.10";
+    char DST_IP[13];
 
-    printf("Enter source address\n");
-    scanf("%s", SRC_IP);
-    printf("Enter host address\n");
-    scanf("%s", HOST_IP);
+    // printf("Enter source address\n");
+    // scanf("%s", SRC_IP);
+    printf("Enter destination address\n");
+    scanf("%s", DST_IP);
    
 
 	//Create a raw socket
@@ -84,14 +85,15 @@ int main (void)
 	
 	//Data part
 	data = datagram + sizeof(struct iphdr) + sizeof(struct tcphdr);
-	strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_");
+	strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	// strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_");
 	
 	//some address resolution
 	strcpy(source_ip , SRC_IP);
 	// strcpy(source_ip , "192.168.1.2");
 	sin.sin_family = AF_INET;
 	sin.sin_port = htons(80);
-	sin.sin_addr.s_addr = inet_addr (HOST_IP);
+	sin.sin_addr.s_addr = inet_addr (DST_IP);
 	// sin.sin_addr.s_addr = inet_addr ("1.2.3.4");
 	
 	//Fill in the IP Header
@@ -152,6 +154,8 @@ int main (void)
 	}
 	
 	// flood the network
+	int i = 0;
+
 	while (1)
 	{
 		//Send the packet
@@ -162,20 +166,33 @@ int main (void)
 		//Data sent successfully
 		else
 		{
+			printf("%d \t", i+1);
 			printf ("Packet Sent. Length : %d \n" , iph->tot_len);
 		}
 		/*
-			constraints can be set here, how often ttl should be incremented.		
-			if i%10==0
+			ttl should be incremented after every 50 packets
 		*/
-		
-		iph->ttl++;
-		if(iph->ttl==64)
+
+		// sleep(1 second);
+		// usleep(1000000);
+
+		i++;
+		if(i == 50) // number of packets necessary for measuring
 		{
-			iph->ttl = 1;
+			printf("hop #%d done\n\n", iph->ttl);
+			iph->ttl++;
+			i = 0;
 		}
-        // sleep for 1 second
-        // sleep(1);
+		
+		// if(i==5)
+		// {
+		// 	sleep(1);
+		// }
+
+		if(iph->ttl == 2) // total number of routers + 2 -> read from file
+		{
+			break;
+		}
 	}
 	
 	return 0;
