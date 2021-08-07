@@ -174,10 +174,10 @@ int main (void)
 		*/
 
 		// sleep(1 second);
-		// usleep(1000000);
+		// usleep(1000);
 
 		i++;
-		if(i == 50) // number of packets necessary for measuring
+		if(i == 300) // number of packets necessary for measuring
 		{
 			printf("hop #%d done\n\n", iph->ttl);
 			iph->ttl++;
@@ -189,7 +189,7 @@ int main (void)
 		// 	sleep(1);
 		// }
 
-		if(iph->ttl == 2) // total number of routers + 2 -> read from file
+		if(iph->ttl == 5) // total number of routers + 2 -> read from file
 		{
 			break;
 		}
@@ -197,3 +197,5 @@ int main (void)
 	
 	return 0;
 }
+
+// tcp[tcpflags] == tcp-ack

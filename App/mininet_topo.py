@@ -1,5 +1,6 @@
 #!/usr/bin/python
 from mininet.link import TCLink
+from mininet.node import Node
 from mininet.topo import Topo
 from mininet.net import Mininet
 from mininet.cli import CLI
@@ -14,6 +15,19 @@ def rp_disable(host):
     for iface in ifacelist:
        if iface != 'lo': host.cmd('sysctl net.ipv4.conf.' + iface + '.rp_filter=0')
 
+class LinuxRouter( Node ):
+    "A Node with IP forwarding enabled."
+
+    # pylint: disable=arguments-differ
+    def config( self, **params ):
+        super( LinuxRouter, self).config( **params )
+        # Enable forwarding on the router
+        self.cmd( 'sysctl net.ipv4.ip_forward=1' )
+
+    def terminate( self ):
+        self.cmd( 'sysctl net.ipv4.ip_forward=0' )
+        super( LinuxRouter, self ).terminate()
+
 def build_topo(size=1):
     net = Mininet()
     h1 = net.addHost('h1', ip='10.0.0.10')
@@ -21,7 +35,7 @@ def build_topo(size=1):
     
     
     for i in range(1, size+1):
-        net.addHost('r{}'.format(i), ip='10.0.{}.2'.format(i-1))
+        net.addHost('r{}'.format(i), cls=LinuxRouter, ip='10.0.{}.2'.format(i-1))
         # print('r{}'.format(i), '10.0.{}.2'.format(i-1))
     
 
@@ -43,6 +57,8 @@ def build_topo(size=1):
     CLI(net)
     net.stop()
 
+
+
 def configure_routers(net, size):
     # command to configure all Routes
     config_routes_right = "ip route add to 10.0.{}.0/24 via 10.0.{}.{}"
@@ -58,23 +74,10 @@ def configure_routers(net, size):
         # to the right routers
         for j in range(i+1, size+1):
             router.cmd(config_routes_right.format(j, i, host_part_eth0))
-        # to the right host
-        # if(i<size):
-        #     router.cmd("ip route add to 10.0.{}.0/24 via 10.0.{}.2".format(size, i))
-        # else:
-        #     router.cmd("ip route add to 10.0.{}.0/24 via 10.0.{}.10".format(size, size))
         
         # to the left host
         for j in range(0, i):
             router.cmd(config_routes_left.format(j, i-1, host_part_eth1))
-        # if(i>1):
-        #     router.cmd("ip route add to 10.0.0.0/24 via 10.0.{}.1".format(i-1))
-        # else:
-        #     router.cmd("ip route add to 10.0.0.0/24 via 10.0.0.10")
-        
-        router.cmd("sysctl net.ipv4.ip_forward=1")
-        
-        # rp_disable(router)
 
 def configure_net(net, size):
     """
@@ -94,7 +97,7 @@ def configure_net(net, size):
     h2.cmd("ifconfig h2-eth0 10.0.{}.10/24".format(size))
     h2.cmd("route add default gw 10.0.{}.1".format(size))
 
-    capacities = generate_capacities(400, 500, size+1)
+    capacities = generate_capacities(10, 100, size+1)
     set_capacities(net, size, capacities)
 
     # ################## temporary ###################
@@ -139,3 +142,5 @@ def set_capacities(net, n_routers, capacities):
 if __name__ == '__main__':
     setLogLevel('info')
     build_topo(constants.topo_size)
+
+    # build_topo(constants.topo_size)

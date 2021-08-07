@@ -49,6 +49,11 @@ def calculate_iats(timestamps):
     # print(timestamps)
     return iats
 
+def tmp2(filepath=dir_path + "/results/tcp.csv"):
+    data = read_from_csv(filepath)
+    acks = data.filter(like="ack")
+    print(acks)
+
 def tmp(filepath=dir_path + "/results/mininet.csv"):
     data = read_from_csv(filepath)
     timestamps = get_timestamps(data)
@@ -137,5 +142,5 @@ def get_all_capacities(filepath=dir_path + "/results/mininet.csv"):
 
 
 if __name__ == '__main__':
-    tmp()
+    tmp2()
 
