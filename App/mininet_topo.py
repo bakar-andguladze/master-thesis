@@ -119,15 +119,18 @@ def set_capacities(net, n_routers, capacities):
     h2 = net.get("h2")
 
     # Apply traffic limiters to first and last link
-    # h1.cmd("tc qdisc add dev h1-eth0 root handle 1: tbf latency 100ms buffer 2000b rate {}mbit".format(capacities[0]))
-    # h2.cmd("tc qdisc add dev h2-eth0 root handle 1: tbf latency 100ms buffer 2000b rate {}mbit".format(capacities[-1]))
+    h1.cmd("tc qdisc add dev h1-eth0 root handle 1: tbf latency 100ms buffer 2000b rate {}mbit".format(capacities[0]))
+    h2.cmd("tc qdisc add dev h2-eth0 root handle 1: tbf latency 100ms buffer 2000b rate {}mbit".format(capacities[-1]))
 
     # tc qdisc add dev h1-eth0 root netem rate {}mbit
-    h1.cmd("tc qdisc add dev h1-eth0 root netem rate {}mbit".format(capacities[0]))
-    h2.cmd("tc qdisc add dev h2-eth0 root netem rate {}mbit".format(capacities[-1]))
+    # h1.cmd("tc qdisc add dev h1-eth0 root netem pfifo rate {}mbit".format(capacities[0]))
+    # h2.cmd("tc qdisc add dev h2-eth0 root netem pfifo rate {}mbit".format(capacities[-1]))
+    
+    # h1.cmd("tc qdisc pfifo")
+    # h2.cmd("tc qdisc pfifo")
 
-    # set_capacity = "tc qdisc add dev r{}-eth{} root handle 1: tbf latency 100ms buffer 2000b rate {}mbit"
-    set_capacity = "tc qdisc add dev r{}-eth{} root tbf rate {}mbit latency 100ms buffer 16000b"
+    set_capacity = "tc qdisc add dev r{}-eth{} root handle 1: tbf latency 100ms buffer 2000b rate {}mbit"
+    # set_capacity = "tc qdisc add dev r{}-eth{} root tbf pfifo rate {}mbit latency 100ms buffer 16000b"
     for i in range(1, n_routers):
         # Apply traffic limiter at router i
         router = net.get("r{}".format(i))
@@ -137,10 +140,10 @@ def set_capacities(net, n_routers, capacities):
         # limit right interface capacity
         router.cmd(set_capacity.format(i, 1, capacities[i + 1]))
 
+        # router.cmd("tc qdisc pfifo")
+
 
 # build_topo will be called from launcher.py. this is just for testing
 if __name__ == '__main__':
     setLogLevel('info')
     build_topo(constants.topo_size)
-
-    # build_topo(constants.topo_size)

@@ -4,39 +4,103 @@ import PPrate as pp
 import numpy as np
 import pandas as pd
 
-def convert_pcap(folder, filename):
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+def pcap_to_csv(folder, filename):
+    filepath = folder + '/' + filename
+    command = "tshark -r {}.pcap -T fields -E header=y -E separator=, -E quote=d -E occurrence=f -e frame.time_epoch -e ip.src -e ip.dst -e ip.len > {}.csv"
+    os.system(command.format(filepath, filepath))
+
+def read_from_csv(file_path):
     """
-    Convert pcap trace files into csv files
-    :param folder: Folder the pcap file is located in. Use "." for the current directory.
-    :param filename: File name of the trace file to be read and output to be written
+    Reads from csv file and returns a Pandas DataFrame object with full data 
     """
-    with open("{}/{}.csv".format(folder, filename.replace('.pcap', '')), "w") as output:
-        FNULL = open(os.devnull, 'w')
-        # Convert pcap file using tshark
-        # Format: Timestamp, Src IP, Dst IP, IP packet length, TCP segment length, ACK Flag
+    data = pd.read_csv(file_path, sep=',')
+    data.columns = ['ts', 'src', 'dst', 'ip_len']
 
-        # try this with your format..
-        tshark = subprocess.call([
-            "tshark", "-r", filename, "-l", "-T", "fields", "-E", "separator=;", "-e", "frame.time_epoch", "-e",
-            "ip.src",
-            "-e", "ip.dst", "-e", "ip.len", "-e", "tcp.len", "-e", "tcp.flags.ack"], stdout=output, stderr=FNULL)
+    return data
 
-def read_csv(folder, filename):
-    pass
-    # this function is #1 priority
+def discard_imperfect_pairs(max_difference):
+    """
+    discards the packets with lost pairs 
+    """
+    data = read_from_csv(filepath=dir_path+"/results/mininet.csv")
 
-def calculate_capacities():
+    return data
+
+def group_by_routers(data, streams):
+    # streams = {}
+    for tpl in data.itertuples():
+        if tpl != None:
+            key = (tpl.src, tpl.dst)
+        
+            if pd.isna(tpl.src) or pd.isna(tpl.dst):
+                continue
+
+            # Create new dict entry for new flows
+            if key not in streams:
+                streams[key] = [[], []]
+
+            # Append timestamp, IP size and TCP length to flow
+            streams[key][0].append(tpl.ts)
+            streams[key][1].append(tpl.ip_len)
+
+def tmp():
+    filepath = dir_path + "/results/mininet.csv"
+    streams = {}
+
+    df = read_from_csv(filepath)
+    
+    group_by_routers(df, streams)
+    # for i in streams ... calculate iats
+    print("iats lists ========================================")
+    for key in streams:
+        streams[key][0] = calculate_iats(streams[key][0])
+        streams[key][0] = remove_intervals(streams[key][0])
+        # print(streams[key][0])
+        cap = pp.find_capacity(1514, streams[key][0])
+        print(cap)
+    # print(streams)
+
+
+def calculate_iats(timestamps):
+    """
+    Calculates inter-arrival times for packet pairs
+    """
+    iats = []
+    for i, ts in enumerate(timestamps):
+        if(i == 0):
+            iats.append(0)
+        else:
+            iats.append(ts - timestamps[i-1])
+            # ts = ('%.9f'%ts)
+            # ts2 = ('%.9f'%timestamps[i-1])
+            # iats.append(float(ts) - float(timestamps[i-1]))
+            # iats.append(float(ts) - float(ts2))
+        
+        # print("{}: {}".format(i+1, ts))
+    return iats
+
+def remove_intervals(iats):
+    for i in iats:
+        if (i >= 1.0):
+            iats.remove(i)
+    print(len(iats))
+    print("======================================================================================================")
+
+    return iats
+
+def calculate_capacity_for_hop(hop):
+    """
+    Calculates capacity to a certain router
+    """
     pass
     # after I have sizes & timestamps I can pass them to pprate and results for deadline are done!
 
-def get_capacity():
-    pass
-    # calls sender algorithm
-
-def sender_algorithm():
-    pass
-
-def get_results():
+def get_all_capacities():
+    """
+    Calculates capacities til each router separately
+    """
     pass
 
 def save_results_to_file():
@@ -45,3 +109,6 @@ def save_results_to_file():
 def get_relative_error():
     pass
 
+
+if __name__ == '__main__':
+    tmp()

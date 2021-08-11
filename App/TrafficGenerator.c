@@ -103,7 +103,7 @@ int main (void)
 	iph->tot_len = sizeof (struct iphdr) + sizeof (struct tcphdr) + strlen(data);
 	iph->id = htonl (54321);	//Id of this packet
 	iph->frag_off = 0;
-	iph->ttl = 1;
+	iph->ttl = 4;
 	iph->protocol = IPPROTO_TCP;
 	iph->check = 0;		//Set to 0 before calculating checksum
 	iph->saddr = inet_addr ( source_ip );	//Spoof the source ip address
@@ -172,9 +172,8 @@ int main (void)
 		/*
 			ttl should be incremented after every 50 packets
 		*/
-
 		// sleep(1 second);
-		// usleep(1000);
+		// usleep(1000000);
 
 		i++;
 		if(i == 300) // number of packets necessary for measuring
@@ -184,10 +183,11 @@ int main (void)
 			i = 0;
 		}
 		
-		// if(i==5)
+		// if(i%2 == 0)
 		// {
-		// 	sleep(1);
+		// 	sleep(2);
 		// }
+
 
 		if(iph->ttl == 5) // total number of routers + 2 -> read from file
 		{
