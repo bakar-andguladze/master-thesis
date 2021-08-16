@@ -1,9 +1,7 @@
 *
 !*/
 !*.*
-/test.c
 /plan.txt
-/test.py
 /capacities.txt
 /*.pyc
 !spec/*.pyc

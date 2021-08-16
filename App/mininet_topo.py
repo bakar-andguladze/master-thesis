@@ -50,14 +50,13 @@ def build_topo(size=1):
     # print(type(net.get('r{}'.format(size))))
     
     net.build()
-    
-    configure_net(net, size)
-
     net.start()
+    configure_net(net, size)
     CLI(net)
+    
+    # inject_and_capture(h1)
     net.stop()
-
-
+    
 
 def configure_routers(net, size):
     # command to configure all Routes
@@ -101,7 +100,7 @@ def configure_net(net, size):
     set_capacities(net, size, capacities)
 
     # ################## temporary ###################
-    textfile = open("capacities_tmp.txt", "w")
+    textfile = open(constants.topo_caps, "w")
     for element in capacities:
         textfile.write(str(element) + "\n")
     textfile.close()
@@ -142,6 +141,14 @@ def set_capacities(net, n_routers, capacities):
 
         # router.cmd("tc qdisc pfifo")
 
+
+def inject_and_capture(host):
+    # tcpdump (maybe add timeout if necessary)
+    host.cmd("tcpdump -n tcp -w results/tcp.pcap &")
+    host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
+
+    host.cmd("./TrafficGenerator")
+    
 
 # build_topo will be called from launcher.py. this is just for testing
 if __name__ == '__main__':

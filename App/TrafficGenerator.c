@@ -170,7 +170,7 @@ int main (void)
 			printf ("Packet Sent. Length : %d \n" , iph->tot_len);
 		}
 		/*
-			ttl should be incremented after every 50 packets
+			ttl should be incremented after every n packets
 		*/
 		// sleep(1 second);
 		// usleep(1000000);
@@ -188,7 +188,7 @@ int main (void)
 		// 	sleep(2);
 		// }
 
-
+		
 		if(iph->ttl == 5) // total number of routers + 2 -> read from file
 		{
 			break;

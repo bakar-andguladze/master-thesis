@@ -13,7 +13,7 @@ def read_from_csv(file_path):
     
     return data
 
-def receiver_algo(data, flows, sender_ip="10.0.0.10", receiver_ip="10.0.0.10", size=40):
+def process_data(data, flows):
     """
     Process data using the receiver algorithm and derive capacity using PPrate algorithm
     :param data: Pandas dataframe containing packet traces
@@ -53,10 +53,9 @@ def receiver_algo(data, flows, sender_ip="10.0.0.10", receiver_ip="10.0.0.10", s
             else:
                 flows[key][3].append(True)
 
+def calculate_capacity(flows, sender_ip, receiver_ip):
     # Calculate Inter-Arrival-Times
     iats = []
-    sender_ip = "10.0.0.10"
-    receiver_ip = "10.0.0.2"
     f = flows[(sender_ip, receiver_ip)]
     for i, ts in enumerate(f[0]):
         if i == 0:
@@ -67,15 +66,15 @@ def receiver_algo(data, flows, sender_ip="10.0.0.10", receiver_ip="10.0.0.10", s
         # print(iats)
     sizes = f[1]
     f[0] = np.array(iats)
-    # print(sizes)
-    # print(iats)
-    return bit_to_mbit(pp.find_capacity(size, iats))
+
+    return bit_to_mbit(pp.find_capacity(sizes, iats))
+
 
 def tmp():
-    filepath = dir_path + '/results/tcp.csv'
+    filepath = dir_path + '/results/h2.csv'
     flows = {}
     data = read_from_csv(filepath)
-    cap = receiver_algo(data, flows)
+    cap = process_data(data, flows)
     print(cap)
 
 def bit_to_mbit(bits):
