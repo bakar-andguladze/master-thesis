@@ -103,7 +103,7 @@ int main (void)
 	iph->tot_len = sizeof (struct iphdr) + sizeof (struct tcphdr) + strlen(data);
 	iph->id = htonl (54321);	//Id of this packet
 	iph->frag_off = 0;
-	iph->ttl = 4;
+	iph->ttl = 1;
 	iph->protocol = IPPROTO_TCP;
 	iph->check = 0;		//Set to 0 before calculating checksum
 	iph->saddr = inet_addr ( source_ip );	//Spoof the source ip address
@@ -176,20 +176,21 @@ int main (void)
 		// usleep(1000000);
 
 		i++;
-		if(i == 300) // number of packets necessary for measuring
+		if(i == 600) // number of packets necessary for measuring
 		{
 			printf("hop #%d done\n\n", iph->ttl);
 			iph->ttl++;
 			i = 0;
 		}
 		
-		// if(i%2 == 0)
-		// {
-		// 	sleep(2);
-		// }
+
+		if(i%2 == 0)
+		{
+			sleep(2);
+		}
 
 		
-		if(iph->ttl == 5) // total number of routers + 2 -> read from file
+		if(iph->ttl == 2) // total number of routers + 2 -> read from file
 		{
 			break;
 		}

@@ -7,8 +7,13 @@ import constants
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
+def pcap_to_csv():
+    os.system("tshark -r results/tcp.pcap -T fields -E header=y -E separator=, -E quote=d -E occurrence=f -e frame.time_epoch -e ip.src -e ip.dst -e ip.len -e tcp.len -e tcp.flags.ack> results/tcp.csv")
+
 def read_from_csv(file_path):
-    # read_csv() returns DataFrame object
+    """
+    Reads from csv file and returns a Pandas DataFrame object with full data 
+    """
     data = pd.read_csv(file_path, sep=',')
     data.columns = ['ts', 'src', 'dst', 'ip_len', 'tcp_len', 'ack']
     
@@ -76,10 +81,11 @@ def receiver_algo(data, flows):
     # print("iats: {}".format(len(iats)))
     # print(sizes)
     # print(iats)
-    return bit_to_mbit(pp.find_capacity(sizes, iats))
+    return bit_to_mbit(pp.find_capacity(size, iats))
 
 def tmp():
     filepath = dir_path + '/results/tcp.csv'
+    pcap_to_csv()
     flows = {}
     data = read_from_csv(filepath)
     cap = receiver_algo(data, flows)

@@ -3,6 +3,7 @@ import subprocess
 import PPrate as pp
 import numpy as np
 import pandas as pd
+import constants 
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -46,7 +47,7 @@ def group_by_routers(data, streams):
             streams[key][1].append(tpl.ip_len)
 
 def tmp():
-    filepath = dir_path + "/results/mininet.csv"
+    filepath = dir_path + "/results/icmp.csv"
     streams = {}
 
     df = read_from_csv(filepath)
@@ -58,7 +59,8 @@ def tmp():
         streams[key][0] = calculate_iats(streams[key][0])
         streams[key][0] = remove_intervals(streams[key][0])
         # print(streams[key][0])
-        cap = pp.find_capacity(1514, streams[key][0])
+        cap = pp.find_capacity(94, streams[key][0])
+        cap = bit_to_mbit(cap)
         print(cap)
     # print(streams)
 
@@ -70,7 +72,8 @@ def calculate_iats(timestamps):
     iats = []
     for i, ts in enumerate(timestamps):
         if(i == 0):
-            iats.append(0)
+            # iats.append(0)
+            continue
         else:
             iats.append(ts - timestamps[i-1])
             # ts = ('%.9f'%ts)
@@ -108,6 +111,9 @@ def save_results_to_file():
 
 def get_relative_error():
     pass
+
+def bit_to_mbit(bits):
+    return bits / 1000000
 
 
 if __name__ == '__main__':
