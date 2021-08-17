@@ -72,11 +72,11 @@ def receiver_algo(data, flows):
     size = constants.ack_size
     sizes = f[1]
     f[0] = np.array(iats)
-    print("sizes: {}".format(len(sizes)))
-    print("iats: {}".format(len(iats)))
+    # print("sizes: {}".format(len(sizes)))
+    # print("iats: {}".format(len(iats)))
     # print(sizes)
     # print(iats)
-    return bit_to_mbit(pp.find_capacity(size, iats))
+    return bit_to_mbit(pp.find_capacity(sizes, iats))
 
 def tmp():
     filepath = dir_path + '/results/tcp.csv'
