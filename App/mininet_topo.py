@@ -97,6 +97,7 @@ def configure_net(net, size):
     h2.cmd("route add default gw 10.0.{}.1".format(size))
 
     capacities = generate_capacities(10, 100, size+1)
+    print(capacities)
     set_capacities(net, size, capacities)
 
     # ################## temporary ###################
