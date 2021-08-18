@@ -7,10 +7,9 @@ import constants
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-def pcap_to_csv(folder, filename):
-    filepath = folder + '/' + filename
-    command = "tshark -r {}.pcap -T fields -E header=y -E separator=, -E quote=d -E occurrence=f -e frame.time_epoch -e ip.src -e ip.dst -e ip.len > {}.csv"
-    os.system(command.format(filepath, filepath))
+def pcap_to_csv():
+    command = "tshark -r results/icmp.pcap -T fields -E header=y -E separator=, -E quote=d -E occurrence=f -e frame.time_epoch -e ip.src -e ip.dst -e ip.len > results/icmp.csv"
+    os.system(command)
 
 def read_from_csv(file_path):
     """
@@ -47,6 +46,7 @@ def group_by_routers(data, streams):
             streams[key][1].append(tpl.ip_len)
 
 def tmp():
+    pcap_to_csv()
     filepath = dir_path + "/results/icmp.csv"
     streams = {}
 
@@ -74,14 +74,18 @@ def calculate_iats(timestamps):
         if(i == 0):
             # iats.append(0)
             continue
-        else:
-            iats.append(ts - timestamps[i-1])
+        iat = ts - timestamps[i-1]
+        if(iat > 0 and iat < 1.0):
+            iats.append(iat)
+        # else:
+        #     iats.append(ts - timestamps[i-1])
             # ts = ('%.9f'%ts)
             # ts2 = ('%.9f'%timestamps[i-1])
             # iats.append(float(ts) - float(timestamps[i-1]))
             # iats.append(float(ts) - float(ts2))
         
         # print("{}: {}".format(i+1, ts))
+    print(iats)
     return iats
 
 def remove_intervals(iats):

@@ -5,8 +5,16 @@ from mininet.topo import Topo
 from mininet.net import Mininet
 from mininet.cli import CLI
 from mininet.log import setLogLevel, info
+from mininet.clean import cleanup
 from prepare_test import generate_capacities
+from tcp_csv import tmp
 import constants
+import os
+import time
+from subprocess import PIPE
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
 # ///////////////////////////////////////////////////////////// #
 
 def rp_disable(host):
@@ -52,11 +60,27 @@ def build_topo(size=1):
     net.build()
     net.start()
     configure_net(net, size)
+
     CLI(net)
     
     # inject_and_capture(h1)
+
+    # try:
+    #     h1.popen("timeout 5 tcpdump -n tcp -w results/tcp.pcap &", stdout=PIPE, stderr=PIPE)
+    #     # host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
+    # except Exception as e:
+    #     print('Error on starting tcpdump\n{}'.format(e))
+    # finally:
+    #     h1.cmd("./TrafficGenerator")
+
+    # time.sleep(6)
+
+
+
     net.stop()
-    
+    cleanup()
+    # tmp()
+
 
 def configure_routers(net, size):
     # command to configure all Routes
@@ -96,9 +120,15 @@ def configure_net(net, size):
     h2.cmd("ifconfig h2-eth0 10.0.{}.10/24".format(size))
     h2.cmd("route add default gw 10.0.{}.1".format(size))
 
+    # add capacity delta later -> in prepare_test.py
     capacities = generate_capacities(10, 100, size+1)
     print(capacities)
     set_capacities(net, size, capacities)
+
+    h1.cmd('tc qdisc replace dev leftHost-eth0 root fq pacing')
+    h1.cmd('ethtool -K leftHost-eth0 tso off')
+    h2.cmd('tc qdisc replace dev rightHost-eth0 root netem delay 50')
+
 
     # ################## temporary ###################
     textfile = open(constants.topo_caps, "w")
@@ -145,12 +175,15 @@ def set_capacities(net, n_routers, capacities):
 
 def inject_and_capture(host):
     # tcpdump (maybe add timeout if necessary)
-    host.cmd("tcpdump -n tcp -w results/tcp.pcap &")
-    host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
-
-    host.cmd("./TrafficGenerator")
+    try:
+        host.cmd("timeout 5 tcpdump -n tcp -w results/tcp.pcap &") #, stdout=PIPE, stderr=PIPE)
+        # host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
+    except Exception as e:
+        print('Error on starting tcpdump\n{}'.format(e))
+    finally:
+        host.cmd("./TrafficGenerator")
     
-
+    
 # build_topo will be called from launcher.py. this is just for testing
 if __name__ == '__main__':
     setLogLevel('info')
