@@ -72,7 +72,7 @@ def receiver_algo(data, flows):
         else:
             iats.append((ts - f[0][i - 1]))
 
-        # print(iats)
+    print(iats)
     
     size = constants.ack_size
     sizes = f[1]
