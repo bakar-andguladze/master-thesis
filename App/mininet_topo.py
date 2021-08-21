@@ -161,17 +161,20 @@ def set_capacities(net, n_routers, capacities):
 
     set_capacity = "tc qdisc add dev r{}-eth{} root handle 1: tbf latency 100ms buffer 2000b rate {}mbit"
     # set_capacity = "tc qdisc add dev r{}-eth{} root tbf pfifo rate {}mbit latency 100ms buffer 16000b"
-    for i in range(1, n_routers):
+    for i in range(n_routers):
         # Apply traffic limiter at router i
-        router = net.get("r{}".format(i))
+        router = net.get("r{}".format(i+1))
 
         # limit left interface capacity
-        router.cmd(set_capacity.format(i, 0, capacities[i]))
+        router.cmd(set_capacity.format(i+1, 0, capacities[i]))
         # limit right interface capacity
-        router.cmd(set_capacity.format(i, 1, capacities[i + 1]))
+        router.cmd(set_capacity.format(i+1, 1, capacities[i + 1]))
 
         # router.cmd("tc qdisc pfifo")
-
+    
+    # router = net.get("r{}".format(n_routers))
+    # router.cmd(set_capacity.format(n_routers, 0, capacities[-2]))
+    # router.cmd(set_capacity.format(n_routers, 1, capacities[-1]))
 
 def inject_and_capture(host):
     # tcpdump (maybe add timeout if necessary)

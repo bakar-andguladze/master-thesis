@@ -89,7 +89,7 @@ int main (void)
 	char buff[4096];
     FILE *f = fopen("packet_data.txt", "r");
     fgets(buff, 4096, f);
-    printf("String read: %s\n", buff);
+    // printf("String read: %s\n", buff);
     fclose(f);
 
 
