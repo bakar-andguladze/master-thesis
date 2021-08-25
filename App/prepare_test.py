@@ -1,7 +1,7 @@
 import random
 import time
 
-def generate_capacities(min, max, n_links):
+def generate_capacities(min, max, n_links, capacity_delta=5):
     """
     Generate random capacities from [min, max] range to apply to the mininet topology
     :param min: capacity range start
@@ -11,7 +11,7 @@ def generate_capacities(min, max, n_links):
     capacities = []
     for i in range(n_links):
         try:
-            capacity = random.randrange(min, max)
+            capacity = random.randrange(min, max, capacity_delta) 
         except ValueError:
             capacity = min
         finally:
@@ -22,5 +22,4 @@ def generate_capacities(min, max, n_links):
 
 def get_config_parameters():
     pass
-
 
