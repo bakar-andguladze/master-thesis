@@ -50,7 +50,7 @@ unsigned short csum(unsigned short *ptr,int nbytes)
 int main (void)
 {
     // char SRC_IP[32];
-	char SRC_IP[] = "10.0.0.1";
+	char SRC_IP[] = "10.0.0.10";
     char DST_IP[13]; // = "10.0.3.10";
 
     // printf("Enter source address\n");

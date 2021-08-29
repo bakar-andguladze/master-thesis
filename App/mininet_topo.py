@@ -7,17 +7,20 @@ from mininet.cli import CLI
 from mininet.log import setLogLevel, info
 from mininet.clean import cleanup
 from prepare_test import generate_capacities
-from tcp_csv import tmp
 import constants
 import os
 import time
 from subprocess import PIPE
+from process_csv import tmp
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 # ///////////////////////////////////////////////////////////// #
 
 def rp_disable(host):
+    """
+    Disable Reverse Path Filtering 
+    """
     ifaces = host.cmd('ls /proc/sys/net/ipv4/conf')
     ifacelist = ifaces.split()    # default is to split on whitespace
     for iface in ifacelist:
@@ -61,10 +64,8 @@ def build_topo(size=1):
     net.start()
     configure_net(net, size)
 
-    CLI(net)
+    # CLI(net)
     
-    # inject_and_capture(h1)
-
     # try:
     #     h1.popen("timeout 5 tcpdump -n tcp -w results/tcp.pcap &", stdout=PIPE, stderr=PIPE)
     #     # host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
@@ -74,12 +75,21 @@ def build_topo(size=1):
     #     h1.cmd("./TrafficGenerator")
 
     # time.sleep(6)
+    try:
+        # CLI(net)
+    
+        inject_and_capture(h1)
+        # h1.cmd('tcpdump -n icmp -w results/icmp.pcap &')
+        # h1.cmd('./traffic_icmp')
+        # time.sleep(10)
+        # h1.cmd('pkill tcpdump')
 
-
-
-    net.stop()
-    cleanup()
-    # tmp()
+    except (KeyboardInterrupt, Exception) as e:
+        print(e)
+    finally:
+        net.stop()
+        cleanup()
+        tmp()
 
 
 def configure_routers(net, size):
@@ -153,40 +163,45 @@ def set_capacities(net, n_routers, capacities):
     h2.cmd("tc qdisc add dev h2-eth0 root handle 1: tbf latency 100ms buffer 2000b rate {}mbit".format(capacities[-1]))
 
     # tc qdisc add dev h1-eth0 root netem rate {}mbit
-    # h1.cmd("tc qdisc add dev h1-eth0 root netem pfifo rate {}mbit".format(capacities[0]))
-    # h2.cmd("tc qdisc add dev h2-eth0 root netem pfifo rate {}mbit".format(capacities[-1]))
-    
-    # h1.cmd("tc qdisc pfifo")
-    # h2.cmd("tc qdisc pfifo")
+    # h1.cmd("tc qdisc add dev h1-eth0 root netem rate {}mbit".format(capacities[0]))
+    # h2.cmd("tc qdisc add dev h2-eth0 root netem rate {}mbit".format(capacities[-1]))
 
-    set_capacity = "tc qdisc add dev r{}-eth{} root handle 1: tbf latency 100ms buffer 2000b rate {}mbit"
-    # set_capacity = "tc qdisc add dev r{}-eth{} root tbf pfifo rate {}mbit latency 100ms buffer 16000b"
+    set_capacity = "tc qdisc add dev r{}-eth{} root handle 1: tbf latency 100ms buffer 2000b rate {}mbit delay 0ms"
+    disable_icmp_ratemask = "sysctl -w net.ipv4.icmp_ratemask=0"
+    # set_capacity = "tc qdisc add dev r{}-eth{} root tbf rate {}mbit latency 100ms buffer 16000b"
     for i in range(n_routers):
         # Apply traffic limiter at router i
         router = net.get("r{}".format(i+1))
 
-        # limit left interface capacity
+        # limit eth0 and eth1 respectively
         router.cmd(set_capacity.format(i+1, 0, capacities[i]))
-        # limit right interface capacity
         router.cmd(set_capacity.format(i+1, 1, capacities[i + 1]))
-
-        # router.cmd("tc qdisc pfifo")
-    
-    # router = net.get("r{}".format(n_routers))
-    # router.cmd(set_capacity.format(n_routers, 0, capacities[-2]))
-    # router.cmd(set_capacity.format(n_routers, 1, capacities[-1]))
+        router.cmd(disable_icmp_ratemask)
 
 def inject_and_capture(host):
     # tcpdump (maybe add timeout if necessary)
+    # try:
+    #     host.popen("timeout 5 tcpdump -n icmp -w results/icmp.pcap &", stdout=PIPE, stderr=PIPE)
+    #     # host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
+    # except Exception as e:
+    #     print('Error on starting tcpdump\n{}'.format(e))
+    # finally:
+    #     host.popen("./traffic_icmp", stdout=PIPE, stderr=PIPE)
     try:
-        host.cmd("timeout 5 tcpdump -n tcp -w results/tcp.pcap &") #, stdout=PIPE, stderr=PIPE)
-        # host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
+        host.popen("tcpdump -n icmp -w results/icmp.pcap", stdout=PIPE, stderr=PIPE)
+        print("{} started tcpdump".format(host))
     except Exception as e:
-        print('Error on starting tcpdump\n{}'.format(e))
+        print(e)
+    
+    try:
+        host.popen("./traffic_icmp", stdout=PIPE, stderr=PIPE)
+        print("started traffic")
+    except Exception as e:
+        print(e)
     finally:
-        host.cmd("./TrafficGenerator")
-    
-    
+        time.sleep(20)
+
+
 # build_topo will be called from launcher.py. this is just for testing
 if __name__ == '__main__':
     setLogLevel('info')

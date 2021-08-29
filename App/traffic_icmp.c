@@ -50,13 +50,13 @@ unsigned short csum(unsigned short *ptr,int nbytes)
 int main (void)
 {
     // char SRC_IP[32];
-	char SRC_IP[] = "10.0.0.1";
-    char DST_IP[13];// = "10.0.3.10";
+	char SRC_IP[] = "10.0.0.10";
+    char DST_IP[] = "10.0.3.10";
 
     // printf("Enter source address\n");
     // scanf("%s", SRC_IP);
-    printf("Enter destination address\n");
-    scanf("%s", DST_IP);
+    // printf("Enter destination address\n");
+    // scanf("%s", DST_IP);
    
 
 	//Create a raw socket
@@ -175,6 +175,7 @@ int main (void)
 		//Data sent successfully
 		else
 		{
+			printf("hop %d \t", iph->ttl);
 			printf("%d \t", i+1);
 			printf ("Packet Sent. Length : %d \n" , iph->tot_len);
 		}
@@ -185,7 +186,7 @@ int main (void)
 		// usleep(1000000);
 
 		i++;
-		if(i == 600) // number of packets necessary for measuring
+		if(i == 300) // number of packets necessary for measuring
 		{
 			printf("hop #%d done\n\n", iph->ttl);
 			iph->ttl++;
@@ -193,10 +194,10 @@ int main (void)
 		}
 		
 
-		if(i%2 == 0)
-		{
-			sleep(2);
-		}
+		// if(i%2 == 0)
+		// {
+		// 	sleep(2);
+		// }
 
 		
 		if(iph->ttl == 5) // total number of routers + 2 -> read from file
