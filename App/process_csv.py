@@ -31,7 +31,7 @@ def group_by_routers(data, streams):
 
             # Create new dict entry for new flows
             if key not in streams:
-                streams[key] = [[], [], [], []]
+                streams[key] = [[], [], [], [], []]
 
             # Append timestamp, IP size and TCP length to flow
             streams[key][0].append(tpl.ts)
@@ -63,7 +63,7 @@ def calculate_capacities():
     results = []
     for key in sorted(streams):
         streams[key][0] = calculate_iats(streams[key][0])
-        cap = pp.find_capacity(576, streams[key][0])
+        cap = pp.find_capacity(1038, streams[key][0])
         cap = bit_to_mbit(cap)
         streams[key][2] = cap
         results.append(cap)
@@ -98,14 +98,17 @@ def get_results():
     streams = calculate_capacities()
     expected = get_expected_capacities()
     i = 0
+    print("path -> estimated capacity -> expected capacity -> relative error")
     for key in sorted(streams):
         streams[key][3] = expected[i]
+        streams[key][4] = get_relative_error(streams[key][3], streams[key][2])
         i += 1
-        print("{} -> {} -> {}".format(key, streams[key][2], streams[key][3]))
+        print("{} -> {} -> {} -> {}".format(key, streams[key][2], streams[key][3], streams[key][4]))
     
+def get_relative_error(expected, estimated):
+    err = abs(float(expected) - float(estimated)) / expected 
+    err *= 100
+    return round(err, 2)
 
 if __name__ == '__main__':
-    # str = calculate_capacities()
-    # for key in sorted(str):
-    #     print(str[key][2])    
     get_results()
