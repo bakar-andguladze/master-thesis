@@ -11,7 +11,7 @@ import constants
 import os
 import time
 from subprocess import PIPE
-from process_csv import tmp
+
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -64,8 +64,11 @@ def build_topo(size=1):
     net.start()
     configure_net(net, size)
 
-    # CLI(net)
+    CLI(net)
     
+    net.stop()
+    cleanup()
+
     # try:
     #     h1.popen("timeout 5 tcpdump -n tcp -w results/tcp.pcap &", stdout=PIPE, stderr=PIPE)
     #     # host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
@@ -75,22 +78,20 @@ def build_topo(size=1):
     #     h1.cmd("./TrafficGenerator")
 
     # time.sleep(6)
-    try:
-        # CLI(net)
+    # try:
+    #     # CLI(net)
     
-        inject_and_capture(h1)
-        # h1.cmd('tcpdump -n icmp -w results/icmp.pcap &')
-        # h1.cmd('./traffic_icmp')
-        # time.sleep(10)
-        # h1.cmd('pkill tcpdump')
+    #     inject_and_capture(h1)
+    #     # h1.cmd('tcpdump -n icmp -w results/icmp.pcap &')
+    #     # h1.cmd('./traffic_icmp')
+    #     # time.sleep(10)
+    #     # h1.cmd('pkill tcpdump')
 
-    except (KeyboardInterrupt, Exception) as e:
-        print(e)
-    finally:
-        net.stop()
-        cleanup()
-        tmp()
-
+    # except (KeyboardInterrupt, Exception) as e:
+    #     print(e)
+    # finally:
+    #     net.stop()
+    #     cleanup()
 
 def configure_routers(net, size):
     # command to configure all Routes
@@ -140,12 +141,13 @@ def configure_net(net, size):
     h2.cmd('tc qdisc replace dev rightHost-eth0 root netem delay 50')
 
 
-    # ################## temporary ###################
+    # ############## save capacities to a file ############## #
     textfile = open(constants.topo_caps, "w")
+    # textfile.write(capacities)
     for element in capacities:
         textfile.write(str(element) + "\n")
     textfile.close()
-    # ################################################
+    # ####################################################### #
 
 def set_capacities(net, n_routers, capacities):
     """
@@ -202,7 +204,6 @@ def inject_and_capture(host):
         time.sleep(20)
 
 
-# build_topo will be called from launcher.py. this is just for testing
 if __name__ == '__main__':
     setLogLevel('info')
     build_topo(constants.topo_size)

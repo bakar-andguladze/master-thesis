@@ -24,39 +24,19 @@ def group_by_routers(data, streams):
     # streams = {}
     for tpl in data.itertuples():
         if tpl != None:
-            key = (tpl.src, tpl.dst)
-        
+            key = "({}, {})".format(tpl.src, tpl.dst)
+            
             if pd.isna(tpl.src) or pd.isna(tpl.dst):
                 continue
 
             # Create new dict entry for new flows
             if key not in streams:
-                streams[key] = [[], []]
+                streams[key] = [[], [], [], []]
 
             # Append timestamp, IP size and TCP length to flow
             streams[key][0].append(tpl.ts)
             streams[key][1].append(tpl.ip_len)
-
-def tmp():
-    pcap_to_csv()
-    filepath = dir_path + "/results/icmp.csv"
-    streams = {}
-
-    df = read_from_csv(filepath)
     
-    group_by_routers(df, streams)
-    # for i in streams ... calculate iats
-    # print("iats lists ========================================")
-    for key in streams:
-        streams[key][0] = calculate_iats(streams[key][0])
-        # streams[key][0] = remove_intervals(streams[key][0])
-        # print(streams[key][0])
-        cap = pp.find_capacity(576, streams[key][0])
-        cap = bit_to_mbit(cap)
-        print(cap)
-    # print(streams)
-
-
 def calculate_iats(timestamps):
     """
     Calculates inter-arrival times for packet pairs
@@ -72,26 +52,60 @@ def calculate_iats(timestamps):
     # print(iats)
     return iats
 
-def remove_intervals(iats):
-    for i in iats:
-        if (i >= 1.0):
-            iats.remove(i)
-    print(len(iats))
-    print("======================================================================================================")
+def calculate_capacities():
+    pcap_to_csv()
+    filepath = dir_path + "/results/icmp.csv"
+    streams = {}
 
-    return iats
+    df = read_from_csv(filepath)
 
-def calculate_capacity_for_hop(hop):
-    """
-    Calculates capacity to a certain router
-    """
-    pass
-    # after I have sizes & timestamps I can pass them to pprate and results for deadline are done!
-
+    group_by_routers(df, streams)
+    results = []
+    for key in sorted(streams):
+        streams[key][0] = calculate_iats(streams[key][0])
+        cap = pp.find_capacity(576, streams[key][0])
+        cap = bit_to_mbit(cap)
+        streams[key][2] = cap
+        results.append(cap)
+        # print("{} -> {}".format(key, cap))
+    return streams
 
 def bit_to_mbit(bits):
     return bits / 1000000
 
+def get_assigned_capacities():
+    # capacities = []
+    textfile = open(constants.topo_caps, "r")
+    capacities = textfile.read().split('\n')
+    textfile.close()
+    del capacities[-1]
+    capacities = map(int, capacities)
+    
+    return capacities
+
+def get_expected_capacities():
+    capacities = get_assigned_capacities()
+    expected = []
+    min = capacities[0]
+    for cap in capacities:
+        if cap < min:
+            min = cap
+        expected.append(min)
+    
+    return expected
+
+def get_results():
+    streams = calculate_capacities()
+    expected = get_expected_capacities()
+    i = 0
+    for key in sorted(streams):
+        streams[key][3] = expected[i]
+        i += 1
+        print("{} -> {} -> {}".format(key, streams[key][2], streams[key][3]))
+    
 
 if __name__ == '__main__':
-    tmp()
+    # str = calculate_capacities()
+    # for key in sorted(str):
+    #     print(str[key][2])    
+    get_results()
