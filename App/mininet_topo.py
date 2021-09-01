@@ -71,11 +71,11 @@ def build_topo(size=1):
 
     try:
         # CLI(net)
-    
+        h1 = net.get('h1')
         # inject_and_capture(h1)
         h1.cmd('tcpdump -n icmp -w results/icmp.pcap &')
         h1.cmd('./traffic_icmp')
-        time.sleep(10)
+        time.sleep(1)
         h1.cmd('pkill tcpdump')
 
     except (KeyboardInterrupt, Exception) as e:
