@@ -64,34 +64,38 @@ def build_topo(size=1):
     net.start()
     configure_net(net, size)
 
-    CLI(net)
+    # CLI(net)
     
-    net.stop()
-    cleanup()
+    # net.stop()
+    # cleanup()
+
+    try:
+        # CLI(net)
+    
+        # inject_and_capture(h1)
+        h1.cmd('tcpdump -n icmp -w results/icmp.pcap &')
+        h1.cmd('./traffic_icmp')
+        time.sleep(10)
+        h1.cmd('pkill tcpdump')
+
+    except (KeyboardInterrupt, Exception) as e:
+        print(e)
+    finally:
+        net.stop()
+        cleanup()
 
     # try:
     #     h1.popen("timeout 5 tcpdump -n tcp -w results/tcp.pcap &", stdout=PIPE, stderr=PIPE)
+    #     print("Shegeci")
     #     # host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
     # except Exception as e:
     #     print('Error on starting tcpdump\n{}'.format(e))
     # finally:
     #     h1.cmd("./TrafficGenerator")
-
-    # time.sleep(6)
-    # try:
-    #     # CLI(net)
-    
-    #     inject_and_capture(h1)
-    #     # h1.cmd('tcpdump -n icmp -w results/icmp.pcap &')
-    #     # h1.cmd('./traffic_icmp')
-    #     # time.sleep(10)
-    #     # h1.cmd('pkill tcpdump')
-
-    # except (KeyboardInterrupt, Exception) as e:
-    #     print(e)
-    # finally:
+    #     time.sleep(5)
     #     net.stop()
     #     cleanup()
+
 
 def configure_routers(net, size):
     # command to configure all Routes
@@ -168,7 +172,7 @@ def set_capacities(net, n_routers, capacities):
     # h1.cmd("tc qdisc add dev h1-eth0 root netem rate {}mbit".format(capacities[0]))
     # h2.cmd("tc qdisc add dev h2-eth0 root netem rate {}mbit".format(capacities[-1]))
 
-    set_capacity = "tc qdisc add dev r{}-eth{} root handle 1: tbf latency 100ms buffer 2000b rate {}mbit delay 0ms"
+    set_capacity = "tc qdisc add dev r{}-eth{} root handle 1: tbf latency 100ms buffer 2000b rate {}mbit"
     disable_icmp_ratemask = "sysctl -w net.ipv4.icmp_ratemask=0"
     # set_capacity = "tc qdisc add dev r{}-eth{} root tbf rate {}mbit latency 100ms buffer 16000b"
     for i in range(n_routers):
@@ -176,9 +180,10 @@ def set_capacities(net, n_routers, capacities):
         router = net.get("r{}".format(i+1))
 
         # limit eth0 and eth1 respectively
+        router.cmd(disable_icmp_ratemask)
         router.cmd(set_capacity.format(i+1, 0, capacities[i]))
         router.cmd(set_capacity.format(i+1, 1, capacities[i + 1]))
-        router.cmd(disable_icmp_ratemask)
+        
 
 def inject_and_capture(host):
     # tcpdump (maybe add timeout if necessary)
