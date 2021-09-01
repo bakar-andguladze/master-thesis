@@ -103,7 +103,7 @@ def get_results():
         streams[key][3] = expected[i]
         streams[key][4] = get_relative_error(streams[key][3], streams[key][2])
         i += 1
-        print("{} -> {} -> {} -> {}".format(key, streams[key][2], streams[key][3], streams[key][4]))
+        print("{} -> {} -> {} -> {}%".format(key, streams[key][2], streams[key][3], streams[key][4]))
     
 def get_relative_error(expected, estimated):
     err = abs(float(expected) - float(estimated)) / expected 

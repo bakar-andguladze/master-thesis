@@ -51,12 +51,12 @@ int main (void)
 {
     // char SRC_IP[32];
 	char SRC_IP[] = "10.0.0.10";
-    char DST_IP[13]; // = "10.0.3.10";
+    char DST_IP[] = "10.0.3.10";
 
     // printf("Enter source address\n");
     // scanf("%s", SRC_IP);
-    printf("Enter destination address\n");
-    scanf("%s", DST_IP);
+    // printf("Enter destination address\n");
+    // scanf("%s", DST_IP);
    
 
 	//Create a raw socket

@@ -77,13 +77,9 @@ def receiver_algo(data, flows):
     size = constants.ack_size
     sizes = f[1]
     f[0] = np.array(iats)
-    # print("sizes: {}".format(len(sizes)))
-    # print("iats: {}".format(len(iats)))
-    # print(sizes)
-    # print(iats)
     return bit_to_mbit(pp.find_capacity(size, iats))
 
-def tmp():
+def calculate_total_capacity():
     filepath = dir_path + '/results/tcp.csv'
     pcap_to_csv()
     flows = {}
@@ -95,5 +91,5 @@ def bit_to_mbit(bits):
     return bits / 1000000
 
 if __name__ == '__main__':
-    tmp()
+    calculate_total_capacity()
 
