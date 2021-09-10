@@ -20,26 +20,40 @@ def read_from_csv(file_path):
 
 df = read_from_csv(dir_path+'/results/results.csv')
 
-x = df['estimated'].tolist()
-y = df['expected'].tolist()
+x = df['expected'].tolist()
+y = df['estimated'].tolist()
 z = df['error'].tolist()
 
-# ax = ns.lineplot(x, y, label = "Estimated Capacity", marker="o")
-# ns.lineplot(x, x, label = "Expected Capacity", marker="o")
+ax = ns.lineplot(x, x, label = "Expected Capacity", marker="o")
+ns.lineplot(x, y, label = "Estimated Capacity", marker="o")
 
-# ax.set(xlabel="Estimated Capacity (Mbit/s)", ylabel="Expected Capacity (Mbit/s)")
+ax.set_xlabel('Expected Capacity (Mbit/s)',fontsize=20)
+ax.set_ylabel('Estimated Capacity (Mbit/s)',fontsize=20)
+
 
 ######################################################################################
 
 # ax2 = ns.lineplot(x, z, label="Relative Error Rate (%)", marker="o")
-# ax2.set(xlabel="Expected Capacity (Mbit/s)", ylabel="Relative Error Rate (%)")
-# plt.ylim(0, 5)
+# ax2.set_xlabel('Expected Capacity (Mbit/s)',fontsize=20)
+# ax2.set_ylabel('Relative Error Rate (%)',fontsize=20)
+# plt.ylim(0, 2.5)
+
+
+# plt.legend(fontsize='x-large', title_fontsize='200')
 
 # plt.grid()
 # plt.show()
 
-x = np.std(z)
-print(x)
+standard_deviation = np.std(z)
+avg = np.average(z)
+print("Standard deviation: {}". format(standard_deviation))
+print("Average: {}".format(avg))
+
+
+min = max(z)
+print(min)
+
+
 
 
 
