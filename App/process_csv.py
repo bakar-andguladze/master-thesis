@@ -8,6 +8,7 @@ import constants
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 def pcap_to_csv():
+    user = ""
     command = "tshark -r results/icmp.pcap -T fields -E header=y -E separator=, -E quote=d -E occurrence=f -e frame.time_epoch -e ip.src -e ip.dst -e ip.len > results/icmp.csv"
     os.system(command)
 

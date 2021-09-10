@@ -165,7 +165,7 @@ def set_capacities(net, n_routers, capacities):
     # h2.cmd("tc qdisc add dev h2-eth0 root netem rate {}mbit".format(capacities[-1]))
 
     set_capacity = "tc qdisc add dev r{}-eth{} root handle 1: tbf latency 100ms buffer 2000b rate {}mbit"
-    disable_icmp_ratemask = "sysctl -w net.ipv4.icmp_ratemask=0"
+    disable_icmp_ratemask = "sysctl -w net.ipv4.icmp_ratemask={}".format(0)
     # set_capacity = "tc qdisc add dev r{}-eth{} root tbf rate {}mbit latency 100ms buffer 16000b"
     for i in range(n_routers):
         # Apply traffic limiter at router i
@@ -190,7 +190,7 @@ def run_topo(size):
     h1.cmd("./traffic_icmp")
     time.sleep(5)
     h1.cmd("pkill tcpdump")
-    
+
     net.stop()
     cleanup()
 
@@ -221,5 +221,4 @@ def inject_and_capture(host):
 
 if __name__ == '__main__':
     setLogLevel('info')
-    # build_topo(constants.topo_size)
-    run_topo(3)
+    run_topo(constants.topo_size)
