@@ -63,15 +63,7 @@ def build_topo(size=1):
 
     net.addLink(net.get('r{}'.format(size)), h2, cls=TCLink, intfName1='r{}-eth1'.format(size), intfName2='h2-eth0')
 
-    
-    net.build()
-    net.start()
-    configure_net(net, size)
-
-    CLI(net)
-    
-    net.stop()
-    cleanup()
+    return net
 
 def configure_routers(net, size):
     # command to configure all Routes
@@ -184,6 +176,24 @@ def set_capacities(net, n_routers, capacities):
         router.cmd(set_capacity.format(i+1, 0, capacities[i]))
         router.cmd(set_capacity.format(i+1, 1, capacities[i + 1]))
         
+def run_topo(size):
+    net =  build_topo(size)
+    net.build()
+    net.start()
+    configure_net(net, size)
+
+    # CLI(net)
+
+    h1 = net.get('h1')
+    h1.cmd("tcpdump -n icmp -w results/icmp.pcap &")
+    time.sleep(5)
+    h1.cmd("./traffic_icmp")
+    time.sleep(5)
+    h1.cmd("pkill tcpdump")
+    
+    net.stop()
+    cleanup()
+
 
 def inject_and_capture(host):
     # tcpdump (maybe add timeout if necessary)
@@ -211,4 +221,5 @@ def inject_and_capture(host):
 
 if __name__ == '__main__':
     setLogLevel('info')
-    build_topo(constants.topo_size)
+    # build_topo(constants.topo_size)
+    run_topo(3)
