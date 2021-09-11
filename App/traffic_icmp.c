@@ -49,6 +49,7 @@ unsigned short csum(unsigned short *ptr,int nbytes)
 
 int main (void)
 {
+	// Source and destination IP addresses
     // char SRC_IP[32];
 	char SRC_IP[] = "10.0.0.10";
     char DST_IP[] = "10.0.3.10";
@@ -58,7 +59,6 @@ int main (void)
     // printf("Enter destination address\n");
     // scanf("%s", DST_IP);
    
-
 	//Create a raw socket
 	int s = socket (PF_INET, SOCK_RAW, IPPROTO_TCP);
 	
@@ -86,24 +86,19 @@ int main (void)
 	//Data part
 	data = datagram + sizeof(struct iphdr) + sizeof(struct tcphdr);
 
+	//Fill data with chars from file. 
 	char buff[4096];
     FILE *f = fopen("packet_data.txt", "r");
     fgets(buff, 4096, f);
-    // printf("String read: %s\n", buff);
     fclose(f);
 
-
-	char dataString[4096] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_";
-	// strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	strcpy(data , buff);
 	
 	//some address resolution
 	strcpy(source_ip , SRC_IP);
-	// strcpy(source_ip , "192.168.1.2");
 	sin.sin_family = AF_INET;
 	sin.sin_port = htons(80);
 	sin.sin_addr.s_addr = inet_addr (DST_IP);
-	// sin.sin_addr.s_addr = inet_addr ("1.2.3.4");
 	
 	//Fill in the IP Header
 	iph->ihl = 5;
@@ -164,7 +159,6 @@ int main (void)
 	
 	// flood the network
 	int i = 0;
-
 	while (1)
 	{
 		//Send the packet
@@ -179,12 +173,10 @@ int main (void)
 			printf("%d \t", i+1);
 			printf ("Packet Sent. Length : %d \n" , iph->tot_len);
 		}
+	
 		/*
 			ttl should be incremented after every n packets
 		*/
-		// sleep(1 second);
-		// usleep(1000000);
-
 		i++;
 		if(i == 300) // number of packets necessary for measuring
 		{
@@ -193,13 +185,12 @@ int main (void)
 			i = 0;
 		}
 		
-
+		// Add cross-traffic parameter: if cross-traffic -> sleep after n packets
 		// if(i%2 == 0)
 		// {
 		// 	sleep(2);
 		// }
 
-		
 		if(iph->ttl == 5) // total number of routers + 2 -> read from file
 		{
 			break;

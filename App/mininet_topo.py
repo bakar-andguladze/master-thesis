@@ -187,6 +187,8 @@ def run_topo(size):
     h1 = net.get('h1')
     h1.cmd("tcpdump -n icmp -w results/icmp.pcap &")
     time.sleep(5)
+    h1.cmd("tcpdump -n tcp -w results/tcp.pcap &")
+    time.sleep(5)
     h1.cmd("./traffic_icmp")
     time.sleep(5)
     h1.cmd("pkill tcpdump")

@@ -19,7 +19,7 @@ def read_from_csv(file_path):
     
     return data
 
-def receiver_algo(data, flows):
+def calculate_total_capacity(data, flows):
     """
     Process data using the receiver algorithm and derive capacity using PPrate algorithm
     :param data: Pandas dataframe containing packet traces
@@ -79,17 +79,17 @@ def receiver_algo(data, flows):
     f[0] = np.array(iats)
     return bit_to_mbit(pp.find_capacity(size, iats))
 
-def calculate_total_capacity():
+def get_network_capacity():
     filepath = dir_path + '/results/tcp.csv'
     pcap_to_csv()
     flows = {}
     data = read_from_csv(filepath)
-    cap = receiver_algo(data, flows)
+    cap = calculate_total_capacity(data, flows)
     print(cap)
 
 def bit_to_mbit(bits):
     return bits / 1000000
 
 if __name__ == '__main__':
-    calculate_total_capacity()
+    get_network_capacity()
 
