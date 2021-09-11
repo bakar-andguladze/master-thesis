@@ -1,0 +1,52 @@
+\chapter{Introduction}
+
+\section{Motivation}
+This Master’s Thesis shall implement a capacity estimation method for Hop-by-Hop measurements. The intended
+field of application is, for instance, enhancing the performance of network, traffic analysis, network
+monitoring, etc. Our main motivation is to improve the ways of measuring the capacity of networks in the
+internet. As this would serve to enhance the quality of networks for which proper measurements of network
+capacity are required, in order to, for instance, diagnose potential problems in it.
+There are quite a few measurement tools available, such as, PPrate[1], Pathrate[2], Pathchar[2], etc. However
+the current State-of-the-Art methods have some significant flaws and limitations regarding our measurement
+goals, such as:
+
+Active tools require considerable amount of probes and this might cause network overload[3] which
+might, for example, result in lost packets and/or quyeue delays[2].
+Passive tools analyze only ongoing traffic, therefore they’re dependent on the traffic they observe.
+Also they require TCP servers to respond. Although they’re widely used in practice and deliver reliable
+results, they’re not sufficient to deliver all the desired information, such as the location of the narrow
+link.
+Therefore our goal is to develop a new solution based on an active measurement technique that provides
+required features of both passive and active tools regarding our measurement objectives. We will try to implement
+the least possible intrusion without compromising accuracy. Also it will be able to find the first narrow
+link of the path by measuring the capacity of each hop in the network. This new solution will be tested and
+evaluated by comparing it to the results of existing capacity measurement tools, i.e. PPrate implementation
+by Patryk Brzoza[3], but in contrast to Brzoza’s passive approach our tool will be based on an active measurement
+methodology. Moreover Brzoza’s measurement tool was trying to find end-to-end capacity, while
+this thesis is concerned about measuring the capacity of each hop in the network and finding the narrow link.
+Hop-by-Hop measurements provide a better picture of a network and enables to take a closer look at potential
+issues. This thesis is supposed to answer the following research questions:
+
+
+\section{Research Questions}
+This thesis is supposed to answer the following research questions:
+
+\begin{itemize}
+  \item \textbf{How to measure network capacity hop-by-hop?}
+  \\In order to measure the path capacity hop-by-hop, we need to estimate capacities to each router on the path until the destination host is reached. 
+  \item \textbf{How to optimize the trade-off between accuracy and intrusiveness regarding large-scale measurements?}
+  \\Certain level of intrusion into the network will be necessary for the measurements. However there is an important factor to consider: too high intrusion could disrupt the traffic in the network and too low could lead to unreliable results. Therefore an optimal middle ground has to be found: What will be the optimal amount of packets to send to each router to get correct results?
+  \item \textbf{How robust is the proposed solution regarding the handling of cross-traffic, flow-interference and sudden path parameter changes?}
+  \\Real networks are usually quite complex and different challenges might arise when we are trying to measure the path capacity. We need to find out whether our solution is feasible when it faces cross-traffic, flow-interference or when the path parameters suddenly change.
+  \item \textbf{Are we able to locate the capacity bottlenecks of a network?}
+  \\ We are interested to find the location of the weakest link in the given network. This can be achieved by finding the capacities to each hop. The weakest link will 
+\end{itemize}
+
+\section{Outline}
+Outline - description of each chapter below
+\\Chapter 2 defines the necessary terminology for understanding this thesis. Capacity, TCP, ICMP, Raw sockets, etc. 
+\\Chapter 3 describes the related work 
+\\Chapter 4 describes our approach and the tool that we developed to implement it.
+\\Chapter 5 Describes the test setup
+\\Chapter 6 is about the evaluation of the tool in regard to our research questions. 
+\\Chapter 7 concludes our thesis and subsequently discusses the future work - what comes next
