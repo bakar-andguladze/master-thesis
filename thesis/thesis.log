@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2021.1.11)  11 SEP 2021 13:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2021.1.11)  12 SEP 2021 02:24
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -1968,15 +1968,17 @@ l.143 \tableofcontents
 
 ] (include/chapter1.tex
 Chapter 1.
-[1
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
+0.
+("C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd"
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [1
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
-5.
- ("C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd"
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) [2]
-(include/chapter2.tex [3] [4
+
+LaTeX Warning: Citation 'brzoza' on page 2 undefined on input line 17.
+
+) [2] (include/chapter2.tex [3] [4
 
 ]
 Chapter 2.
@@ -2029,38 +2031,39 @@ Package acro Warning: Empty acronym list. If you have used acronyms then
 (acro)                \printacronyms
 
 (thesis.aux (thesis.acr))
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: C1371ACD4F832AADB246A9BEB54367D6;1972.
 
-Package rerunfilecheck Warning: File `thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
 
-Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: 62C6DAFD9DEEC2F3525B2ECC71A39187;1953
-(rerunfilecheck)             After:  DD7112844F0169A33A6C72957636C082;1887.
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run BibTeX on the file(s):
+(biblatex)                thesis
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52337 strings out of 479798
- 1231290 string characters out of 2879581
- 1881534 words of memory out of 3000000
- 68345 multiletter control sequences out of 15000+200000
+ 52516 strings out of 479798
+ 1235256 string characters out of 2879581
+ 1881551 words of memory out of 3000000
+ 68524 multiletter control sequences out of 15000+200000
  629351 words of font info for 100 fonts, out of 3000000 for 9000
  1149 hyphenation exceptions out of 8191
  150i,8n,150p,1843b,2743s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{section.2.5} has been referenced but does not exi
-st, replaced by a fixed one
+{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files/MiKT
+eX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8
+r.enc}<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Fil
+es/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1
+/public/lm/lmcsc10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb
+><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiK
+TeX/fonts/type1/public/lm/lmss9.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/he
+lvetic/uhvb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
 
-{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files/MiKTeX
-/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.
-enc}<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files
-/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/p
-ublic/lm/lmcsc10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><
-C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTe
-X/fonts/type1/public/lm/lmss9.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helv
-etic/uhvb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on thesis.pdf (36 pages, 226899 bytes).
+Output written on thesis.pdf (36 pages, 228003 bytes).
 PDF statistics:
  379 PDF objects out of 1000 (max. 8388607)
  68 named destinations out of 1000 (max. 500000)
