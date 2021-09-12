@@ -88,7 +88,7 @@ int main (void)
 
 	//Fill data with chars from file. 
 	char buff[4096];
-    FILE *f = fopen("packet_data.txt", "r");
+    FILE *f = fopen("data/packet_data.txt", "r");
     fgets(buff, 4096, f);
     fclose(f);
 

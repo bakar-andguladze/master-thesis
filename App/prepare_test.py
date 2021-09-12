@@ -19,7 +19,24 @@ def generate_capacities(min, max, n_links, capacity_delta=5):
 
     return capacities
 
+def set_packet_size(size):
+    f = open("data/packet_data.txt", "w")
+    for i in range(size):
+        f.write("A")
+    f.close()
+
+def get_packet_size():
+    f = open("data/packet_data.txt", "r")
+    packet = f.read()
+    f.close()
+    return len(packet)
+
 
 def get_config_parameters():
     pass
 
+
+# set_packet_size(1400)
+
+
+print(get_packet_size())

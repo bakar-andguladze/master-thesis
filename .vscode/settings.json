@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "**/.pyc": true,
+        "**/traffic_icmp": true,
+        "**/TrafficGenerator": true
+    }
+}

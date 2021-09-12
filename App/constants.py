@@ -1,19 +1,16 @@
 import pandas as pd
 import os 
 import numpy as np
+from prepare_test import get_packet_size
 
 topo_size = 3
 
-max_difference = 1.0
+# max_difference = 1.0
 
-topo_caps = "outputs/assigned_capacities.txt"
+topo_caps = "data/assigned_capacities.txt"
 
 h1_ip = "10.0.0.10"
 h2_ip = "10.0.{}.10".format(topo_size)
 
-# h1_ip = "10.0.0.1"
-# h2_ip = "10.0.0.2"
-
-packet_size = 66
-ack_size = 1012
+packet_size = get_packet_size() # number of symbols in packet_data.txt 
 
