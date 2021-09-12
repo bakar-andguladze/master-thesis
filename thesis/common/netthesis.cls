@@ -114,7 +114,7 @@
 \fi
 
 \newcommand\authorstring{Author}
-\newcommand\advisorstring{Advisor}
+\newcommand\advisorstring{Advisors}
 \newcommand\supervisorstring{Supervisor}
 \newcommand\datestring{Date}
 \ifnet@german
