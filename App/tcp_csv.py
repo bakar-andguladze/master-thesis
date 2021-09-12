@@ -74,8 +74,7 @@ def calculate_total_capacity(data, flows):
 
     # print(iats)
     
-    size = constants.ack_size
-    sizes = f[1]
+    size = constants.packet_size
     f[0] = np.array(iats)
     return bit_to_mbit(pp.find_capacity(size, iats))
 
