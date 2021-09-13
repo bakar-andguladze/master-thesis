@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2021.1.11)  12 SEP 2021 02:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2021.1.11)  12 SEP 2021 02:29
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -1974,11 +1974,8 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [1
 
-]
-
-LaTeX Warning: Citation 'brzoza' on page 2 undefined on input line 17.
-
-) [2] (include/chapter2.tex [3] [4
+]) [2]
+(include/chapter2.tex [3] [4
 
 ]
 Chapter 2.
@@ -2047,10 +2044,10 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52516 strings out of 479798
- 1235256 string characters out of 2879581
+ 52337 strings out of 479798
+ 1231738 string characters out of 2879581
  1881551 words of memory out of 3000000
- 68524 multiletter control sequences out of 15000+200000
+ 68345 multiletter control sequences out of 15000+200000
  629351 words of font info for 100 fonts, out of 3000000 for 9000
  1149 hyphenation exceptions out of 8191
  150i,8n,150p,1843b,2743s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2063,7 +2060,7 @@ es/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1
 TeX/fonts/type1/public/lm/lmss9.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/he
 lvetic/uhvb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
 
-Output written on thesis.pdf (36 pages, 228003 bytes).
+Output written on thesis.pdf (36 pages, 228191 bytes).
 PDF statistics:
  379 PDF objects out of 1000 (max. 8388607)
  68 named destinations out of 1000 (max. 500000)
