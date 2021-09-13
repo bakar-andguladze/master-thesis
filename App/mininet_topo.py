@@ -189,7 +189,7 @@ def run_topo(size):
     time.sleep(5)
     h1.cmd("tcpdump -n tcp -w results/tcp.pcap &")
     time.sleep(5)
-    h1.cmd("./traffic_icmp")
+    h1.cmd("./traffic_generator")
     time.sleep(5)
     h1.cmd("pkill tcpdump")
 

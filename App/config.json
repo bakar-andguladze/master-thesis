@@ -1,0 +1,12 @@
+{    
+    "topo_size": 3,
+    "capacity_range": [10, 100],
+    "capacity_delta": 5,
+    "packet_size": 1400,
+    "packets_per_hop": 300,
+    "icmp_ratemask": 0,
+    "packet_loss": 0,
+    "cross_traffic": 1.0,
+    "output": "results/results.csv"
+  }
+  
