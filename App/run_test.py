@@ -4,8 +4,8 @@ import constants
 import prepare_test
 from mininet_topo import run_topo
 from mininet.log import setLogLevel, info
-from process_csv import get_results
-from tcp_csv import get_network_capacity
+from process_icmp_csv import get_results
+from process_tcp_csv import get_network_capacity
 
 
 def main():
@@ -20,7 +20,7 @@ def main():
 
     run_topo(**test_parameters)
     get_results()
-    get_network_capacity()
+    get_network_capacity(test_parameters['topo_size'])
 
 if __name__ == '__main__':
     # setLogLevel('info')

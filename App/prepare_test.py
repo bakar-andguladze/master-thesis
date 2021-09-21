@@ -92,7 +92,3 @@ def get_config_parameters(args):
 
     return test_config
 
-
-
-
-# set_packet_size(1400)

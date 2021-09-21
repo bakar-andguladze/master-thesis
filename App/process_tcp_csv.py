@@ -4,6 +4,7 @@ import PPrate as pp
 import numpy as np
 import pandas as pd
 import constants
+from prepare_test import get_packet_size
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -19,7 +20,7 @@ def read_from_csv(file_path):
     
     return data
 
-def calculate_total_capacity(data, flows):
+def calculate_total_capacity(data, flows, size):
     """
     Process data using the receiver algorithm and derive capacity using PPrate algorithm
     :param data: Pandas dataframe containing packet traces
@@ -61,8 +62,8 @@ def calculate_total_capacity(data, flows):
 
     # Calculate Inter-Arrival-Times
     iats = []
-    sender_ip = constants.h2_ip
-    receiver_ip = constants.h1_ip
+    sender_ip = "10.0.{}.10".format(size)
+    receiver_ip = "10.0.0.10"
 
     f = flows[(sender_ip, receiver_ip)]
     for i, ts in enumerate(f[0]):
@@ -73,17 +74,17 @@ def calculate_total_capacity(data, flows):
             iats.append((ts - f[0][i - 1]))
 
     # print(iats)
-    
-    size = constants.packet_size
+    size = get_packet_size()
+    # size = constants.packet_size
     f[0] = np.array(iats)
     return bit_to_mbit(pp.find_capacity(size, iats))
 
-def get_network_capacity():
+def get_network_capacity(size):
     filepath = dir_path + '/results/tcp.csv'
     pcap_to_csv()
     flows = {}
     data = read_from_csv(filepath)
-    cap = calculate_total_capacity(data, flows)
+    cap = calculate_total_capacity(data, flows, size)
     print(cap)
 
 def bit_to_mbit(bits):

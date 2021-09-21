@@ -4,6 +4,7 @@ import PPrate as pp
 import numpy as np
 import pandas as pd
 import constants 
+from prepare_test import get_packet_size
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -58,12 +59,12 @@ def calculate_capacities():
     streams = {}
 
     df = read_from_csv(filepath)
-
+    packet_size = get_packet_size()
     group_by_routers(df, streams)
     results = []
     for key in sorted(streams):
         streams[key][0] = calculate_iats(streams[key][0])
-        cap = pp.find_capacity(constants.packet_size, streams[key][0])
+        cap = pp.find_capacity(packet_size, streams[key][0])
         cap = bit_to_mbit(cap)
         streams[key][2] = cap
         results.append(cap)

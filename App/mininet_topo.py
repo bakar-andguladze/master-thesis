@@ -24,6 +24,13 @@ def rp_disable(host):
     for iface in ifacelist:
        if iface != 'lo': host.cmd('sysctl net.ipv4.conf.' + iface + '.rp_filter=0')
 
+def save_capacities_to_file(capacities):
+    textfile = open(constants.topo_caps, "w")
+    # textfile.write(capacities)
+    for element in capacities:
+        textfile.write(str(element) + "\n")
+    textfile.close()
+
 class LinuxRouter( Node ):
     "A Node with IP forwarding enabled."
 
@@ -213,8 +220,9 @@ def run_topo(**test_parameters):
     size = test_parameters['topo_size']
     packet_size = test_parameters['packet_size']
     packets = test_parameters['packets_per_hop']
+
     set_packet_size(packet_size)
-    
+
     net =  build_topo(size)
     net.build()
     net.start()
