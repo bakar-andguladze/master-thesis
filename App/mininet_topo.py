@@ -11,6 +11,7 @@ import constants
 import os
 import time
 from subprocess import PIPE
+from prepare_test import set_packet_size
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -64,7 +65,9 @@ def build_topo(size=1):
 
     return net
 
-def configure_routers(net, size):
+def configure_routers(net, **test_parameters):
+    size = test_parameters['topo_size']
+    icmp_ratelimit = test_parameters['icmp_ratelimit']
     # command to configure all Routes
     config_routes_right = "ip route add to 10.0.{}.0/24 via 10.0.{}.{}"
     config_routes_left = "ip route add to 10.0.{}.0/24 via 10.0.{}.{}"
@@ -95,6 +98,8 @@ def configure_routers(net, size):
             router.cmd('ip route add to 10.1.{}.0/24 via 10.0.{}.1'.format(j+1, i-1))
             router.cmd('ip route add to 10.2.{}.0/24 via 10.0.{}.1'.format(j+1, i-1))
 
+        configure_icmp_ratelimit(router, icmp_ratelimit)
+
 def configure_cross_hosts(net, size):
     for i in range(1, size+1):
         topHost = net.get('t{}'.format(i))
@@ -107,18 +112,24 @@ def configure_cross_hosts(net, size):
         bottomHost.cmd("ifconfig b{}-eth0 10.2.{}.40/24".format(i, i))
         bottomHost.cmd('ip route add default via 10.2.{}.4'.format(i))
 
-def configure_net(net, size):
+def configure_net(net, size, **test_parameters):
     """
     Configure mininet network
     :param net: network object
     :param size: number of routers
     """
+    size = test_parameters['topo_size']
+    capacity_range = test_parameters['capacity_range']
+    capacity_delta = test_parameters['capacity_delta']
+    a = capacity_range[0]
+    b = capacity_range[1]
+
     h1 = net.get('h1')
     h1.setIP('10.0.0.10', intf='h1-eth0')
     h1.cmd("ifconfig h1-eth0 10.0.0.10/24")
     h1.cmd("route add default gw 10.0.0.2 dev h1-eth0")
 
-    configure_routers(net, size)
+    configure_routers(net, **test_parameters)
     configure_cross_hosts(net, size)
 
     h2 = net.get('h2')
@@ -126,15 +137,14 @@ def configure_net(net, size):
     h2.cmd("ifconfig h2-eth0 10.0.{}.10/24".format(size))
     h2.cmd("route add default gw 10.0.{}.1".format(size))
 
-    capacities = generate_capacities(10, 100, size+1)
+    capacities = generate_capacities(a, b, size+1, capacity_delta)
     print(capacities)
     set_capacities(net, size, capacities)
 
     # do I actually need this???
-    # h1.cmd('tc qdisc replace dev leftHost-eth0 root fq pacing')
-    # h1.cmd('ethtool -K leftHost-eth0 tso off')
-    # h2.cmd('tc qdisc replace dev rightHost-eth0 root netem delay 50')
-
+    h1.cmd('tc qdisc replace dev leftHost-eth0 root fq pacing')
+    h1.cmd('ethtool -K leftHost-eth0 tso off')
+    h2.cmd('tc qdisc replace dev rightHost-eth0 root netem delay 50')
 
     # ############## save capacities to a file ############## #
     textfile = open(constants.topo_caps, "w")
@@ -160,49 +170,61 @@ def set_capacities(net, n_routers, capacities):
     h2.cmd("tc qdisc add dev h2-eth0 root handle 1: tbf latency 100ms buffer 2000b rate {}mbit".format(capacities[-1]))
 
     set_capacity = "tc qdisc add dev r{}-eth{} root handle 1: tbf latency 100ms buffer 2000b rate {}mbit"
-    disable_icmp_ratemask = "sysctl -w net.ipv4.icmp_ratemask={}".format(0)
+    # disable_icmp_ratemask = "sysctl -w net.ipv4.icmp_ratemask={}".format(0)
 
     for i in range(n_routers):
         # Apply traffic limiter at router i
         router = net.get("r{}".format(i+1))
 
         # disable icmp_ratemask
-        router.cmd(disable_icmp_ratemask)
+        # router.cmd(disable_icmp_ratemask)
 
         # limit eth0 and eth1 respectively
         router.cmd(set_capacity.format(i+1, 0, capacities[i]))
         router.cmd(set_capacity.format(i+1, 1, capacities[i + 1]))
 
+def configure_icmp_ratelimit(router, rate_limit=1000):
+    disable_icmp_ratemask = "sysctl -w net.ipv4.icmp_ratemask=0"
+    set_icmp_ratelimit = "sysctl -w net.ipv4.icmp_ratelimit={}".format(rate_limit)
+
+    if(rate_limit != 0):
+        router.cmd(set_icmp_ratelimit)
+    else:
+        router.cmd(disable_icmp_ratemask)
+
 # =================== Run =================== #
 def cross_traffic(net, ct):
     pass
 
-def inject_and_capture(sender_host, receiver_host):
+def inject_and_capture(sender_host, receiver_host, routers=3, packets=300):
     h1 = sender_host.IP()
     h2 = receiver_host.IP()
-    routers = 3
-    packets = 200
 
+    time.sleep(1)
     sender_host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
-    time.sleep(5)
+    time.sleep(3)
     sender_host.cmd("tcpdump -n tcp -w results/tcp.pcap &")
-    time.sleep(5)
+    time.sleep(3)
     sender_host.cmd("./TrafficGenerator {} {} {} {}".format(h1, h2, routers, packets))
     time.sleep(5)
     sender_host.cmd("pkill tcpdump")
 
-def run_topo(test_parameters):
+def run_topo(**test_parameters):
     size = test_parameters['topo_size']
+    packet_size = test_parameters['packet_size']
+    packets = test_parameters['packets_per_hop']
+    set_packet_size(packet_size)
+    
     net =  build_topo(size)
     net.build()
     net.start()
-    configure_net(net, size)
+    configure_net(net, size, **test_parameters)
 
     # CLI(net)
 
     h1 = net.get('h1')
     h2 = net.get('h2')
-    inject_and_capture(h1, h2)
+    inject_and_capture(h1, h2, size, packets)
 
     net.stop()
     cleanup()

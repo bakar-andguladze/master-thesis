@@ -18,7 +18,7 @@ def main():
     
     # print(test_parameters)
 
-    run_topo(test_parameters)
+    run_topo(**test_parameters)
     get_results()
     get_network_capacity()
 

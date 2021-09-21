@@ -75,8 +75,8 @@ def get_config_parameters(args):
     test_config['packets_per_hop'] = packets_per_hop
 
     # Read icmp_ratemask
-    icmp_ratemask = data['icmp_ratemask']
-    test_config['icmp_ratemask'] = icmp_ratemask
+    icmp_ratelimit = data['icmp_ratelimit']
+    test_config['icmp_ratelimit'] = icmp_ratelimit
 
     # Read packet loss
     packet_loss = data['packet_loss']

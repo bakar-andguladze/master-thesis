@@ -1,5 +1,4 @@
 gcc TrafficGenerator.c -o TrafficGenerator
-
-# install mininet
-# install python libraries
-# compile C file
+apt-get update
+apt-get install -y python-pip mininet ethtool netcat moreutils tshark iperf
+pip install numpy matplotlib scipy pandas
