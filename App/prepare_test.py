@@ -57,52 +57,42 @@ def get_config_parameters(args):
     # Read capacity distribution range
     capacity_range = data['capacity_range']
     assert len(capacity_range) == 2, "Capacity range must be an interval of two numbers!"
+    test_config['capacity_range'] = capacity_range
 
     # Read capacity distribution step value
     capacity_delta = data['capacity_delta']
     assert capacity_delta > 0, "Capacity delta must be a positive number!"
+    test_config['capacity_delta'] = capacity_delta
 
-    # Read measurement duration in seconds
-    duration = data['duration']
-    assert duration > 0, "Duration must be a positive number!"
-    ret['duration'] = data['duration']
+    # Read packet size
+    packet_size = data['packet_size']
+    assert (packet_size > 0 and packet_size < 2000), "Packet size must be a positive number and shouldn't exceed maximum segment size"
+    test_config['packet_size'] = packet_size
+
+    # Read packets per hop
+    packets_per_hop = data['packets_per_hop']
+    assert packets_per_hop > 10, "There should be at least 10 packets per hop"
+    test_config['packets_per_hop'] = packets_per_hop
+
+    # Read icmp_ratemask
+    icmp_ratemask = data['icmp_ratemask']
+    test_config['icmp_ratemask'] = icmp_ratemask
+
+    # Read packet loss
+    packet_loss = data['packet_loss']
+    test_config['packet_loss'] = packet_loss
+
+    # Read cross_traffic
+    cross_traffic = data['cross_traffic']
+    test_config['cross_traffic'] = cross_traffic
+
+    # Read output directory
+    output_dir = data['output']
+    test_config['output_dir'] = output_dir
+
+    return test_config
 
 
-    # Read amount of cross traffic load
-    try:
-        ret['cross_traffic'] = data['cross_traffic']
-    except KeyError:
-        # No parameter given, assume cross traffic load = 1
-        ret['cross_traffic'] = 1
-
-    # Read optional packet size
-    try:
-        ret['packet_size'] = data['packet_size']
-    except KeyError:
-        # No parameter given, use default Ethernet + IP + MSS size of 1515
-        ret['packet_size'] = 1515
-
-
-    # Calculate random capacities for all links
-    if bottleneck_location is None:
-        # Random bottleneck location
-        ret['capacities'] = get_capacity_distribution(capacity_range, capacity_delta, switch_count)
-    else:
-        # Defined bottleneck location
-        ret['capacities'] = get_capacity_distribution([capacity_range[0] + capacity_delta, capacity_range[1]],
-                                                      capacity_delta, switch_count)
-        ret['capacities'][bottleneck_location] = capacity_range[0]
-    # Set bottleneck value to minimum capacity value in link distribution
-    ret['bottleneck'] = min(ret['capacities'])
-
-    # Declare optional output file to append results to
-    try:
-        ret['output'] = data['output']
-    except KeyError:
-        ret['output'] = None
-
-    # Return dict
-    return ret
 
 
 # set_packet_size(1400)

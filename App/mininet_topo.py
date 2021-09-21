@@ -12,9 +12,7 @@ import os
 import time
 from subprocess import PIPE
 
-
 dir_path = os.path.dirname(os.path.realpath(__file__))
-
 
 def rp_disable(host):
     """
@@ -38,6 +36,7 @@ class LinuxRouter( Node ):
         self.cmd( 'sysctl net.ipv4.ip_forward=0' )
         super( LinuxRouter, self ).terminate()
 
+# =========== Build and configure =========== #
 def build_topo(size=1):
     net = Mininet()
     h1 = net.addHost('h1', ip='10.0.0.10')
@@ -160,23 +159,40 @@ def set_capacities(net, n_routers, capacities):
     h1.cmd("tc qdisc add dev h1-eth0 root handle 1: tbf latency 100ms buffer 2000b rate {}mbit".format(capacities[0]))
     h2.cmd("tc qdisc add dev h2-eth0 root handle 1: tbf latency 100ms buffer 2000b rate {}mbit".format(capacities[-1]))
 
-    # tc qdisc add dev h1-eth0 root netem rate {}mbit
-    # h1.cmd("tc qdisc add dev h1-eth0 root netem rate {}mbit".format(capacities[0]))
-    # h2.cmd("tc qdisc add dev h2-eth0 root netem rate {}mbit".format(capacities[-1]))
-
     set_capacity = "tc qdisc add dev r{}-eth{} root handle 1: tbf latency 100ms buffer 2000b rate {}mbit"
     disable_icmp_ratemask = "sysctl -w net.ipv4.icmp_ratemask={}".format(0)
-    # set_capacity = "tc qdisc add dev r{}-eth{} root tbf rate {}mbit latency 100ms buffer 16000b"
+
     for i in range(n_routers):
         # Apply traffic limiter at router i
         router = net.get("r{}".format(i+1))
 
-        # limit eth0 and eth1 respectively
+        # disable icmp_ratemask
         router.cmd(disable_icmp_ratemask)
+
+        # limit eth0 and eth1 respectively
         router.cmd(set_capacity.format(i+1, 0, capacities[i]))
         router.cmd(set_capacity.format(i+1, 1, capacities[i + 1]))
-        
-def run_topo(size):
+
+# =================== Run =================== #
+def cross_traffic(net, ct):
+    pass
+
+def inject_and_capture(sender_host, receiver_host):
+    h1 = sender_host.IP()
+    h2 = receiver_host.IP()
+    routers = 3
+    packets = 200
+
+    sender_host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
+    time.sleep(5)
+    sender_host.cmd("tcpdump -n tcp -w results/tcp.pcap &")
+    time.sleep(5)
+    sender_host.cmd("./TrafficGenerator {} {} {} {}".format(h1, h2, routers, packets))
+    time.sleep(5)
+    sender_host.cmd("pkill tcpdump")
+
+def run_topo(test_parameters):
+    size = test_parameters['topo_size']
     net =  build_topo(size)
     net.build()
     net.start()
@@ -185,40 +201,13 @@ def run_topo(size):
     # CLI(net)
 
     h1 = net.get('h1')
-    h1.cmd("tcpdump -n icmp -w results/icmp.pcap &")
-    time.sleep(5)
-    h1.cmd("tcpdump -n tcp -w results/tcp.pcap &")
-    time.sleep(5)
-    h1.cmd("./traffic_generator")
-    time.sleep(5)
-    h1.cmd("pkill tcpdump")
+    h2 = net.get('h2')
+    inject_and_capture(h1, h2)
 
     net.stop()
     cleanup()
 
 
-def inject_and_capture(host):
-    # tcpdump (maybe add timeout if necessary)
-    # try:
-    #     host.popen("timeout 5 tcpdump -n icmp -w results/icmp.pcap &", stdout=PIPE, stderr=PIPE)
-    #     # host.cmd("tcpdump -n icmp -w results/icmp.pcap &")
-    # except Exception as e:
-    #     print('Error on starting tcpdump\n{}'.format(e))
-    # finally:
-    #     host.popen("./traffic_icmp", stdout=PIPE, stderr=PIPE)
-    try:
-        host.popen("tcpdump -n icmp -w results/icmp.pcap", stdout=PIPE, stderr=PIPE)
-        print("{} started tcpdump".format(host))
-    except Exception as e:
-        print(e)
-    
-    try:
-        host.popen("./traffic_icmp", stdout=PIPE, stderr=PIPE)
-        print("started traffic")
-    except Exception as e:
-        print(e)
-    finally:
-        time.sleep(20)
 
 
 if __name__ == '__main__':

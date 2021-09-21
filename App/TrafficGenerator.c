@@ -47,21 +47,32 @@ unsigned short csum(unsigned short *ptr,int nbytes)
 	return(answer);
 }
 
-int main (void)
+int main (int argc, char *argv[])
 {
-    // char SRC_IP[32];
+	/*
+	List of arguments to be passed to this program:
+	argv[0] - ./TrafficGenerator
+	argv[1] - source ip
+	argv[2] - destination ip
+	argv[3] - number of routers
+	argv[4] - amount of packets per hop
+	*/
 	char SRC_IP[] = "10.0.0.10";
     char DST_IP[] = "10.0.3.10";
 
-    // printf("Enter source address\n");
-    // scanf("%s", SRC_IP);
-    // printf("Enter destination address\n");
-    // scanf("%s", DST_IP);
-   
+	int routers = 0;
+	int packets = 0;
+
+	if(argv[3] != NULL)
+		routers = atoi(argv[3]);
+	printf("hops=%d\n", routers);
+
+	if(argv[4] != NULL)
+		packets = atoi(argv[4]);
+
 
 	//Create a raw socket
 	int s = socket (PF_INET, SOCK_RAW, IPPROTO_TCP);
-	
 	if(s == -1)
 	{
 		//socket creation failed, may be because of non-root privileges
@@ -85,16 +96,27 @@ int main (void)
 	
 	//Data part
 	data = datagram + sizeof(struct iphdr) + sizeof(struct tcphdr);
-	// strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-	strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_ABCDEFGHIJKLMNOPQRSTUVWXYZ_");
 	
+	//Fill data with chars from file. 
+	char buff[4096];
+    FILE *f = fopen("data/packet_data.txt", "r");
+    fgets(buff, 4096, f);
+    fclose(f);
+
+	strcpy(data , buff);
+	// strcpy(data , "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
 	//some address resolution
-	strcpy(source_ip , SRC_IP);
-	// strcpy(source_ip , "192.168.1.2");
+	if(argv[1] != NULL)
+		strcpy(source_ip , argv[1]);
+	else
+		strcpy(source_ip, SRC_IP);
 	sin.sin_family = AF_INET;
 	sin.sin_port = htons(80);
-	sin.sin_addr.s_addr = inet_addr (DST_IP);
-	// sin.sin_addr.s_addr = inet_addr ("1.2.3.4");
+	if(argv[2] != NULL)
+		sin.sin_addr.s_addr = inet_addr (argv[2]);
+	else
+		sin.sin_addr.s_addr = inet_addr (DST_IP);
 	
 	//Fill in the IP Header
 	iph->ihl = 5;
@@ -103,7 +125,7 @@ int main (void)
 	iph->tot_len = sizeof (struct iphdr) + sizeof (struct tcphdr) + strlen(data);
 	iph->id = htonl (54321);	//Id of this packet
 	iph->frag_off = 0;
-	iph->ttl = 4;
+	iph->ttl = 1; 
 	iph->protocol = IPPROTO_TCP;
 	iph->check = 0;		//Set to 0 before calculating checksum
 	iph->saddr = inet_addr ( source_ip );	//Spoof the source ip address
@@ -155,7 +177,6 @@ int main (void)
 	
 	// flood the network
 	int i = 0;
-
 	while (1)
 	{
 		//Send the packet
@@ -169,28 +190,17 @@ int main (void)
 			printf("%d \t", i+1);
 			printf ("Packet Sent. Length : %d \n" , iph->tot_len);
 		}
-		/*
-			ttl should be incremented after every n packets
-		*/
-		// sleep(1 second);
-		// usleep(1000000);
-
+		
+		// ttl should be incremented after every n packets
 		i++;
-		if(i == 300) // number of packets necessary for measuring
+		if(i == packets) // number of packets necessary for measuring
 		{
 			printf("hop #%d done\n\n", iph->ttl);
 			iph->ttl++;
 			i = 0;
 		}
 		
-
-		// if(i%2 == 0)
-		// {
-		// 	sleep(2);
-		// }
-
-		
-		if(iph->ttl == 5) // total number of routers + 2 -> read from file
+		if(iph->ttl == routers+2) // total number of routers + 2 -> read from file
 		{
 			break;
 		}
@@ -198,5 +208,3 @@ int main (void)
 	
 	return 0;
 }
-
-// tcp[tcpflags] == tcp-ack

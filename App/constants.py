@@ -5,8 +5,6 @@ from prepare_test import get_packet_size
 
 topo_size = 3
 
-# max_difference = 1.0
-
 topo_caps = "data/assigned_capacities.txt"
 
 h1_ip = "10.0.0.10"

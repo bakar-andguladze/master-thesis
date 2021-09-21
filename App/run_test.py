@@ -14,10 +14,11 @@ def main():
     parser.add_argument('config', help='Path to the config file')
     args = parser.parse_args()
 
-    test_parameters = prepare_test.parse_config(args)
+    test_parameters = prepare_test.get_config_parameters(args)
     
+    # print(test_parameters)
 
-    run_topo(constants.topo_size)
+    run_topo(test_parameters)
     get_results()
     get_network_capacity()
 

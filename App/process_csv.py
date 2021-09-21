@@ -22,7 +22,6 @@ def read_from_csv(file_path):
     return data
 
 def group_by_routers(data, streams):
-    # streams = {}
     for tpl in data.itertuples():
         if tpl != None:
             key = "({}, {})".format(tpl.src, tpl.dst)
@@ -71,11 +70,7 @@ def calculate_capacities():
         # print("{} -> {}".format(key, cap))
     return streams
 
-def bit_to_mbit(bits):
-    return bits / 1000000
-
 def get_assigned_capacities():
-    # capacities = []
     textfile = open(constants.topo_caps, "r")
     capacities = textfile.read().split('\n')
     textfile.close()
@@ -95,6 +90,14 @@ def get_expected_capacities():
     
     return expected
 
+def get_relative_error(expected, estimated):
+    err = abs(float(expected) - float(estimated)) / expected 
+    err *= 100
+    return round(err, 2)
+
+def bit_to_mbit(bits):
+    return bits / 1000000
+
 def get_results():
     streams = calculate_capacities()
     expected = get_expected_capacities()
@@ -105,11 +108,7 @@ def get_results():
         streams[key][4] = get_relative_error(streams[key][3], streams[key][2])
         i += 1
         print("{} -> {} -> {} -> {}%".format(key, streams[key][2], streams[key][3], streams[key][4]))
-    
-def get_relative_error(expected, estimated):
-    err = abs(float(expected) - float(estimated)) / expected 
-    err *= 100
-    return round(err, 2)
 
-if __name__ == '__main__':
-    get_results()
+
+# if __name__ == '__main__':
+#     get_results()
