@@ -2,6 +2,10 @@ import random
 import time
 import json
 
+from numpy.lib.npyio import save
+
+topo_caps = "data/assigned_capacities.txt"
+
 def generate_capacities(min, max, n_links, capacity_delta=5):
     """
     Generate random capacities from [min, max] range to apply to the mininet topology
@@ -18,7 +22,14 @@ def generate_capacities(min, max, n_links, capacity_delta=5):
         finally:
             capacities.append(capacity)
 
+    save_capacities_to_file(capacities, topo_caps)
     return capacities
+
+def save_capacities_to_file(capacities, file=topo_caps):
+    textfile = open(file, "w")
+    for element in capacities:
+        textfile.write(str(element) + "\n")
+    textfile.close()
 
 def set_packet_size(size):
     f = open("data/packet_data.txt", "w")

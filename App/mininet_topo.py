@@ -7,11 +7,11 @@ from mininet.cli import CLI
 from mininet.log import setLogLevel, info
 from mininet.clean import cleanup
 from prepare_test import generate_capacities
-import constants
 import os
 import time
-from subprocess import PIPE
+from subprocess import PIPE, STDOUT
 from prepare_test import set_packet_size
+from process_icmp_csv import get_assigned_capacities
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -23,13 +23,6 @@ def rp_disable(host):
     ifacelist = ifaces.split()    # default is to split on whitespace
     for iface in ifacelist:
        if iface != 'lo': host.cmd('sysctl net.ipv4.conf.' + iface + '.rp_filter=0')
-
-def save_capacities_to_file(capacities):
-    textfile = open(constants.topo_caps, "w")
-    # textfile.write(capacities)
-    for element in capacities:
-        textfile.write(str(element) + "\n")
-    textfile.close()
 
 class LinuxRouter( Node ):
     "A Node with IP forwarding enabled."
@@ -44,7 +37,7 @@ class LinuxRouter( Node ):
         self.cmd( 'sysctl net.ipv4.ip_forward=0' )
         super( LinuxRouter, self ).terminate()
 
-# =========== Build and configure =========== #
+# ================= Build and configure ================= #
 def build_topo(size=1):
     net = Mininet()
     h1 = net.addHost('h1', ip='10.0.0.10')
@@ -153,13 +146,7 @@ def configure_net(net, size, **test_parameters):
     h1.cmd('ethtool -K leftHost-eth0 tso off')
     h2.cmd('tc qdisc replace dev rightHost-eth0 root netem delay 50')
 
-    # ############## save capacities to a file ############## #
-    textfile = open(constants.topo_caps, "w")
-    # textfile.write(capacities)
-    for element in capacities:
-        textfile.write(str(element) + "\n")
-    textfile.close()
-    # ####################################################### #
+    # save_capacities_to_file(capacities)
 
 def set_capacities(net, n_routers, capacities):
     """
@@ -177,18 +164,19 @@ def set_capacities(net, n_routers, capacities):
     h2.cmd("tc qdisc add dev h2-eth0 root handle 1: tbf latency 100ms buffer 2000b rate {}mbit".format(capacities[-1]))
 
     set_capacity = "tc qdisc add dev r{}-eth{} root handle 1: tbf latency 100ms buffer 2000b rate {}mbit"
-    # disable_icmp_ratemask = "sysctl -w net.ipv4.icmp_ratemask={}".format(0)
 
     for i in range(n_routers):
         # Apply traffic limiter at router i
         router = net.get("r{}".format(i+1))
 
-        # disable icmp_ratemask
-        # router.cmd(disable_icmp_ratemask)
-
         # limit eth0 and eth1 respectively
         router.cmd(set_capacity.format(i+1, 0, capacities[i]))
         router.cmd(set_capacity.format(i+1, 1, capacities[i + 1]))
+
+        # # loss on left interface
+        # router.cmd("tc qdisc add dev r{}-eth0 parent 1:1 handle 10: netem limit 1000 loss {}%".format(i, 10))
+        # # loss on right interface
+        # router.cmd("tc qdisc add dev r{}-eth1 parent 1:1 handle 10: netem limit 1000 loss {}%".format(i, 10))
 
 def configure_icmp_ratelimit(router, rate_limit=1000):
     disable_icmp_ratemask = "sysctl -w net.ipv4.icmp_ratemask=0"
@@ -199,9 +187,40 @@ def configure_icmp_ratelimit(router, rate_limit=1000):
     else:
         router.cmd(disable_icmp_ratemask)
 
-# =================== Run =================== #
-def cross_traffic(net, ct):
-    pass
+# ========================= Run ========================= #
+def cross_traffic(net, ct, duration=10, router_count=3):
+    # finish this shit
+    capacities = get_assigned_capacities()
+    topHost = net.get("t1")
+    bottomHost = net.get("b2")
+    
+    cmd_bottom= "iperf -s -t {} -B 10.2.{}.40"
+    cmd_top= "iperf -c 10.2.{}.40 -t {} -B 10.1.{}.20 -b {}M"
+
+    lastTop = net.get("t{}".format(router_count))
+    firstBottom = net.get("b1")
+
+    lastTop.popen(cmd_top.format(1, duration + 5, router_count, min(capacities) * ct), stdout=PIPE, stderr=PIPE)
+    firstBottom.popen(cmd_bottom.format(duration + 5, 1))
+
+    # lastTop.cmd("tcpdump -n -w tophost.pcap &")
+    # firstBottom.cmd("tcpdump -n -w bottomhost.pcap &")
+    lastTop.cmd("tcpdump -A -r tophost.pcap > tophost.txt &")
+    firstBottom.cmd("tcpdump -A -r bottomhost.pcap > bottomhost.txt &")
+    
+    time.sleep(5)
+    for i in range(2, router_count+1):
+        cmd = cmd_bottom.format(duration + 2, i)
+        bottomHost.popen(cmd, stdout=PIPE, stderr=PIPE)
+
+    for i in range(1, router_count):
+        cmd = cmd_top.format(i + 1, duration + 2, i, capacities[i] * ct)
+        topHost.popen(cmd, stdout=PIPE, stderr=PIPE)
+
+    time.sleep(5)
+    lastTop.cmd("pkill tcpdump")
+    firstBottom.cmd("pkill tcpdump")
+
 
 def inject_and_capture(sender_host, receiver_host, routers=3, packets=300):
     h1 = sender_host.IP()
@@ -232,14 +251,14 @@ def run_topo(**test_parameters):
 
     h1 = net.get('h1')
     h2 = net.get('h2')
+
+    cross_traffic(net, 1.0, 15, size)
     inject_and_capture(h1, h2, size, packets)
 
     net.stop()
     cleanup()
 
 
-
-
-if __name__ == '__main__':
-    setLogLevel('info')
-    run_topo(constants.topo_size)
+# if __name__ == '__main__':
+#     setLogLevel('info')
+#     run_topo()

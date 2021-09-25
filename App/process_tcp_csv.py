@@ -1,9 +1,7 @@
 import os
-import subprocess
 import PPrate as pp
 import numpy as np
 import pandas as pd
-import constants
 from prepare_test import get_packet_size
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -42,9 +40,6 @@ def calculate_total_capacity(data, flows, size):
             if pd.isna(p.src) or pd.isna(p.dst):
                 continue
 
-            # if (p.ack == 1):
-            #     continue
-
             # Create new dict entry for new flows
             if key not in flows:
                 flows[key] = [[], [], [], []]
@@ -69,13 +64,10 @@ def calculate_total_capacity(data, flows, size):
     for i, ts in enumerate(f[0]):
         if i == 0:
             iats.append(0)
-            # continue
         else:
             iats.append((ts - f[0][i - 1]))
 
-    # print(iats)
     size = get_packet_size()
-    # size = constants.packet_size
     f[0] = np.array(iats)
     return bit_to_mbit(pp.find_capacity(size, iats))
 

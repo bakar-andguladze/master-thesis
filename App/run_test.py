@@ -1,6 +1,5 @@
 import os
 import argparse
-import constants
 import prepare_test
 from mininet_topo import run_topo
 from mininet.log import setLogLevel, info

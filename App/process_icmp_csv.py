@@ -1,15 +1,13 @@
 import os
-import subprocess
 import PPrate as pp
 import numpy as np
 import pandas as pd
-import constants 
 from prepare_test import get_packet_size
+from prepare_test import topo_caps
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 def pcap_to_csv():
-    user = ""
     command = "tshark -r results/icmp.pcap -T fields -E header=y -E separator=, -E quote=d -E occurrence=f -e frame.time_epoch -e ip.src -e ip.dst -e ip.len > results/icmp.csv"
     os.system(command)
 
@@ -71,8 +69,8 @@ def calculate_capacities():
         # print("{} -> {}".format(key, cap))
     return streams
 
-def get_assigned_capacities():
-    textfile = open(constants.topo_caps, "r")
+def get_assigned_capacities(file=topo_caps):
+    textfile = open(file, "r")
     capacities = textfile.read().split('\n')
     textfile.close()
     del capacities[-1]
