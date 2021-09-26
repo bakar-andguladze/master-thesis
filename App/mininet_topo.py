@@ -1,4 +1,6 @@
 #!/usr/bin/python
+import os
+import time
 from mininet.link import TCLink
 from mininet.node import Node
 from mininet.topo import Topo
@@ -7,8 +9,6 @@ from mininet.cli import CLI
 from mininet.log import setLogLevel, info
 from mininet.clean import cleanup
 from prepare_test import generate_capacities
-import os
-import time
 from subprocess import PIPE, STDOUT
 from prepare_test import set_packet_size
 from process_icmp_csv import get_assigned_capacities
@@ -66,8 +66,10 @@ def build_topo(size=1):
     return net
 
 def configure_routers(net, **test_parameters):
+    # test parameters
     size = test_parameters['topo_size']
     icmp_ratelimit = test_parameters['icmp_ratelimit']
+    packet_loss = test_parameters['packet_loss']
     # command to configure all Routes
     config_routes_right = "ip route add to 10.0.{}.0/24 via 10.0.{}.{}"
     config_routes_left = "ip route add to 10.0.{}.0/24 via 10.0.{}.{}"
@@ -76,6 +78,8 @@ def configure_routers(net, **test_parameters):
 
     for i in range(1, size+1):
         router = net.get('r{}'.format(i))
+        print(router)
+
         # configure router interfaces
         router.cmd("ifconfig r{}-eth0 10.0.{}.2/24".format(i, i-1)) # left
         router.cmd("ifconfig r{}-eth1 10.0.{}.1/24".format(i, i))   # right
@@ -99,6 +103,8 @@ def configure_routers(net, **test_parameters):
             router.cmd('ip route add to 10.2.{}.0/24 via 10.0.{}.1'.format(j+1, i-1))
 
         configure_icmp_ratelimit(router, icmp_ratelimit)
+        if(packet_loss > 0):
+            apply_packet_loss(router, packet_loss)
 
 def configure_cross_hosts(net, size):
     for i in range(1, size+1):
@@ -187,6 +193,10 @@ def configure_icmp_ratelimit(router, rate_limit=1000):
     else:
         router.cmd(disable_icmp_ratemask)
 
+def apply_packet_loss(host, packet_loss):
+    apply_packet_loss = "tc qdisc add dev {}-eth0 parent 1:1 handle 10: netem limit 10000 loss {}%"
+    host.cmd(apply_packet_loss.format(host, packet_loss))
+
 # ========================= Run ========================= #
 def cross_traffic(net, ct, duration=10, router_count=3):
     # finish this shit
@@ -239,6 +249,7 @@ def run_topo(**test_parameters):
     size = test_parameters['topo_size']
     packet_size = test_parameters['packet_size']
     packets = test_parameters['packets_per_hop']
+    ct = test_parameters['cross_traffic']
 
     set_packet_size(packet_size)
 
@@ -247,13 +258,13 @@ def run_topo(**test_parameters):
     net.start()
     configure_net(net, size, **test_parameters)
 
-    # CLI(net)
+    CLI(net)
 
     h1 = net.get('h1')
     h2 = net.get('h2')
-
-    cross_traffic(net, 1.0, 15, size)
-    inject_and_capture(h1, h2, size, packets)
+    # if(ct > 0):
+    #     cross_traffic(net, ct, 15, size)
+    # inject_and_capture(h1, h2, size, packets)
 
     net.stop()
     cleanup()
