@@ -258,13 +258,13 @@ def run_topo(**test_parameters):
     net.start()
     configure_net(net, size, **test_parameters)
 
-    CLI(net)
+    # CLI(net)
 
     h1 = net.get('h1')
     h2 = net.get('h2')
-    # if(ct > 0):
-    #     cross_traffic(net, ct, 15, size)
-    # inject_and_capture(h1, h2, size, packets)
+    if(ct > 0):
+        cross_traffic(net, ct, 15, size)
+    inject_and_capture(h1, h2, size, packets)
 
     net.stop()
     cleanup()
