@@ -1,0 +1,4 @@
+\ACRO{total-barriers}{1}
+\ACRO{usage}{iso=={0}||osi=={0}||pdu=={0}||sdu=={0}||mac=={0}||tcp=={0}||udp=={0}||sctp=={0}}
+\ACRO{pages}{}
+\ACRO{barriers}{}

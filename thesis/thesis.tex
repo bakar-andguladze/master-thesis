@@ -3,6 +3,10 @@
 % Include common packages
 \usepackage{packages/packages}
 
+\usepackage{xr}
+\externaldocument{include/bibliography}
+
+
 % IEEE tools for tweaking bib style
 \usepackage{IEEEtrantools}
 
@@ -163,15 +167,16 @@ Benedikt~J\"ager\tlc{}~M.\,Sc.}
 
 
 \appendix
-\chapter{Supplementals}
 \input{include/appendix}
-
+%\acuseall
 \printacronyms[heading=chapter,name=List of acronyms]
+
 \clearpage
 \pagestyle{thesischapter}
 
 \cleardoublepage
 \printbibliography[heading=bibintoc]
+\input{include/bibliography}
 
 %\cleardoublepage
 \clearpage

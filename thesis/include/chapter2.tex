@@ -1,17 +1,39 @@
 \chapter{Background}
-Some intro text
+The following chapter provides the background information and defines the important terminology that is useful to understand our work.
 
 \section{Terminology}
+Certain terms in our area of research can be used with different meanings, therefore we first need to state that this thesis will be using the definitions provided by Prasad et al. \cite{prasad} in their paper "Bandwidth estimation: metrics, measurement, techniques and tools", as it appears to be more widespread and accepted.
+
+Prasad et al. \cite{prasad} introduce the following three metrics: capacity, bandwidth and bulk transfer capacity(BTC), capacity being the main focus of our work.
+Moreover, they distinguish between segments and hops. The former being the link at the data link layer (L2) and the latter - the links at the IP layer (L3).
+
+% this is a copy. fix it.%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[THIS IS A COPY]
+A segment normally corresponds to a physical point-to-point link, a virtual circuit, or to a shared access local area network (e.g., an Ethernet collision
+domain, or an FDDI ring). In contrast, a hop may consist of a sequence of one or more segments, connected through switches, bridges, or other layer-2 devices. We
+define an end-to-end path  from an IP host (source) to another host  (sink) as the sequence of hops that connect to 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection*{Capacity}
-Capacity is this and that and this and that
+[ALSO COPY]
+A layer-2 link, or segment, can normally transfer data at a constant bit rate, which is the transmission rate of the segment. For instance, this rate is 10Mbps
+on a 10BaseT Ethernet segment, and 1.544Mbps on a T1 segment. The transmission rate of a segment is limited by both the physical bandwidth of the underlying
+propagation medium as well as its electronic or optical transmitter/receiver hardware. 
+At the IP layer a hop delivers a lower rate than its nominal transmission rate due to the overhead of layer-2 encapsulation and framing. Specifically, suppose that the nominal capacity of a segment is
+\Delta _{L3} = \dfrac{L_{L3}+H_{L2}}{C_{L2}}
 
-\section{Active and Passive measurement methods}
+The transmission time for an IP packet of size bytes is
+
+\subsection*{Available Bandwidth}
+Another important metric is the available bandwidth of a link or end-to-end path. The available bandwidth of a link relates to the unused, or “spare”, capacity of the link during a certain time period. So even though the capacity of a link depends on the underlying transmission technology and propagation medium, the available bandwidth of a link additionally depends on the traffic load at that link, and is typically a time-varying metric.
 
 \section{TCP}
+https://datatracker.ietf.org/doc/html/rfc793
 
 \section{ICMP}
+https://datatracker.ietf.org/doc/html/rfc792
 
 \section{Raw Sockets}
+https://www.binarytides.com/raw-sockets-c-code-linux/
 
 

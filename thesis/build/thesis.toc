@@ -21,11 +21,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.1}Terminology}{5}{section.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}TCP}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.2}TCP}{5}{section.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}ICMP}{6}{section.2.3}%
+\contentsline {section}{\numberline {2.3}ICMP}{5}{section.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Raw Sockets}{6}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Raw Sockets}{5}{section.2.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Related Work}{7}{chapter.3}%
 \defcounter {refsection}{0}\relax 
@@ -59,19 +59,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {6}Evaluation}{13}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Packet Size}{13}{section.6.1}%
+\contentsline {section}{\numberline {6.1}Estimation Error}{13}{section.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Intrusion}{13}{section.6.2}%
+\contentsline {section}{\numberline {6.2}Packet Loss}{13}{section.6.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6.3}Cross-Traffic}{13}{section.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.4}Packet Loss}{13}{section.6.4}%
+\contentsline {section}{\numberline {6.4}Intrusion}{13}{section.6.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6.5}ICMP Rate Limiting}{13}{section.6.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.6}Estimation Error}{13}{section.6.6}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.7}Data Replication}{13}{section.6.7}%
+\contentsline {section}{\numberline {6.6}Data Replication}{13}{section.6.6}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {7}Conclusion}{15}{chapter.7}%
 \defcounter {refsection}{0}\relax 

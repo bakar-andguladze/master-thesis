@@ -23,20 +23,19 @@
 \BOOKMARK [1][-]{section.5.1}{Mininet}{chapter.5}% 23
 \BOOKMARK [1][-]{section.5.2}{Testing Parameters}{chapter.5}% 24
 \BOOKMARK [0][-]{chapter.6}{Evaluation}{}% 25
-\BOOKMARK [1][-]{section.6.1}{Packet Size}{chapter.6}% 26
-\BOOKMARK [1][-]{section.6.2}{Intrusion}{chapter.6}% 27
+\BOOKMARK [1][-]{section.6.1}{Estimation Error}{chapter.6}% 26
+\BOOKMARK [1][-]{section.6.2}{Packet Loss}{chapter.6}% 27
 \BOOKMARK [1][-]{section.6.3}{Cross-Traffic}{chapter.6}% 28
-\BOOKMARK [1][-]{section.6.4}{Packet Loss}{chapter.6}% 29
+\BOOKMARK [1][-]{section.6.4}{Intrusion}{chapter.6}% 29
 \BOOKMARK [1][-]{section.6.5}{ICMP Rate Limiting}{chapter.6}% 30
-\BOOKMARK [1][-]{section.6.6}{Estimation Error}{chapter.6}% 31
-\BOOKMARK [1][-]{section.6.7}{Data Replication}{chapter.6}% 32
-\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 33
-\BOOKMARK [1][-]{section.7.1}{Evaluation Results}{chapter.7}% 34
-\BOOKMARK [1][-]{section.7.2}{Answers to the Research Questions}{chapter.7}% 35
-\BOOKMARK [1][-]{section.7.3}{Future Work}{chapter.7}% 36
-\BOOKMARK [0][-]{appendix.A}{Appendix}{}% 37
-\BOOKMARK [1][-]{section.A.1}{The Source Code Repository}{appendix.A}% 38
-\BOOKMARK [1][-]{section.A.2}{Setup}{appendix.A}% 39
-\BOOKMARK [1][-]{section.A.3}{Hardware Requirements}{appendix.A}% 40
-\BOOKMARK [1][-]{section.A.4}{Software Requirements}{appendix.A}% 41
-\BOOKMARK [0][-]{appendix.B}{List of acronyms}{}% 42
+\BOOKMARK [1][-]{section.6.6}{Data Replication}{chapter.6}% 31
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 32
+\BOOKMARK [1][-]{section.7.1}{Evaluation Results}{chapter.7}% 33
+\BOOKMARK [1][-]{section.7.2}{Answers to the Research Questions}{chapter.7}% 34
+\BOOKMARK [1][-]{section.7.3}{Future Work}{chapter.7}% 35
+\BOOKMARK [0][-]{appendix.A}{Appendix}{}% 36
+\BOOKMARK [1][-]{section.A.1}{The Source Code Repository}{appendix.A}% 37
+\BOOKMARK [1][-]{section.A.2}{Setup}{appendix.A}% 38
+\BOOKMARK [1][-]{section.A.3}{Hardware Requirements}{appendix.A}% 39
+\BOOKMARK [1][-]{section.A.4}{Software Requirements}{appendix.A}% 40
+\BOOKMARK [0][-]{appendix.B}{List of acronyms}{}% 41
