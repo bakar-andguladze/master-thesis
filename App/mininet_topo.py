@@ -78,7 +78,6 @@ def configure_routers(net, **test_parameters):
 
     for i in range(1, size+1):
         router = net.get('r{}'.format(i))
-        print(router)
 
         # configure router interfaces
         router.cmd("ifconfig r{}-eth0 10.0.{}.2/24".format(i, i-1)) # left
