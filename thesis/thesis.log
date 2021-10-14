@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2021.1.11)  7 OCT 2021 15:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2021.1.11)  8 OCT 2021 19:46
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -1977,6 +1977,9 @@ l.147 \tableofcontents
 
 ] (include/chapter1.tex
 Chapter 1.
+
+LaTeX Warning: Citation 'Postel1981' on page 1 undefined on input line 6.
+
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 0.
 ("C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd"
@@ -1993,50 +1996,6 @@ LaTeX Warning: Citation 'prasad' on page 5 undefined on input line 5.
 
 
 LaTeX Warning: Citation 'prasad' on page 5 undefined on input line 7.
-
-
-! Package inputenc Error: Unicode character  (U+0001)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 define an end-to-end path 
-                                 from an IP host (source) to another host  ...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character  (U+0003)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 ...from an IP host (source) to another host 
-                                                   (sink) as the sequence of...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.23 \Delta
-            _{L3} = \dfrac{L_{L3}+H_{L2}}{C_{L2}}
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.24 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
 
 [5]) (include/chapter3.tex [6]
 Chapter 3.
@@ -2069,11 +2028,7 @@ Appendix B.
 [19] [20
 
 
-]
-
-LaTeX Warning: Empty bibliography on input line 178.
-
-(include/bibliography.tex) [21
+] [21
 
 ]
 
@@ -2092,8 +2047,8 @@ Package rerunfilecheck Warning: File `thesis.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: 8F97035F10492A688B8EFFE83DDEFD27;2495
-(rerunfilecheck)             After:  AC8BE6BA8A667CCF48CAFEFD069E1689;2495.
+(rerunfilecheck)             Before: AC8BE6BA8A667CCF48CAFEFD069E1689;2495
+(rerunfilecheck)             After:  810A973360FEBF171C237B9D76CB8802;2542.
 
 LaTeX Warning: There were undefined references.
 
@@ -2107,30 +2062,25 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52579 strings out of 479798
- 1236114 string characters out of 2879581
- 1881859 words of memory out of 3000000
- 68563 multiletter control sequences out of 15000+200000
- 638196 words of font info for 103 fonts, out of 3000000 for 9000
+ 52575 strings out of 479798
+ 1236303 string characters out of 2879581
+ 1881874 words of memory out of 3000000
+ 68568 multiletter control sequences out of 15000+200000
+ 640865 words of font info for 103 fonts, out of 3000000 for 9000
  1149 hyphenation exceptions out of 8191
  150i,8n,150p,1843b,2753s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTe
-X/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/
-lm-rm.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Fi
-les/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX/fonts/type1/pub
-lic/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:
-/Program Files/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files/MiKTe
-X/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/
-lm/lmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Progr
-am Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/
-type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.
-pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri8.pfb><C:/Program Files/
-MiKTeX/fonts/type1/public/lm/lmss9.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
-lic/lm/lmtt10.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb>
-<C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on thesis.pdf (35 pages, 317855 bytes).
+X/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8
+r.enc}<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Fil
+es/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1
+/public/lm/lmcsc10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb
+><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiK
+TeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
+c/lm/lmss9.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:
+/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on thesis.pdf (35 pages, 255868 bytes).
 PDF statistics:
- 455 PDF objects out of 1000 (max. 8388607)
- 82 named destinations out of 1000 (max. 500000)
+ 424 PDF objects out of 1000 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
  349 words of extra memory for PDF output out of 10000 (max. 10000000)
 

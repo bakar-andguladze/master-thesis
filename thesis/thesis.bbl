@@ -16,5 +16,58 @@
   {}
 \endgroup
 
-\datalist[entry]{none/global//global/global}\enddatalist
+\datalist[entry]{none/global//global/global}
+  \entry{KaRaHuKa2008}{article}{}
+    \name{author}{6}{}{%
+      {{hash=KS}{%
+         family={Katti},
+         familyi={K\bibinitperiod},
+         given={Sachin},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=RH}{%
+         family={Rahul},
+         familyi={R\bibinitperiod},
+         given={Hariharan},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=HW}{%
+         family={Hu},
+         familyi={H\bibinitperiod},
+         given={Wenjun},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=KD}{%
+         family={Katabi},
+         familyi={K\bibinitperiod},
+         given={Dina},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={M{\'e}dard},
+         familyi={M\bibinitperiod},
+         given={Muriel},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=CJ}{%
+         family={Crowcroft},
+         familyi={C\bibinitperiod},
+         given={Jon},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KSRHHW+1}
+    \strng{fullhash}{KSRHHWKDMMCJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{3}
+    \field{pages}{497\bibrangedash 510}
+    \field{title}{\sc*{XOR}s in the {A}ir: {P}ractical {W}ireless {N}etwork
+  {C}oding}
+    \field{volume}{16}
+    \field{journaltitle}{{\sc{IEEE}/ACM} Transactions on Networking}
+    \field{month}{06}
+    \field{year}{2008}
+  \endentry
+\enddatalist
 \endinput

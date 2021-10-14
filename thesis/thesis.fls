@@ -1,6 +1,6 @@
-PWD d:\TUM\7th Semester - Master Thesis\ma-andguladze\thesis
+PWD D:\TUM\7th Semester - Master Thesis\ma-andguladze\thesis
 INPUT C:\Users\baqar\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT d:\TUM\7th Semester - Master Thesis\ma-andguladze\thesis\thesis.tex
+INPUT thesis.tex
 OUTPUT thesis.log
 INPUT .\tumthesis.cls
 INPUT tumthesis.cls
@@ -1378,6 +1378,9 @@ INPUT C:\Program Files\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
 INPUT .\thesis.aux
 INPUT thesis.aux
 INPUT thesis.aux
+INPUT .\thesis.acr
+INPUT .\thesis.acr
+INPUT thesis.acr
 OUTPUT thesis.aux
 INPUT C:\Program Files\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Program Files\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
@@ -1414,7 +1417,13 @@ INPUT C:\Program Files\MiKTeX\tex\latex\biblatex\lbx\english.lbx
 INPUT C:\Program Files\MiKTeX\tex\latex\biblatex\lbx\english.lbx
 INPUT C:\Program Files\MiKTeX\tex\latex\biblatex\lbx\english.lbx
 OUTPUT thesis-blx.bib
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\.tex
+INPUT thesis.bbl
+INPUT .\thesis.bbl
+INPUT thesis.bbl
+INPUT .\thesis.bbl
+INPUT thesis.bbl
+INPUT .\thesis.acr
+INPUT .\thesis.acr
 OUTPUT thesis.acr
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr10.tfm
@@ -1455,8 +1464,18 @@ INPUT C:\Program Files\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
 INPUT C:\Program Files\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
 INPUT C:\Program Files\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
 INPUT C:\Program Files\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-OUTPUT thesis.out
+INPUT .\thesis.out
+INPUT thesis.out
+INPUT .\thesis.out
+INPUT thesis.out
+INPUT .\thesis.out
+INPUT thesis.out
+INPUT .\thesis.out
+INPUT thesis.out
 OUTPUT thesis.pdf
+INPUT .\thesis.out
+INPUT .\thesis.out
+OUTPUT thesis.out
 INPUT C:\Program Files\MiKTeX\tex\latex\psnfss\t1phv.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\psnfss\t1phv.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\psnfss\t1phv.fd
@@ -1548,8 +1567,18 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\euler\eurm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmcsc10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmcsc10.tfm
+INPUT .\thesis.toc
+INPUT thesis.toc
+INPUT thesis.toc
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
 OUTPUT thesis.toc
+INPUT .\thesis.lof
+INPUT thesis.lof
+INPUT thesis.lof
 OUTPUT thesis.lof
+INPUT .\thesis.lot
+INPUT thesis.lot
+INPUT thesis.lot
 OUTPUT thesis.lot
 INPUT .\include\chapter1.tex
 INPUT .\include\chapter1.tex
@@ -1569,7 +1598,6 @@ INPUT C:\Program Files\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ts1-lmr10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
 INPUT .\include\chapter2.tex
 INPUT .\include\chapter2.tex
 INPUT .\include\chapter2.tex
@@ -1647,20 +1675,6 @@ INPUT .\include\appendix.tex
 INPUT .\include\appendix.tex
 INPUT .\include\appendix.tex
 INPUT include\appendix.tex
-INPUT .\include\bibliography.tex
-INPUT .\include\bibliography.tex
-INPUT .\include\bibliography.tex
-INPUT .\include\bibliography.tex
-INPUT .\include\bibliography.tex
-INPUT include\bibliography.tex
-INPUT .\include\bibliography.tex
-INPUT .\include\bibliography.tex
-INPUT .\include\bibliography.tex
-INPUT .\include\bibliography.tex
-INPUT include\bibliography.tex
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmtt10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmri10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmri8.tfm
 INPUT .\thesis.acr
 INPUT .\thesis.acr
 INPUT thesis.aux
@@ -1671,8 +1685,8 @@ INPUT .\thesis.out
 INPUT .\thesis.out
 INPUT thesis.run.xml
 OUTPUT thesis.run.xml
-INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-ec.enc
 INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-ts1.enc
+INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-ec.enc
 INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\base\8r.enc
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
@@ -1684,14 +1698,8 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmr10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmr10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmr12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmr12.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmri10.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmri10.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmri8.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmri8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmss9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmss9.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmtt10.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmtt10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\urw\helvetic\uhvb8a.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\urw\helvetic\uhvb8a.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\urw\helvetic\uhvr8a.pfb

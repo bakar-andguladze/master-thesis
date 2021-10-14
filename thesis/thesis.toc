@@ -92,3 +92,5 @@
 \contentsline {section}{\numberline {A.4}Software Requirements}{17}{section.A.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {B}List of acronyms}{19}{appendix.B}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Literatur}{21}{appendix*.4}%

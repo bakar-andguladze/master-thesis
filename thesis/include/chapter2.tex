@@ -1,5 +1,5 @@
 \chapter{Background}
-The following chapter provides the background information and defines the important terminology that is useful to understand our work.
+The following chapter provides the background information and defines the important terminology that is useful to understand our work. \cite{KaRaHuKa2008}
 
 \section{Terminology}
 Certain terms in our area of research can be used with different meanings, therefore we first need to state that this thesis will be using the definitions provided by Prasad et al. \cite{prasad} in their paper "Bandwidth estimation: metrics, measurement, techniques and tools", as it appears to be more widespread and accepted.
@@ -11,7 +11,7 @@ Moreover, they distinguish between segments and hops. The former being the link 
 [THIS IS A COPY]
 A segment normally corresponds to a physical point-to-point link, a virtual circuit, or to a shared access local area network (e.g., an Ethernet collision
 domain, or an FDDI ring). In contrast, a hop may consist of a sequence of one or more segments, connected through switches, bridges, or other layer-2 devices. We
-define an end-to-end path  from an IP host (source) to another host  (sink) as the sequence of hops that connect to 
+define an end-to-end path from an IP host (source) to another host (sink) as the sequence of hops that connect to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection*{Capacity}
@@ -20,7 +20,8 @@ A layer-2 link, or segment, can normally transfer data at a constant bit rate, w
 on a 10BaseT Ethernet segment, and 1.544Mbps on a T1 segment. The transmission rate of a segment is limited by both the physical bandwidth of the underlying
 propagation medium as well as its electronic or optical transmitter/receiver hardware. 
 At the IP layer a hop delivers a lower rate than its nominal transmission rate due to the overhead of layer-2 encapsulation and framing. Specifically, suppose that the nominal capacity of a segment is
-\Delta _{L3} = \dfrac{L_{L3}+H_{L2}}{C_{L2}}
+
+%\Delta _{L3} = \dfrac{L_{L3}+H_{L2}}{C_{L2}}
 
 The transmission time for an IP packet of size bytes is
 
