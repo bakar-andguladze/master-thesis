@@ -214,8 +214,8 @@ def cross_traffic(net, ct, duration=10, router_count=3):
 
     # lastTop.cmd("tcpdump -n -w tophost.pcap &")
     # firstBottom.cmd("tcpdump -n -w bottomhost.pcap &")
-    lastTop.cmd("tcpdump -A -r tophost.pcap > tophost.txt &")
-    firstBottom.cmd("tcpdump -A -r bottomhost.pcap > bottomhost.txt &")
+    # lastTop.cmd("tcpdump -A -r tophost.pcap > tophost.txt &")
+    # firstBottom.cmd("tcpdump -A -r bottomhost.pcap > bottomhost.txt &")
     
     time.sleep(5)
     for i in range(2, router_count+1):
