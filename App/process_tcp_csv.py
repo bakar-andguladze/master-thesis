@@ -77,7 +77,7 @@ def get_network_capacity(size):
     flows = {}
     data = read_from_csv(filepath)
     cap = calculate_total_capacity(data, flows, size)
-    print(cap)
+    return cap
 
 def bit_to_mbit(bits):
     return bits / 1000000

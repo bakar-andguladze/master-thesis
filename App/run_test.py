@@ -19,7 +19,8 @@ def main():
 
     run_topo(**test_parameters)
     get_results()
-    get_network_capacity(test_parameters['topo_size'])
+    total_capacity = get_network_capacity(test_parameters['topo_size'])
+    print("end-to-end capacity = {}mbps".format(total_capacity))
 
 if __name__ == '__main__':
     # setLogLevel('info')

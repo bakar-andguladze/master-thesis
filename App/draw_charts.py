@@ -55,6 +55,10 @@ print(min)
 
 
 
+# print json file in terminal
+# python -m json.tool config.json
+
+
 
 
 
