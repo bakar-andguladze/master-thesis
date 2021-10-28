@@ -25,4 +25,8 @@ def main():
 if __name__ == '__main__':
     # setLogLevel('info')
     for i in range(20):
-        main()
+        try:
+            main()
+        except:
+            print("error occured...")
+            continue
