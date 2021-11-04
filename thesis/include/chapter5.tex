@@ -1,6 +1,70 @@
-\chapter{Test Setup}
+\chapter{Evaluation}
+This chapter presents the results of the evaluation of our approach. The experiments have been conducted based on several test parameters and their combinations and we will be analyzing the baseline parameter sets as well as key combinations. 
 
-\section{Mininet}
+We evaluate based on the path length, capacity range, packet size, number of packets. For the better insight we also apply artificial packet loss and icmp rate limit. 
+The tests are conducted on the empty network as well as with significant amount of cross-traffic load.
 
-\section{Testing Parameters}
-List of parameter combinations that will be used
+The following \texttt{JSON} serves as an example of a configuration file used for experiments.
+It contains default parameter values, each of which will be manipulated respectively in upcoming sections:
+\begin{lstlisting}
+{    
+  "topo_size": 3, // path length
+  "capacity_range": [10, 100],			
+  "capacity_delta": 5
+  "packet_size": 1400,
+  "packets_per_hop": 300,
+  "icmp_ratelimit": 0,
+  "packet_loss": 0,
+  "cross_traffic": 0.0,
+  "output": "results/results.csv"
+}
+\end{lstlisting}
+
+\section{Test Setup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Path Length}
+The first parameter to be discussed is the path length from the source host to the sink. 
+
+\subsection*{Conclusion}
+We can conclude that the path length doesn't affect the accuracy of the estimation tool. After testing the 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Packet Size}
+The first and one of the key parameters in our evaluation is the packet size. 
+Based on the test results we were able to observe that the optimal packet size depends on the capacity range of the network. 
+
+\subsection*{Estimation Error}
+
+\subsection*{Conclusion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Packets per Hop}
+
+\subsection*{Conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Cross-Traffic}
+Cross traffic seems to affect the test results significantly. 
+What does 1.0 mean?
+
+\subsection*{Conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Packet Loss}
+
+\subsection*{Conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{ICMP Rate Limiting}
+Provide the information about icmp rate limiting and then how it affects your experiment results
+
+\subsection*{Conclusion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data Replication}
+One option to try to see if it can help
+
+\subsection*{Conclusion}

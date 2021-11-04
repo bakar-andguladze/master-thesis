@@ -17,57 +17,40 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
-  \entry{KaRaHuKa2008}{article}{}
-    \name{author}{6}{}{%
-      {{hash=KS}{%
-         family={Katti},
-         familyi={K\bibinitperiod},
-         given={Sachin},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=RH}{%
-         family={Rahul},
-         familyi={R\bibinitperiod},
-         given={Hariharan},
-         giveni={H\bibinitperiod},
-      }}%
-      {{hash=HW}{%
-         family={Hu},
-         familyi={H\bibinitperiod},
-         given={Wenjun},
-         giveni={W\bibinitperiod},
-      }}%
-      {{hash=KD}{%
-         family={Katabi},
-         familyi={K\bibinitperiod},
-         given={Dina},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=MM}{%
-         family={M{\'e}dard},
-         familyi={M\bibinitperiod},
-         given={Muriel},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=CJ}{%
-         family={Crowcroft},
-         familyi={C\bibinitperiod},
-         given={Jon},
-         giveni={J\bibinitperiod},
+  \entry{Brzoza}{thesis}{}
+    \name{author}{1}{}{%
+      {{hash=BP}{%
+         family={Brzoza},
+         familyi={B\bibinitperiod},
+         given={Patryk},
+         giveni={P\bibinitperiod},
       }}%
     }
-    \strng{namehash}{KSRHHW+1}
-    \strng{fullhash}{KSRHHWKDMMCJ1}
+    \strng{namehash}{BP1}
+    \strng{fullhash}{BP1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{number}{3}
-    \field{pages}{497\bibrangedash 510}
-    \field{title}{\sc*{XOR}s in the {A}ir: {P}ractical {W}ireless {N}etwork
-  {C}oding}
-    \field{volume}{16}
-    \field{journaltitle}{{\sc{IEEE}/ACM} Transactions on Networking}
-    \field{month}{06}
-    \field{year}{2008}
+    \field{title}{Implementation and {E}valuation of Passive Capacity
+  Estimation}
+    \list{location}{1}{%
+      {Munich, Germany}%
+    }
+    \field{type}{B.Sc. Thesis}
+    \field{year}{2019}
+  \endentry
+
+  \entry{mnHome}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{http://mininet.org//}}
+    \field{note}{[Online; accessed 2021]}
+    \field{title}{{Mininet Home}}
+  \endentry
+
+  \entry{mnInstall}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{http://mininet.org/download//}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{Mininet Installation}}
   \endentry
 \enddatalist
 \endinput

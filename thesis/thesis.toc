@@ -27,15 +27,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.4}Raw Sockets}{6}{section.2.4}%
 \defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.5}Capacity Estimation}{6}{section.2.5}%
+\defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Related Work}{7}{chapter.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Capacity Estimation}{7}{section.3.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Existing Approaches}{7}{section.3.2}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Iperf}{7}{section.3.3}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Implementation of PPrate by Brzoza}{7}{section.3.4}%
+\contentsline {section}{\numberline {3.1}Existing Approaches}{7}{section.3.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Implementation}{9}{chapter.4}%
 \defcounter {refsection}{0}\relax 
@@ -51,46 +47,40 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.6}Locating the Narrow Link}{9}{section.4.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Test Setup}{11}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Evaluation}{11}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Mininet}{11}{section.5.1}%
+\contentsline {section}{\numberline {5.1}Test Setup}{11}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Testing Parameters}{11}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Path Length}{11}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Evaluation}{13}{chapter.6}%
+\contentsline {section}{\numberline {5.3}Packet Size}{12}{section.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Packet Size}{13}{section.6.1}%
+\contentsline {section}{\numberline {5.4}Packets per Hop}{12}{section.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Intrusion}{13}{section.6.2}%
+\contentsline {section}{\numberline {5.5}Cross-Traffic}{12}{section.5.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}Cross-Traffic}{13}{section.6.3}%
+\contentsline {section}{\numberline {5.6}Packet Loss}{12}{section.5.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.4}Packet Loss}{13}{section.6.4}%
+\contentsline {section}{\numberline {5.7}ICMP Rate Limiting}{12}{section.5.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.5}ICMP Rate Limiting}{13}{section.6.5}%
+\contentsline {section}{\numberline {5.8}Data Replication}{12}{section.5.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.6}Estimation Error}{13}{section.6.6}%
+\contentsline {chapter}{\numberline {6}Conclusion}{13}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.7}Data Replication}{13}{section.6.7}%
+\contentsline {section}{\numberline {6.1}Evaluation Results}{13}{section.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Conclusion}{15}{chapter.7}%
+\contentsline {section}{\numberline {6.2}Answers to the Research Questions}{13}{section.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Evaluation Results}{15}{section.7.1}%
+\contentsline {section}{\numberline {6.3}Future Work}{13}{section.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Answers to the Research Questions}{15}{section.7.2}%
+\contentsline {chapter}{\numberline {A}Appendix}{15}{appendix.A}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}Future Work}{15}{section.7.3}%
+\contentsline {section}{\numberline {A.1}The Source Code Repository}{15}{section.A.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Appendix}{17}{appendix.A}%
+\contentsline {section}{\numberline {A.2}Setup}{16}{section.A.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.1}The Source Code Repository}{17}{section.A.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.2}Setup}{17}{section.A.2}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.3}Hardware Requirements}{17}{section.A.3}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.4}Software Requirements}{17}{section.A.4}%
+\contentsline {section}{\numberline {A.3}Running Tests}{17}{section.A.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {B}List of acronyms}{19}{appendix.B}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Literatur}{21}{appendix*.4}%
+\contentsline {chapter}{Literatur}{21}{appendix*.5}%

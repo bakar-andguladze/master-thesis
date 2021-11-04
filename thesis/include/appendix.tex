@@ -2,10 +2,75 @@
 This chapter describes the source code repository and provides the information and  instructions of how to use, alter and/or improve the current version of the Hop-by-hop measurement framework. 
 
 \section{The Source Code Repository}
+The source code repository for this thesis is located on the GitLab instance belonging to the TUM. The \texttt{ma-andguladze/App} directory contains the whole source code.
+
+The tool consists of the following files:
+\begin{itemize}
+  \item \texttt{PPrate.py} - The pprate algorithm implementation by Patryk Brzoza\cite{Brzoza}
+  \item \texttt{TrafficGenerator.c} - As the name suggests, this program generates TCP traffic from one host to another. It takes the IP addresses of two hosts as arguments and creates the traffic via raw sockets. The file should be compiled before the first run.
+  \item \texttt{mininet\textunderscore topo.py} - Builds an instance of the network in Mininet considering all the necessary parameters passed, conducts the traffic generation, captures the traffic and saves the results in pcap files.
+  \item \texttt{prepare\textunderscore test.py} - Contains several helper functions, most notably the config file parser and the capacity generator.
+  \item \texttt{process\textunderscore tcp\textunderscore csv.py} - Converts the Calculates the end-to-end capacity of the network. Implementation by Brzoza\cite{Brzoza}
+  \item \texttt{process\textunderscore icmp\textunderscore csv.py} - Converts the \texttt{icmp.pcap} file into csv and delivers the hop-by-hop capacity estimations based on the latter 
+  \item \texttt{run\textunderscore test.py} - The main file that bootstraps the tool and runs the experiments in one setting. It requires a \texttt{JSON} configuration file to be passed as an argument with the help of which it is possible to manipulate several key parameters necessary for testing.
+\end{itemize}
+
+\begin{figure}[htp]
+ \centering
+ \includegraphics[width=\textwidth]{architecture}
+ \caption{The architecture of the framework}
+ \label{fig}
+
+\end{figure}
+
 
 \section{Setup}
+In order to run the test measurements with our tool, several dependencies and software should be installed on the Linux machine.
 
-\section{Hardware Requirements}
+The experiments conducted by us were run only on Mininet - a network emulator tool which creates a realistic virtual network of virtual hosts, switches, controllers and links and runs a real kernel and application code\cite{mnHome}.
+To run the experiments on Mininet, it is necessary to install the emulator first.
+It is highly recommended to install Mininet from the source GitHub repository instead of packages, as the Mininet homepage\cite{mnInstall} states that packages could give an older version. 
 
-\section{Software Requirements}
+Mininet installation:
+\begin{lstlisting}[language=bash]
+  $ git clone git://github.com/mininet/mininet
+  $ mininet/util/install.sh [options]
+\end{lstlisting}
+The default branch normally will install the latest stable version, however in case a user wishes to have any other version, it also possible to check out the branch with the following script before running \texttt{install.sh}:
+\begin{lstlisting}[language=bash]
+  $ cd mininet
+  $ git tag  # list available versions
+  $ git checkout -b mininet-2.3.0 2.3.0  # or any desired version from the list
+  $ cd ..
+\end{lstlisting}
+\emph{Note that Mininet must run as a root.}
 
+
+As for the rest, the following dependencies are required to be installed to run experiments:
+\begin{itemize}
+	\item pandas
+	\item NumPy
+	\item SciPy
+	\item tshark
+	\item iPerf
+\end{itemize}
+For setting up these and compiling the \texttt{TrafficGenerator.c} program, run \texttt{install.sh} script in the \texttt{ma-andguladze/App} directory.
+
+\section{Running Tests}
+The measurements must be run with a \texttt{JSON} config file containing all the parameters that are interesting and important for our measurements. Manipulating these parameters gives us a better picture about strengths and weaknesses of our approach.
+
+The following script executes the experiment:
+\begin{lstlisting}[language=bash]
+  $ sudo python run_test.py <config file>
+\end{lstlisting}
+
+The following parameters must be passed to the program via the config file:
+\begin{itemize}
+	\item \texttt{topo\textunderscore size} - The number of routers between the source host and the destination host.
+	\item \texttt{capacity\textunderscore range} - The range of numbers from which a capacity for each link will be generated
+	\item \texttt{packet\textunderscore size} - The size of each packet (in bytes) that will be sent from the source host to the destination.
+	\item \texttt{packets\textunderscore per\textunderscore hop} - The amount of packets that will be targeted at each hop
+	\item \texttt{icmp\textunderscore ratelimit} - The artificial ICMP rate limit that will be assigned to each router. The default value is 0.
+	\item \texttt{packet\textunderscore loss} - The artificial packet loss that will be assigned to each router. The default value is 0.
+	\item \texttt{cross\textunderscore traffic} - The coefficient of the cross traffic load. The Optimal value is recommended to be assigned from 0 to 1.0, the value of 0 meaning an empty network without any cross traffic. 
+\end{itemize}
