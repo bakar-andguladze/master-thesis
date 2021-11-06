@@ -1,8 +1,25 @@
 \chapter{Conclusion}
+In this thesis we have implemented a hop-by-hop capacity estimation methodology and evaluated it based on various parameters. 
+
+The following sections will shortly summarize our work throughout the timespan of the thesis and address all the concerns and questions that we had in the beginning.
 
 \section{Evaluation Results}
-Sum up whether this method can actually be used in practice
+Sum up whether this method can actually be used in practice\\
+
 \section{Answers to the Research Questions}
+After the careful and thorough research we can already answer the questions we were aiming to address in the beginning of this thesis: \\
+\begin{itemize}
+  \item \textbf{How to measure network capacity hop-by-hop?}
+  \\ 
+  \item \textbf{How to optimize the trade-off between accuracy and intrusiveness regarding large-scale measurements?}
+  \\
+  \item \textbf{How robust is the proposed solution regarding the handling of cross-traffic, flow-interference and sudden path parameter changes?}
+  \\
+  \item \textbf{Are we able to locate the capacity bottlenecks of a network?}
+  \\ The answer to this question greatly depends on the accuracy of the hop-by-hop estimation. As we have seen in the Evaluation chapter, there are situations when we get accurate results and there are cases when the results are somewhat inaccurate or not reliable at all. In case of the reliable results, the answer will be 'yes'. We can locate the capacity bottlenecks based on the first smallest capacity value from the sequence of results. 
+  
+  There is a catch, however: if the path consists of multiple hops and there are several bottlenecks, we are able to locate only one, namely the first one. For example, if there are 15 hops on the path and the bottleneck is located on the first hop, but the capacities of several other links equals to that of the first link, we will not be able to see it. In such situations, we can only assume that the subsequent capacities are more than or equal of the capacity of the first hop.
+\end{itemize}
 
 \section{Future Work}
 Real network measurements

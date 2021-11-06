@@ -17,6 +17,13 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
+  \entry{mnHome}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{http://mininet.org//}}
+    \field{note}{[Online; accessed 2021]}
+    \field{title}{{Mininet Home}}
+  \endentry
+
   \entry{Brzoza}{thesis}{}
     \name{author}{1}{}{%
       {{hash=BP}{%
@@ -37,13 +44,6 @@
     }
     \field{type}{B.Sc. Thesis}
     \field{year}{2019}
-  \endentry
-
-  \entry{mnHome}{misc}{}
-    \field{labeltitlesource}{title}
-    \field{howpublished}{\url{http://mininet.org//}}
-    \field{note}{[Online; accessed 2021]}
-    \field{title}{{Mininet Home}}
   \endentry
 
   \entry{mnInstall}{misc}{}

@@ -19,7 +19,7 @@ The tool consists of the following files:
  \centering
  \includegraphics[width=\textwidth]{architecture}
  \caption{The architecture of the framework}
- \label{fig}
+ \label{architecture}
 
 \end{figure}
 
@@ -64,13 +64,19 @@ The following script executes the experiment:
   $ sudo python run_test.py <config file>
 \end{lstlisting}
 
-The following parameters must be passed to the program via the config file:
-\begin{itemize}
-	\item \texttt{topo\textunderscore size} - The number of routers between the source host and the destination host.
-	\item \texttt{capacity\textunderscore range} - The range of numbers from which a capacity for each link will be generated
-	\item \texttt{packet\textunderscore size} - The size of each packet (in bytes) that will be sent from the source host to the destination.
-	\item \texttt{packets\textunderscore per\textunderscore hop} - The amount of packets that will be targeted at each hop
-	\item \texttt{icmp\textunderscore ratelimit} - The artificial ICMP rate limit that will be assigned to each router. The default value is 0.
-	\item \texttt{packet\textunderscore loss} - The artificial packet loss that will be assigned to each router. The default value is 0.
-	\item \texttt{cross\textunderscore traffic} - The coefficient of the cross traffic load. The Optimal value is recommended to be assigned from 0 to 1.0, the value of 0 meaning an empty network without any cross traffic. 
-\end{itemize}
+The following \texttt{JSON} serves as an example of a configuration file used for experiments.
+It contains default parameter values, each of which will be manipulated respectively in upcoming sections:
+\begin{lstlisting}
+{    
+  "topo_size": 3, // path length
+  "capacity_range": [10, 100],			
+  "capacity_delta": 5
+  "packet_size": 1400,
+  "packets_per_hop": 300,
+  "icmp_ratelimit": 0,
+  "packet_loss": 0,
+  "cross_traffic": 0.0,
+  "output": "results/results.csv"
+}
+\end{lstlisting}
+
