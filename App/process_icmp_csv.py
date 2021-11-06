@@ -1,4 +1,5 @@
 import os
+import re
 import PPrate as pp
 import numpy as np
 import pandas as pd
@@ -23,7 +24,7 @@ def read_from_csv(file_path):
 def group_by_routers(data, streams):
     for tpl in data.itertuples():
         if tpl != None:
-            key = "({}, {})".format(tpl.src, tpl.dst)
+            key = "({}, {})".format(make_ip_sortable(tpl.src), tpl.dst)
             
             if pd.isna(tpl.src) or pd.isna(tpl.dst):
                 continue
@@ -96,6 +97,17 @@ def get_relative_error(expected, estimated):
 
 def bit_to_mbit(bits):
     return bits / 1000000
+
+def make_ip_sortable(s):
+    ip = re.findall( r'([0-9]+)(?:\.[0-9]+){0}', s )
+
+    if(int(ip[2]) < 10):
+        ip[2] = '0{}'.format(ip[2])
+
+    ret = "{}.{}.{}.{}".format(ip[0], ip[1], ip[2], ip[3])
+
+    return ret
+
 
 def get_results():
     streams = calculate_capacities()
