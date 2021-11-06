@@ -5,7 +5,4 @@
 /capacities.txt
 /*.pyc
 !spec/*.pyc
-/*.csv
-!spec/*.csv
-/*.pcap
-!spec/*.pcap
+results/*
