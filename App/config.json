@@ -1,5 +1,5 @@
 {    
-  "topo_size": 20,
+  "topo_size": 8,
   "capacity_range": [10, 100],
   "capacity_delta": 5,
   "packet_size": 1400,
