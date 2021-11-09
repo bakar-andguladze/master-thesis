@@ -53,21 +53,45 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.1}Test Environment and Setup}{12}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Path Length}{13}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Evaluation in Empty Network}{13}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Packet Size}{13}{section.5.3}%
+\contentsline {subsection}{\numberline {5.2.1}Path Length}{13}{subsection.5.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Packets per Hop}{14}{section.5.4}%
+\contentsline {subsection}{\numberline {5.2.2}Packet Size}{14}{subsection.5.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}Capacity Range}{14}{section.5.5}%
+\contentsline {subsection}{\numberline {5.2.3}Train Length}{14}{subsection.5.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.6}Cross-Traffic}{14}{section.5.6}%
+\contentsline {subsection}{\numberline {5.2.4}Optimal Intrusion}{14}{subsection.5.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.7}Packet Loss}{14}{section.5.7}%
+\contentsline {subsection}{\numberline {5.2.5}Capacity Range}{14}{subsection.5.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.8}ICMP Rate Limiting}{14}{section.5.8}%
+\contentsline {subsection}{\numberline {5.2.6}Packet Loss}{15}{subsection.5.2.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.9}Data Replication}{15}{section.5.9}%
+\contentsline {subsection}{\numberline {5.2.7}ICMP Rate Limiting}{15}{subsection.5.2.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.8}Summary}{15}{subsection.5.2.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.3}Evaluation during Cross-Traffic}{15}{section.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.1}Path Length}{15}{subsection.5.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.2}Packet Size}{15}{subsection.5.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.3}Train Length}{15}{subsection.5.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.4}Optimal Intrusion during Cross-Traffic}{15}{subsection.5.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.5}Capacity Range}{15}{subsection.5.3.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.6}Packet Loss}{15}{subsection.5.3.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.7}ICMP Rate Limiting}{15}{subsection.5.3.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.8}Combination of Cross-Traffic, Artificial Packet Loss and ICMP Rate Limiting}{15}{subsection.5.3.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.9}Summary}{15}{subsection.5.3.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.4}Data Replication}{15}{section.5.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {6}Conclusion}{17}{chapter.6}%
 \defcounter {refsection}{0}\relax 
@@ -88,4 +112,4 @@
 \contentsline {chapter}{\numberline {B}List of acronyms}{23}{appendix.B}%
 \babel@toc {english}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Bibliography}{25}{appendix*.6}%
+\contentsline {chapter}{Bibliography}{25}{appendix*.8}%

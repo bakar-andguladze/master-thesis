@@ -20,21 +20,33 @@
 \BOOKMARK [1][-]{section.4.6}{Locating the Narrow Link}{chapter.4}% 20
 \BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 21
 \BOOKMARK [1][-]{section.5.1}{Test Environment and Setup}{chapter.5}% 22
-\BOOKMARK [1][-]{section.5.2}{Path Length}{chapter.5}% 23
-\BOOKMARK [1][-]{section.5.3}{Packet Size}{chapter.5}% 24
-\BOOKMARK [1][-]{section.5.4}{Packets per Hop}{chapter.5}% 25
-\BOOKMARK [1][-]{section.5.5}{Capacity Range}{chapter.5}% 26
-\BOOKMARK [1][-]{section.5.6}{Cross-Traffic}{chapter.5}% 27
-\BOOKMARK [1][-]{section.5.7}{Packet Loss}{chapter.5}% 28
-\BOOKMARK [1][-]{section.5.8}{ICMP Rate Limiting}{chapter.5}% 29
-\BOOKMARK [1][-]{section.5.9}{Data Replication}{chapter.5}% 30
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 31
-\BOOKMARK [1][-]{section.6.1}{Evaluation Results}{chapter.6}% 32
-\BOOKMARK [1][-]{section.6.2}{Answers to the Research Questions}{chapter.6}% 33
-\BOOKMARK [1][-]{section.6.3}{Future Work}{chapter.6}% 34
-\BOOKMARK [0][-]{appendix.A}{Appendix}{}% 35
-\BOOKMARK [1][-]{section.A.1}{The Source Code Repository}{appendix.A}% 36
-\BOOKMARK [1][-]{section.A.2}{Setup}{appendix.A}% 37
-\BOOKMARK [1][-]{section.A.3}{Running Tests}{appendix.A}% 38
-\BOOKMARK [0][-]{appendix.B}{List of acronyms}{}% 39
-\BOOKMARK [0][-]{appendix*.6}{Bibliography}{}% 40
+\BOOKMARK [1][-]{section.5.2}{Evaluation in Empty Network}{chapter.5}% 23
+\BOOKMARK [2][-]{subsection.5.2.1}{Path Length}{section.5.2}% 24
+\BOOKMARK [2][-]{subsection.5.2.2}{Packet Size}{section.5.2}% 25
+\BOOKMARK [2][-]{subsection.5.2.3}{Train Length}{section.5.2}% 26
+\BOOKMARK [2][-]{subsection.5.2.4}{Optimal Intrusion}{section.5.2}% 27
+\BOOKMARK [2][-]{subsection.5.2.5}{Capacity Range}{section.5.2}% 28
+\BOOKMARK [2][-]{subsection.5.2.6}{Packet Loss}{section.5.2}% 29
+\BOOKMARK [2][-]{subsection.5.2.7}{ICMP Rate Limiting}{section.5.2}% 30
+\BOOKMARK [2][-]{subsection.5.2.8}{Summary}{section.5.2}% 31
+\BOOKMARK [1][-]{section.5.3}{Evaluation during Cross-Traffic}{chapter.5}% 32
+\BOOKMARK [2][-]{subsection.5.3.1}{Path Length}{section.5.3}% 33
+\BOOKMARK [2][-]{subsection.5.3.2}{Packet Size}{section.5.3}% 34
+\BOOKMARK [2][-]{subsection.5.3.3}{Train Length}{section.5.3}% 35
+\BOOKMARK [2][-]{subsection.5.3.4}{Optimal Intrusion during Cross-Traffic}{section.5.3}% 36
+\BOOKMARK [2][-]{subsection.5.3.5}{Capacity Range}{section.5.3}% 37
+\BOOKMARK [2][-]{subsection.5.3.6}{Packet Loss}{section.5.3}% 38
+\BOOKMARK [2][-]{subsection.5.3.7}{ICMP Rate Limiting}{section.5.3}% 39
+\BOOKMARK [2][-]{subsection.5.3.8}{Combination of Cross-Traffic, Artificial Packet Loss and ICMP Rate Limiting}{section.5.3}% 40
+\BOOKMARK [2][-]{subsection.5.3.9}{Summary}{section.5.3}% 41
+\BOOKMARK [1][-]{section.5.4}{Data Replication}{chapter.5}% 42
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 43
+\BOOKMARK [1][-]{section.6.1}{Evaluation Results}{chapter.6}% 44
+\BOOKMARK [1][-]{section.6.2}{Answers to the Research Questions}{chapter.6}% 45
+\BOOKMARK [1][-]{section.6.3}{Future Work}{chapter.6}% 46
+\BOOKMARK [0][-]{appendix.A}{Appendix}{}% 47
+\BOOKMARK [1][-]{section.A.1}{The Source Code Repository}{appendix.A}% 48
+\BOOKMARK [1][-]{section.A.2}{Setup}{appendix.A}% 49
+\BOOKMARK [1][-]{section.A.3}{Running Tests}{appendix.A}% 50
+\BOOKMARK [0][-]{appendix.B}{List of acronyms}{}% 51
+\BOOKMARK [0][-]{appendix*.8}{Bibliography}{}% 52
