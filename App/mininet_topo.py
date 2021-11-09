@@ -193,12 +193,12 @@ def configure_icmp_ratelimit(router, rate_limit=1000):
         router.cmd(disable_icmp_ratemask)
 
 def apply_packet_loss(host, packet_loss):
-    apply_packet_loss = "tc qdisc add dev {}-eth0 parent 1:1 handle 10: netem limit 10000 loss {}%"
-    host.cmd(apply_packet_loss.format(host, packet_loss))
+    apply_packet_loss = "tc qdisc add dev {}-eth{} parent 1:1 handle 10: netem limit 10000 loss {}%"
+    host.cmd(apply_packet_loss.format(host, 0, packet_loss))
+    host.cmd(apply_packet_loss.format(host, 1, packet_loss))
 
 # ========================= Run ========================= #
 def cross_traffic(net, ct, duration=10, router_count=3):
-    # finish this shit
     capacities = get_assigned_capacities()
     topHost = net.get("t1")
     bottomHost = net.get("b2")
