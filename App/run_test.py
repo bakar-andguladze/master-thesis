@@ -17,7 +17,7 @@ def analyze_packet_loss(**test_parameters):
     total_packects = test_parameters['topo_size']*test_parameters['packets_per_hop']
     captured_packets = open("results/icmp.csv")
     lines = captured_packets.readlines()
-    captured_packets_count = len(lines)
+    captured_packets_count = len(lines) - 1
     packet_loss_details = "{}/{} packets captured at the source host\n".format(captured_packets_count, total_packects)
     
     print(packet_loss_details)
