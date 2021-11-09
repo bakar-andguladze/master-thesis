@@ -18,7 +18,7 @@ def analyze_packet_loss(**test_parameters):
     captured_packets = open("results/icmp.csv")
     lines = captured_packets.readlines()
     captured_packets_count = len(lines)
-    packet_loss_details = "{}/{} packets captured at the source host".format(captured_packets_count, total_packects)
+    packet_loss_details = "{}/{} packets captured at the source host\n".format(captured_packets_count, total_packects)
     
     print(packet_loss_details)
 
@@ -37,7 +37,6 @@ def main():
         try:
             run(**test_parameters)
             analyze_packet_loss(**test_parameters)
-            # print("\n")
         except:
             print("error occured...\n")
             continue
