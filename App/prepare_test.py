@@ -97,9 +97,9 @@ def get_config_parameters(args):
     cross_traffic = data['cross_traffic']
     test_config['cross_traffic'] = cross_traffic
 
-    # Read output directory
-    output_dir = data['output']
-    test_config['output_dir'] = output_dir
+    # Number of test runs
+    repeat_test = data['repeat_test']
+    test_config['repeat_test'] = repeat_test
 
     return test_config
 

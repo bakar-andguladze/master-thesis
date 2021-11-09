@@ -7,5 +7,5 @@
   "icmp_ratelimit": 0,
   "packet_loss": 0,
   "cross_traffic": 0.0,
-  "output": "results/results.csv"
+  "repeat_test": 4
 }

@@ -1,4 +1,5 @@
 import os
+import sys
 import argparse
 import prepare_test
 from mininet_topo import run_topo
@@ -6,6 +7,20 @@ from mininet.log import setLogLevel, info
 from process_icmp_csv import get_results
 from process_tcp_csv import get_network_capacity
 
+def run(**test_parameters):
+    run_topo(**test_parameters)
+    get_results()
+    total_capacity = get_network_capacity(test_parameters['topo_size'])
+    print("end-to-end capacity = {}mbps".format(total_capacity))
+
+def analyze_packet_loss(**test_parameters):
+    total_packects = test_parameters['topo_size']*test_parameters['packets_per_hop']
+    captured_packets = open("results/icmp.csv")
+    lines = captured_packets.readlines()
+    captured_packets_count = len(lines)
+    packet_loss_details = "{}/{} packets captured at the source host".format(captured_packets_count, total_packects)
+    
+    print(packet_loss_details)
 
 def main():
     # Argument parser
@@ -16,17 +31,18 @@ def main():
     test_parameters = prepare_test.get_config_parameters(args)
     
     # print(test_parameters)
+    
+    repeat_test = test_parameters['repeat_test']
+    for i in range(repeat_test):
+        try:
+            run(**test_parameters)
+            analyze_packet_loss(**test_parameters)
+            # print("\n")
+        except:
+            print("error occured...\n")
+            continue
 
-    run_topo(**test_parameters)
-    get_results()
-    total_capacity = get_network_capacity(test_parameters['topo_size'])
-    print("end-to-end capacity = {}mbps".format(total_capacity))
 
 if __name__ == '__main__':
     # setLogLevel('info')
-    for i in range(20):
-        try:
-            main()
-        except:
-            print("error occured...")
-            continue
+    main()
