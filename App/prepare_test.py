@@ -33,7 +33,7 @@ def save_capacities_to_file(capacities, file=topo_caps):
 
 def set_packet_size(size):
     f = open("data/packet_data.txt", "w")
-    for i in range(size):
+    for i in range(size - 40): 
         f.write("A")
     f.close()
 
@@ -41,7 +41,7 @@ def get_packet_size():
     f = open("data/packet_data.txt", "r")
     packet = f.read()
     f.close()
-    return len(packet)
+    return len(packet) + 40
 
 def get_config_parameters(args):
     """
