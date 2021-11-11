@@ -212,10 +212,10 @@ def cross_traffic(net, ct, duration=10, router_count=3):
     lastTop.popen(cmd_top.format(1, duration + 5, router_count, min(capacities) * ct), stdout=PIPE, stderr=PIPE)
     firstBottom.popen(cmd_bottom.format(duration + 5, 1))
 
-    lastTop.cmd("tcpdump -n -w cross_hosts/tophost.pcap &")
-    firstBottom.cmd("tcpdump -n -w cross_hosts/bottomhost.pcap &")
-    lastTop.cmd("tcpdump -A -r cross_hosts/tophost.pcap > cross_hosts/tophost.txt &")
-    firstBottom.cmd("tcpdump -A -r cross_hosts/bottomhost.pcap > cross_hosts/bottomhost.txt &")
+    lastTop.cmd("tcpdump -n -w top_bottom_hosts/tophost.pcap &")
+    firstBottom.cmd("tcpdump -n -w top_bottom_hosts/bottomhost.pcap &")
+    lastTop.cmd("tcpdump -A -r top_bottom_hosts/tophost.pcap > top_bottom_hosts/tophost.txt &")
+    firstBottom.cmd("tcpdump -A -r top_bottom_hosts/bottomhost.pcap > top_bottom_hosts/bottomhost.txt &")
     
     time.sleep(5)
     for i in range(2, router_count+1):
