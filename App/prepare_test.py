@@ -77,12 +77,12 @@ def get_config_parameters(args):
 
     # Read packet size
     packet_size = data['packet_size']
-    assert (packet_size > 0 and packet_size < 2000), "Packet size must be a positive number and shouldn't exceed maximum segment size"
+    assert (packet_size > 0 and packet_size <= 1500), "Packet size must be a positive number and shouldn't exceed maximum transmission unit (MTU)"
     test_config['packet_size'] = packet_size
 
     # Read packets per hop
     packets_per_hop = data['packets_per_hop']
-    assert packets_per_hop > 10, "There should be at least 10 packets per hop"
+    assert packets_per_hop >= 2, "There should be at least 2 packets per hop"
     test_config['packets_per_hop'] = packets_per_hop
 
     # Read icmp_ratemask

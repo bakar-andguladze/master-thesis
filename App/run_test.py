@@ -37,8 +37,9 @@ def main():
         try:
             run(**test_parameters)
             analyze_packet_loss(**test_parameters)
-        except:
+        except BaseException as e:
             print("error occured...\n")
+            print(e)
             continue
 
 
