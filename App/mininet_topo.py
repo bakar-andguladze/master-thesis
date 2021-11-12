@@ -204,10 +204,11 @@ def cross_traffic(net, ct, duration=10, router_count=3):
     bottomHost = net.get("b2")
     
     cmd_bottom= "iperf -s -t {} -B 10.2.{}.40"
-    cmd_top= "iperf -c 10.2.{}.40 -u -t {} -B 10.1.{}.20 -b {}M"
+    cmd_top= "iperf -c 10.2.{}.40 -t {} -B 10.1.{}.20 -b {}M"
 
+    # Prefer UDP traffic (-u parameter)
     # cmd_bottom= "iperf -s -u -t {} -B 10.2.{}.40"
-    # cmd_top= "iperf -c 10.2.{}.40 -t {} -B 10.1.{}.20 -b {}M"
+    # cmd_top= "iperf -c 10.2.{}.40 -u -t {} -B 10.1.{}.20 -b {}M"
 
 
     lastTop = net.get("t{}".format(router_count))
