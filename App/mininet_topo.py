@@ -227,10 +227,12 @@ def cross_traffic(net, ct, duration=10, router_count=3):
     
     time.sleep(5)
     for i in range(2, router_count+1):
+        bottomHost = net.get("b{}".format(i))
         cmd = cmd_bottom.format(duration + 2, i)
         bottomHost.popen(cmd, stdout=PIPE, stderr=PIPE)
 
     for i in range(1, router_count):
+        topHost = net.get("t{}".format(i))
         cmd = cmd_top.format(i + 1, duration + 2, i, capacities[i] * ct)
         topHost.popen(cmd, stdout=PIPE, stderr=PIPE)
 

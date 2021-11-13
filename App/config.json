@@ -6,6 +6,6 @@
   "packets_per_hop": 300,
   "icmp_ratelimit": 0,
   "packet_loss": 0,
-  "cross_traffic": 0.0,
-  "repeat_test": 20
+  "cross_traffic": 1.0,
+  "repeat_test": 1
 }
