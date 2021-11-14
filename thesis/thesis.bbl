@@ -17,11 +17,91 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
+  \entry{Prasad2003}{article}{}
+    \name{author}{4}{}{%
+      {{hash=PR}{%
+         family={Prasad},
+         familyi={P\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=MC}{%
+         family={Murray},
+         familyi={M\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=DC}{%
+         family={Dovrolis},
+         familyi={D\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=CK}{%
+         family={Claffy},
+         familyi={C\bibinitperiod},
+         given={K.},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PRMCDC+1}
+    \strng{fullhash}{PRMCDCCK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{\sc{CSMA/CA}} {B}andwidth {E}stimation: {M}etrics,
+  {M}easurement {T}echniques, and {T}ools}
+    \field{month}{12}
+    \field{year}{2003}
+  \endentry
+
   \entry{mnHome}{misc}{}
     \field{labeltitlesource}{title}
-    \field{howpublished}{\url{http://mininet.org//}}
+    \field{howpublished}{\url{http://mininet.org/}}
     \field{note}{[Online; accessed 2021]}
     \field{title}{{Mininet Home}}
+  \endentry
+
+  \entry{ttl_hop_limit}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=IS}{%
+         family={Iveson},
+         familyi={I\bibinitperiod},
+         given={Steven},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{IS1}
+    \strng{fullhash}{IS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/}}
+    \field{title}{{IP Time to Live (TTL) and Hop Limit Basics}}
+    \field{month}{05}
+    \field{year}{2019}
+  \endentry
+
+  \entry{pprate2006}{article}{}
+    \name{author}{2}{}{%
+      {{hash=ENT}{%
+         family={En-Najjary},
+         familyi={E\bibinithyphendelim N\bibinitperiod},
+         given={Taoufik},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=UKG}{%
+         family={Urvoy-Keller},
+         familyi={U\bibinithyphendelim K\bibinitperiod},
+         given={Guillaume},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ENTUKG1}
+    \strng{fullhash}{ENTUKG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{PPrate: A Passive Capacity Estimation Tool}
+    \field{month}{05}
+    \field{year}{2006}
   \endentry
 
   \entry{Brzoza}{thesis}{}
@@ -42,13 +122,114 @@
     \list{location}{1}{%
       {Munich, Germany}%
     }
+    \list{institution}{1}{%
+      {Technische Universit\"{a}t M\"{u}nchen}%
+    }
     \field{type}{B.Sc. Thesis}
     \field{year}{2019}
   \endentry
 
+  \entry{packet_loss_explained}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=A}{%
+         family={{Alexander S. Gillis}},
+         familyi={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{A1}
+    \strng{fullhash}{A1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://www.techtarget.com/searchnetworking/definition/packet-loss/}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{Packet Loss}}
+  \endentry
+
+  \entry{icmp_ratemask}{misc}{}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://man7.org/linux/man-pages/man7/icmp.7.html}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{icmp - Linux IPv4 ICMP kernel module}}
+  \endentry
+
+  \entry{juniper}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=J}{%
+         family={{Juniper Networks}},
+         familyi={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{J1}
+    \strng{fullhash}{J1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://www.juniper.net/documentation/us/en/software/junos/transport-ip/topics/ref/statement/icmp-edit-chassis.html/}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{icmp - Error Message Rate Limit}}
+  \endentry
+
+  \entry{RaUrBa_icmp}{article}{}
+    \name{author}{3}{}{%
+      {{hash=RR}{%
+         family={Ravaioli},
+         familyi={R\bibinitperiod},
+         given={Ricardo},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=UKG}{%
+         family={Urvoy-Keller},
+         familyi={U\bibinithyphendelim K\bibinitperiod},
+         given={Guillaume},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=CB}{%
+         family={Chadi},
+         familyi={C\bibinitperiod},
+         given={Barakat},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RRUKGCB1}
+    \strng{fullhash}{RRUKGCB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Characterizing ICMP Rate Limitation on Routers}
+    \list{institution}{1}{%
+      {Universite Nice Sophia Antipolis}%
+    }
+    \field{year}{2015}
+  \endentry
+
+  \entry{fader2017}{article}{}
+    \name{author}{2}{}{%
+      {{hash=GH}{%
+         family={Guo},
+         familyi={G\bibinitperiod},
+         given={Hang},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=HJ}{%
+         family={Heidemann},
+         familyi={H\bibinitperiod},
+         given={John},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GHHJ1}
+    \strng{fullhash}{GHHJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Detecting ICMP Rate Limiting in the Internet(Extended)}
+    \list{institution}{1}{%
+      {Information Sciences Institute}%
+    }
+    \field{month}{04}
+    \field{year}{2017}
+  \endentry
+
   \entry{mnInstall}{misc}{}
     \field{labeltitlesource}{title}
-    \field{howpublished}{\url{http://mininet.org/download//}}
+    \field{howpublished}{\url{http://mininet.org/download/}}
     \field{note}{[Online; accessed 11.2021]}
     \field{title}{{Mininet Installation}}
   \endentry

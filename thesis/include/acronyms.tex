@@ -13,6 +13,37 @@
 
 \tabulinesep=1ex
 
+\DeclareAcronym{mss}{
+	short				= {\sc{MSS}},
+	long				= {Maximum Segment Size},
+	list				= {\acl{mss}.},
+}
+\DeclareAcronym{mtu}{
+	short				= {\sc{MTU}},
+	long				= {Maximum Transmision Unit},
+	list				= {\acl{mtu}.},
+}
+\DeclareAcronym{tcp}{
+	short				= {\sc{TCP}},
+	long				= {Transmission Control Protocol},
+	list				= {\Acl{tcp}.},
+	extra				= {%
+		Stream-oriented, reliable, transport layer protocol.
+	}
+}
+\DeclareAcronym{icmp}{
+	short				= {\sc{ICMP}},
+	long				= {Internet Control Message Protocol},
+	list				= {\acl{icmp}.},
+}
+\DeclareAcronym{udp}{
+	short				= {\sc{UDP}},
+	long				= {User Datagram Protocol},
+	list				= {\Acl{udp}.},
+	extra				= {%
+		Datagram-oriented, unreliable transport layer protocol.
+	}
+}
 \DeclareAcronym{iso}{
 	short				= {\sc{ISO}},
 	long				= {International Organization for Standardization},
@@ -53,22 +84,6 @@
 	long				= {medium access control},
 	list				= {\Acl{mac}.},
 }
-\DeclareAcronym{tcp}{
-	short				= {\sc{TCP}},
-	long				= {transmission control protocol},
-	list				= {\Acl{tcp}.},
-	extra				= {%
-		Stream-oriented, reliable, transport layer protocol.
-	}
-}
-\DeclareAcronym{udp}{
-	short				= {\sc{UDP}},
-	long				= {user datagram protocol},
-	list				= {\Acl{udp}.},
-	extra				= {%
-		Datagram-oriented, unreliable transport layer protocol.
-	}
-}
 \DeclareAcronym{sctp}{
 	short				= {\sc{SCTP}},
 	long				= {Stream Control Transmission Protocol},
@@ -77,4 +92,5 @@
 		Datagram-oriented, semi-reliable transport layer protocol.
 	}
 }
+
 

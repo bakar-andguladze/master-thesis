@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2021.1.11)  7 NOV 2021 14:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2021.1.11)  14 NOV 2021 04:46
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -1582,14 +1582,17 @@ Package acro Warning: On line 6:
 (acro)                The option `only-used' is deprecated. Use option
 (acro)                `list/display' instead.
 
-\g__acro_iso_int=\count527
-\g__acro_osi_int=\count528
-\g__acro_pdu_int=\count529
-\g__acro_sdu_int=\count530
-\g__acro_mac_int=\count531
-\g__acro_tcp_int=\count532
-\g__acro_udp_int=\count533
-\g__acro_sctp_int=\count534
+\g__acro_mss_int=\count527
+\g__acro_mtu_int=\count528
+\g__acro_tcp_int=\count529
+\g__acro_icmp_int=\count530
+\g__acro_udp_int=\count531
+\g__acro_iso_int=\count532
+\g__acro_osi_int=\count533
+\g__acro_pdu_int=\count534
+\g__acro_sdu_int=\count535
+\g__acro_mac_int=\count536
+\g__acro_sctp_int=\count537
 ) ("C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty"
 Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
 
@@ -1603,8 +1606,8 @@ Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 )
 \@linkdim=\dimen356
-\Hy@linkcounter=\count535
-\Hy@pagecounter=\count536
+\Hy@linkcounter=\count538
+\Hy@pagecounter=\count539
 
 ("C:\Program Files\MiKTeX\tex/latex/hyperref\pd1enc.def"
 File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
@@ -1614,7 +1617,7 @@ Now handling font encoding PD1 ...
 ("C:\Program Files\MiKTeX\tex/generic/intcalc\intcalc.sty"
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count537
+\Hy@SavedSpaceFactor=\count540
 Package hyperref Info: Option `colorlinks' set `false' on input line 4338.
 Package hyperref Info: Hyper figures OFF on input line 4464.
 Package hyperref Info: Link nesting OFF on input line 4469.
@@ -1623,7 +1626,7 @@ Package hyperref Info: Plain pages OFF on input line 4479.
 Package hyperref Info: Backreferencing OFF on input line 4484.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4717.
-\c@Hy@tempcnt=\count538
+\c@Hy@tempcnt=\count541
 LaTeX Info: Redefining \url on input line 5076.
 \XeTeXLinkMargin=\dimen357
 
@@ -1634,7 +1637,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count539
+\Fld@menulength=\count542
 \Field@Width=\dimen358
 \Fld@charsize=\dimen359
 Package hyperref Info: Hyper figures OFF on input line 6347.
@@ -1646,9 +1649,9 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6372.
 Package hyperref Info: PDF/A mode OFF on input line 6377.
 LaTeX Info: Redefining \ref on input line 6417.
 LaTeX Info: Redefining \pageref on input line 6421.
-\Hy@abspage=\count540
-\c@Item=\count541
-\c@Hfootnote=\count542
+\Hy@abspage=\count543
+\c@Item=\count544
+\c@Hfootnote=\count545
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -1660,9 +1663,9 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
 e
 with kernel methods
 )
-\HyAnn@Count=\count543
-\Fld@listcount=\count544
-\c@bookmark@seq@number=\count545
+\HyAnn@Count=\count546
+\Fld@listcount=\count547
+\c@bookmark@seq@number=\count548
 
 ("C:\Program Files\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty"
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
@@ -1679,13 +1682,26 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count546
-\@quotereset=\count547
+\@quotelevel=\count549
+\@quotereset=\count550
 
 LaTeX Warning: Unused global option(s):
     [master].
 
-(thesis.aux (thesis.acr))
+(thesis.aux
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+(thesis.acr))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
@@ -1704,19 +1720,18 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 122.
 LaTeX Font Info:    ... okay on input line 122.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 122.
 LaTeX Font Info:    ... okay on input line 122.
-
-("C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii"
+ ("C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count548
+\scratchcounter=\count551
 \scratchdimen=\dimen360
 \scratchbox=\box110
-\nofMPsegments=\count549
-\nofMParguments=\count550
+\nofMPsegments=\count552
+\nofMParguments=\count553
 \everyMPshowfont=\toks51
-\MPscratchCnt=\count551
+\MPscratchCnt=\count554
 \MPscratchDim=\dimen361
-\MPnumerator=\count552
-\makeMPintoPDFobject=\count553
+\MPnumerator=\count555
+\makeMPintoPDFobject=\count556
 \everyMPtoPDFconversion=\toks52
 ) ("C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty"
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1776,7 +1791,7 @@ nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `english'. on input line 122.
-\c@lstlisting=\count554
+\c@lstlisting=\count557
 Package biblatex Info: Trying to load language 'ngerman'...
 Package biblatex Info: ... file 'ngerman.lbx' found.
 
@@ -1832,7 +1847,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ("C:\Program Files\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty"
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count555
+\c@section@level=\count558
 )
 LaTeX Info: Redefining \ref on input line 122.
 LaTeX Info: Redefining \pageref on input line 122.
@@ -1997,58 +2012,136 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 ]
 Chapter 2.
+[5] [6]) (include/chapter3.tex [7] [8
 
-LaTeX Warning: Citation 'prasad' on page 5 undefined on input line 5.
-
-
-LaTeX Warning: Citation 'prasad' on page 5 undefined on input line 7.
-
-[5]) (include/chapter3.tex [6]
+]
 Chapter 3.
-) (include/chapter4.tex [7
-
-] [8
+) (include/chapter4.tex [9] [10
 
 ]
 Chapter 4.
-) (include/chapter5.tex [9] [10
+<./images//approach.png, id=437, 683.55376pt x 209.28188pt>
+File: ./images//approach.png Graphic file (type png)
+<use ./images//approach.png>
+Package pdftex.def Info: ./images//approach.png  used on input line 9.
+(pdftex.def)             Requested size: 415.4814pt x 127.20828pt.
 
-]
-Chapter 5.
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
-
+Overfull \hbox (38.42322pt too wide) in paragraph at lines 23--24
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][] 
  []
 
-<./images//topology.png, id=389, 3173.8575pt x 1499.6025pt>
+[11 <./images//approach.png>]) (include/chapter5.tex [12]
+Chapter 5.
+[13
+
+]
+<./images//topology.png, id=488, 2752.2825pt x 1559.8275pt>
 File: ./images//topology.png Graphic file (type png)
 <use ./images//topology.png>
-Package pdftex.def Info: ./images//topology.png  used on input line 27.
-(pdftex.def)             Requested size: 415.4814pt x 196.3052pt.
-[12 <./images//topology.png>]
-<./images//topo_size/topo_size_3.png, id=399, 621.07031pt x 616.55344pt>
+Package pdftex.def Info: ./images//topology.png  used on input line 37.
+(pdftex.def)             Requested size: 415.4814pt x 235.4635pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14] [15 <./images//topology.png>]
+<./images//baseline_measurement.png, id=505, 617.30624pt x 613.54219pt>
+File: ./images//baseline_measurement.png Graphic file (type png)
+<use ./images//baseline_measurement.png>
+Package pdftex.def Info: ./images//baseline_measurement.png  used on input line
+ 63.
+(pdftex.def)             Requested size: 290.83571pt x 289.06702pt.
+<./images//baseline_error.png, id=506, 1174.3875pt x 613.54219pt>
+File: ./images//baseline_error.png Graphic file (type png)
+<use ./images//baseline_error.png>
+Package pdftex.def Info: ./images//baseline_error.png  used on input line 70.
+(pdftex.def)             Requested size: 415.4814pt x 217.05537pt.
+ [16 <./images//baseline_measurement.png>]
+[17 <./images//baseline_error.png>]
+<./images//topo_size/topo_size_3.png, id=522, 616.55344pt x 613.54219pt>
 File: ./images//topo_size/topo_size_3.png Graphic file (type png)
 <use ./images//topo_size/topo_size_3.png>
 Package pdftex.def Info: ./images//topo_size/topo_size_3.png  used on input lin
-e 51.
-(pdftex.def)             Requested size: 186.96535pt x 185.60718pt.
-<./images//topo_size/topo_size_32.png, id=400, 616.55344pt x 615.0478pt>
-File: ./images//topo_size/topo_size_32.png Graphic file (type png)
-<use ./images//topo_size/topo_size_32.png>
-Package pdftex.def Info: ./images//topo_size/topo_size_32.png  used on input li
-ne 56.
-(pdftex.def)             Requested size: 186.96535pt x 186.50536pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 81--86
-
+e 104.
+(pdftex.def)             Requested size: 186.96535pt x 186.0488pt.
+<./images//topo_size/topo_size_63.png, id=523, 617.30624pt x 612.78937pt>
+File: ./images//topo_size/topo_size_63.png Graphic file (type png)
+<use ./images//topo_size/topo_size_63.png>
+Package pdftex.def Info: ./images//topo_size/topo_size_63.png  used on input li
+ne 110.
+(pdftex.def)             Requested size: 186.96535pt x 185.5961pt.
+<./images//topo_size/topo_size_all_errors.png, id=524, 1174.3875pt x 612.78937p
+t>
+File: ./images//topo_size/topo_size_all_errors.png Graphic file (type png)
+<use ./images//topo_size/topo_size_all_errors.png>
+Package pdftex.def Info: ./images//topo_size/topo_size_all_errors.png  used on 
+input line 118.
+(pdftex.def)             Requested size: 415.4814pt x 216.78903pt.
+ [18 <./images//topo_size/topo_size_3.png> <./images//topo_size/topo_size_63.pn
+g> <./images//topo_size/topo_size_all_errors.png>]
+<./images//packet_size/packet_size_all.png, id=533, 680.7834pt x 694.5147pt>
+File: ./images//packet_size/packet_size_all.png Graphic file (type png)
+<use ./images//packet_size/packet_size_all.png>
+Package pdftex.def Info: ./images//packet_size/packet_size_all.png  used on inp
+ut line 160.
+(pdftex.def)             Requested size: 290.83571pt x 296.69617pt.
+<./images//packet_size/packet_size_all_error.png, id=534, 1169.87062pt x 612.78
+937pt>
+File: ./images//packet_size/packet_size_all_error.png Graphic file (type png)
+<use ./images//packet_size/packet_size_all_error.png>
+Package pdftex.def Info: ./images//packet_size/packet_size_all_error.png  used 
+on input line 168.
+(pdftex.def)             Requested size: 415.4814pt x 217.63057pt.
+ [19] [20 <./images//packet_size/packet_size_all.png> <./images//packet_size/pa
+cket_size_all_error.png>] [21] [22]
+Overfull \hbox (7.00803pt too wide) in paragraph at lines 254--264
+ [][] 
  []
 
-[13 <./images//topo_size/topo_size_3.png> <./images//topo_size/topo_size_32.png
->] [14]) (include/chapter6.tex [15] [16
+<./images//capacity_range/cap_range_100_1000.png, id=567, 628.59843pt x 612.789
+37pt>
+File: ./images//capacity_range/cap_range_100_1000.png Graphic file (type png)
+<use ./images//capacity_range/cap_range_100_1000.png>
+Package pdftex.def Info: ./images//capacity_range/cap_range_100_1000.png  used 
+on input line 277.
+(pdftex.def)             Requested size: 290.83571pt x 283.5135pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./images//capacity_range/cap_range_100_1000_error.png, id=568, 1169.11781pt x 
+611.28375pt>
+File: ./images//capacity_range/cap_range_100_1000_error.png Graphic file (type 
+png)
+<use ./images//capacity_range/cap_range_100_1000_error.png>
+Package pdftex.def Info: ./images//capacity_range/cap_range_100_1000_error.png 
+ used on input line 284.
+(pdftex.def)             Requested size: 415.4814pt x 217.23576pt.
+[23] [24 <./images//capacity_range/cap_range_100_1000.png> <./images//capacity_
+range/cap_range_100_1000_error.png>]
+<./images//packet_loss/packet_loss.png, id=582, 616.55344pt x 612.03656pt>
+File: ./images//packet_loss/packet_loss.png Graphic file (type png)
+<use ./images//packet_loss/packet_loss.png>
+Package pdftex.def Info: ./images//packet_loss/packet_loss.png  used on input l
+ine 302.
+(pdftex.def)             Requested size: 290.83571pt x 288.71252pt.
+ [25 <./images//packet_loss/packet_loss.png>]
+<./images//icmp_ratelimit/icmp_all.png, id=594, 627.09282pt x 691.83469pt>
+File: ./images//icmp_ratelimit/icmp_all.png Graphic file (type png)
+<use ./images//icmp_ratelimit/icmp_all.png>
+Package pdftex.def Info: ./images//icmp_ratelimit/icmp_all.png  used on input l
+ine 327.
+(pdftex.def)             Requested size: 290.83571pt x 320.87639pt.
+ [26]
+<./images//icmp_ratelimit/icmp_1000_10k.png, id=602, 561.59813pt x 613.54219pt>
+
+File: ./images//icmp_ratelimit/icmp_1000_10k.png Graphic file (type png)
+<use ./images//icmp_ratelimit/icmp_1000_10k.png>
+Package pdftex.def Info: ./images//icmp_ratelimit/icmp_1000_10k.png  used on in
+put line 353.
+(pdftex.def)             Requested size: 290.83571pt x 317.73311pt.
+ [27 <./images//icmp_ratelimit/icmp_all.png>] [28 <./images//icmp_ratelimit/icm
+p_1000_10k.png>]) (include/chapter6.tex [29] [30
 
 ]
 Chapter 6.
@@ -2058,36 +2151,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--8
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 12--14
+Underfull \hbox (badness 10000) in paragraph at lines 17--19
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--16
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--18
-
- []
-
-[17])
-Underfull \hbox (badness 10000) in paragraph at lines 25--167
-
- []
-
-(include/appendix.tex [18]
+[31]) (include/appendix.tex [32]
 Appendix A.
-[19
+[33
 
 ]
-<./images//architecture.png, id=435, 2201.22375pt x 1186.4325pt>
+<./images//architecture.png, id=641, 2201.22375pt x 1186.4325pt>
 File: ./images//architecture.png Graphic file (type png)
 <use ./images//architecture.png>
 Package pdftex.def Info: ./images//architecture.png  used on input line 20.
@@ -2097,76 +2180,84 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 ("C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty"
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [20 <./images//architecture.png>] [21]) [22]
+) [34 <./images//architecture.png>] [35]) [36]
 Appendix B.
-[23
+[37
 
-] [24
+] [38
 
 
 ]
-Overfull \hbox (4.11488pt too wide) in paragraph at lines 180--180
-[]\T1/lmr/m/it/10.95 Mininet In-stal-la-tion\T1/lmr/m/n/10.95 , []$\T1/lmtt/m/n
-/10.95 http : / / mininet . org / download / /$[]\T1/lmr/m/n/10.95 , [On-line; 
-ac-cessed 11.2021]. 
+Overfull \hbox (5.42688pt too wide) in paragraph at lines 180--180
+[]\T1/lmr/m/n/10.95 S. Ive-son, \T1/lmr/m/it/10.95 IP Time to Live (TTL) and Ho
+p Limit Ba-sics\T1/lmr/m/n/10.95 , []$\T1/lmtt/m/n/10.95 https : / / packetpush
+ers .
  []
 
-[25
+
+Overfull \hbox (19.6089pt too wide) in paragraph at lines 180--180
+[]\T1/lmr/m/n/10.95 Alexander S. Gillis, \T1/lmr/m/it/10.95 Packet Loss\T1/lmr/
+m/n/10.95 , []$\T1/lmtt/m/n/10.95 https : / / www . techtarget . com / searchne
+tworking /
+ []
+
+
+Overfull \hbox (22.93213pt too wide) in paragraph at lines 180--180
+[]\T1/lmr/m/n/10.95 H. Guo and J. Hei-de-mann, ``De-tect-ing ICMP Rate Lim-it-i
+ng in the In-ter-net(Extended)'',
+ []
+
+
+Overfull \hbox (3.84114pt too wide) in paragraph at lines 180--180
+[]\T1/lmr/m/it/10.95 Mininet In-stal-la-tion\T1/lmr/m/n/10.95 , []$\T1/lmtt/m/n
+/10.95 http : / / mininet . org / download/$[]\T1/lmr/m/n/10.95 , [On-line; ac-
+cessed 11.2021]. 
+ []
+
+[39
 
 ]
 
 Package caption Warning: Unused \captionsetup[subfloat] on input line 32.
 See the caption package documentation for explanation.
 
-
-Package acro Warning: Empty acronym list. If you have used acronyms then
-(acro)                re-compile to get the list filled. Otherwise remove
-(acro)                \printacronyms
-
 (thesis.aux (thesis.acr))
-
-Package rerunfilecheck Warning: File `thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: 88C64B2A22509D65CA6BE600CE7B546A;3299
-(rerunfilecheck)             After:  D5C5F8536C35554F67B4D84E808FAED7;3314.
-
-LaTeX Warning: There were undefined references.
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 5DC36FC54DF01DD3522E8C89FEE1E8BB;3581.
 
 
-Package biblatex Warning: Please (re)run BibTeX on the file(s):
-(biblatex)                thesis
-(biblatex)                and rerun LaTeX afterwards.
+LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 53176 strings out of 479798
- 1243043 string characters out of 2879581
- 2050564 words of memory out of 3000000
- 69114 multiletter control sequences out of 15000+200000
- 636731 words of font info for 103 fonts, out of 3000000 for 9000
+ 53703 strings out of 479798
+ 1260475 string characters out of 2879581
+ 2062540 words of memory out of 3000000
+ 69549 multiletter control sequences out of 15000+200000
+ 648226 words of font info for 110 fonts, out of 3000000 for 9000
  1149 hyphenation exceptions out of 8191
- 150i,8n,150p,1843b,2743s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 150i,10n,150p,1843b,2753s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTe
-X/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8
-r.enc}<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Fil
-es/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1
-/public/lm/lmcsc10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb
-><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiK
-TeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/
-lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Progr
-am Files/MiKTeX/fonts/type1/public/lm/lmss9.pfb><C:/Program Files/MiKTeX/fonts/
-type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt8
-.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program F
-iles/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on thesis.pdf (39 pages, 680035 bytes).
+X/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/
+lm-ts1.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Fil
+es/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1
+/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbxi10.pf
+b><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files/
+MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
+lic/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Pr
+ogram Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/font
+s/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lms
+s9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Fi
+les/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX/fonts/type
+1/public/lm/lmtt8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtti10.pf
+b><C:/Program Files/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program File
+s/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on thesis.pdf (53 pages, 1939833 bytes).
 PDF statistics:
- 567 PDF objects out of 1000 (max. 8388607)
- 118 named destinations out of 1000 (max. 500000)
- 449 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 806 PDF objects out of 1000 (max. 8388607)
+ 190 named destinations out of 1000 (max. 500000)
+ 536 words of extra memory for PDF output out of 10000 (max. 10000000)
 

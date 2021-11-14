@@ -4,49 +4,53 @@
 \BOOKMARK [1][-]{section.1.3}{Outline}{chapter.1}% 4
 \BOOKMARK [0][-]{chapter.2}{Background}{}% 5
 \BOOKMARK [1][-]{section.2.1}{Terminology}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.2}{OSI Model}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Network Layers}{chapter.2}% 7
 \BOOKMARK [1][-]{section.2.3}{TCP}{chapter.2}% 8
-\BOOKMARK [1][-]{section.2.4}{ICMP}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.5}{Traffic Generation}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.6}{Capacity Estimation}{chapter.2}% 11
-\BOOKMARK [0][-]{chapter.3}{Related Work}{}% 12
-\BOOKMARK [1][-]{section.3.1}{Existing Approaches}{chapter.3}% 13
-\BOOKMARK [0][-]{chapter.4}{Implementation}{}% 14
-\BOOKMARK [1][-]{section.4.1}{Analysis}{chapter.4}% 15
-\BOOKMARK [1][-]{section.4.2}{Approach}{chapter.4}% 16
-\BOOKMARK [1][-]{section.4.3}{Traffic Generation}{chapter.4}% 17
-\BOOKMARK [1][-]{section.4.4}{Estimation of End-to-End Capacity}{chapter.4}% 18
-\BOOKMARK [1][-]{section.4.5}{Estimation of Capacities Hop-by-Hop}{chapter.4}% 19
-\BOOKMARK [1][-]{section.4.6}{Locating the Narrow Link}{chapter.4}% 20
-\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 21
-\BOOKMARK [1][-]{section.5.1}{Test Environment and Setup}{chapter.5}% 22
-\BOOKMARK [1][-]{section.5.2}{Evaluation in Empty Network}{chapter.5}% 23
-\BOOKMARK [2][-]{subsection.5.2.1}{Path Length}{section.5.2}% 24
-\BOOKMARK [2][-]{subsection.5.2.2}{Packet Size}{section.5.2}% 25
-\BOOKMARK [2][-]{subsection.5.2.3}{Train Length}{section.5.2}% 26
-\BOOKMARK [2][-]{subsection.5.2.4}{Optimal Intrusion}{section.5.2}% 27
-\BOOKMARK [2][-]{subsection.5.2.5}{Capacity Range}{section.5.2}% 28
-\BOOKMARK [2][-]{subsection.5.2.6}{Packet Loss}{section.5.2}% 29
-\BOOKMARK [2][-]{subsection.5.2.7}{ICMP Rate Limiting}{section.5.2}% 30
-\BOOKMARK [2][-]{subsection.5.2.8}{Summary}{section.5.2}% 31
-\BOOKMARK [1][-]{section.5.3}{Evaluation during Cross-Traffic}{chapter.5}% 32
-\BOOKMARK [2][-]{subsection.5.3.1}{Path Length}{section.5.3}% 33
-\BOOKMARK [2][-]{subsection.5.3.2}{Packet Size}{section.5.3}% 34
-\BOOKMARK [2][-]{subsection.5.3.3}{Train Length}{section.5.3}% 35
-\BOOKMARK [2][-]{subsection.5.3.4}{Optimal Intrusion during Cross-Traffic}{section.5.3}% 36
-\BOOKMARK [2][-]{subsection.5.3.5}{Capacity Range}{section.5.3}% 37
-\BOOKMARK [2][-]{subsection.5.3.6}{Packet Loss}{section.5.3}% 38
-\BOOKMARK [2][-]{subsection.5.3.7}{ICMP Rate Limiting}{section.5.3}% 39
-\BOOKMARK [2][-]{subsection.5.3.8}{Combination of Cross-Traffic, Artificial Packet Loss and ICMP Rate Limiting}{section.5.3}% 40
-\BOOKMARK [2][-]{subsection.5.3.9}{Summary}{section.5.3}% 41
-\BOOKMARK [1][-]{section.5.4}{Data Replication}{chapter.5}% 42
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 43
-\BOOKMARK [1][-]{section.6.1}{Evaluation Results}{chapter.6}% 44
-\BOOKMARK [1][-]{section.6.2}{Answers to the Research Questions}{chapter.6}% 45
-\BOOKMARK [1][-]{section.6.3}{Future Work}{chapter.6}% 46
-\BOOKMARK [0][-]{appendix.A}{Appendix}{}% 47
-\BOOKMARK [1][-]{section.A.1}{The Source Code Repository}{appendix.A}% 48
-\BOOKMARK [1][-]{section.A.2}{Setup}{appendix.A}% 49
-\BOOKMARK [1][-]{section.A.3}{Running Tests}{appendix.A}% 50
-\BOOKMARK [0][-]{appendix.B}{List of acronyms}{}% 51
-\BOOKMARK [0][-]{appendix*.8}{Bibliography}{}% 52
+\BOOKMARK [1][-]{section.2.4}{UDP}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.5}{ICMP}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.6}{Traffic Generation}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.7}{Capacity Estimation}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.7.1}{End-to-End vs Hop-by-Hop Capacity Estimation}{section.2.7}% 13
+\BOOKMARK [2][-]{subsection.2.7.2}{Active vs Passive Capacity Estimation}{section.2.7}% 14
+\BOOKMARK [0][-]{chapter.3}{Related Work}{}% 15
+\BOOKMARK [1][-]{section.3.1}{Existing Approaches}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.1.1}{Variable Packet Size Probing}{section.3.1}% 17
+\BOOKMARK [2][-]{subsection.3.1.2}{Packet Pair/Train Probing}{section.3.1}% 18
+\BOOKMARK [2][-]{subsection.3.1.3}{Pathchar}{section.3.1}% 19
+\BOOKMARK [2][-]{subsection.3.1.4}{PPrate}{section.3.1}% 20
+\BOOKMARK [0][-]{chapter.4}{Implementation}{}% 21
+\BOOKMARK [1][-]{section.4.1}{Analysis}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.2}{Approach}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.3}{Traffic Generation}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.4}{Capturing the Traffic and Estimating Capacities}{chapter.4}% 25
+\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 26
+\BOOKMARK [1][-]{section.5.1}{Test Environment and Setup}{chapter.5}% 27
+\BOOKMARK [1][-]{section.5.2}{Evaluation in Empty Network}{chapter.5}% 28
+\BOOKMARK [2][-]{subsection.5.2.1}{Path Length}{section.5.2}% 29
+\BOOKMARK [2][-]{subsection.5.2.2}{Packet Size}{section.5.2}% 30
+\BOOKMARK [2][-]{subsection.5.2.3}{Train Length}{section.5.2}% 31
+\BOOKMARK [2][-]{subsection.5.2.4}{Optimal Intrusion}{section.5.2}% 32
+\BOOKMARK [2][-]{subsection.5.2.5}{Capacity Range}{section.5.2}% 33
+\BOOKMARK [2][-]{subsection.5.2.6}{Packet Loss}{section.5.2}% 34
+\BOOKMARK [2][-]{subsection.5.2.7}{ICMP Rate Limiting}{section.5.2}% 35
+\BOOKMARK [2][-]{subsection.5.2.8}{Summary}{section.5.2}% 36
+\BOOKMARK [1][-]{section.5.3}{Evaluation during Cross-Traffic}{chapter.5}% 37
+\BOOKMARK [2][-]{subsection.5.3.1}{Packet Size}{section.5.3}% 38
+\BOOKMARK [2][-]{subsection.5.3.2}{Train Length}{section.5.3}% 39
+\BOOKMARK [2][-]{subsection.5.3.3}{Optimal Intrusion during Cross-Traffic}{section.5.3}% 40
+\BOOKMARK [2][-]{subsection.5.3.4}{Path Length}{section.5.3}% 41
+\BOOKMARK [2][-]{subsection.5.3.5}{Capacity Range}{section.5.3}% 42
+\BOOKMARK [2][-]{subsection.5.3.6}{Packet Loss}{section.5.3}% 43
+\BOOKMARK [2][-]{subsection.5.3.7}{ICMP Rate Limiting}{section.5.3}% 44
+\BOOKMARK [2][-]{subsection.5.3.8}{Summary}{section.5.3}% 45
+\BOOKMARK [1][-]{section.5.4}{Data Replication}{chapter.5}% 46
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 47
+\BOOKMARK [1][-]{section.6.1}{Evaluation Results}{chapter.6}% 48
+\BOOKMARK [1][-]{section.6.2}{Answers to the Research Questions}{chapter.6}% 49
+\BOOKMARK [1][-]{section.6.3}{Future Work}{chapter.6}% 50
+\BOOKMARK [0][-]{appendix.A}{Reproducibility}{}% 51
+\BOOKMARK [1][-]{section.A.1}{The Source Code Repository}{appendix.A}% 52
+\BOOKMARK [1][-]{section.A.2}{Setup}{appendix.A}% 53
+\BOOKMARK [1][-]{section.A.3}{Running Tests}{appendix.A}% 54
+\BOOKMARK [0][-]{appendix.B}{List of acronyms}{}% 55
+\BOOKMARK [0][-]{appendix*.24}{Bibliography}{}% 56
