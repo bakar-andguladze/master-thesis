@@ -17,6 +17,120 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
+  \entry{osi_iso}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=I}{%
+         family={{ISO}},
+         familyi={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{I2}
+    \strng{fullhash}{I2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://standards.iso.org/ittf/PubliclyAvailableStandards/index.html/}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{Information technology — Open Systems Interconnection —
+  Basic Reference Model: The Basic Model}}
+  \endentry
+
+  \entry{osi_model_ref}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=SB}{%
+         family={Sandberg},
+         familyi={S\bibinitperiod},
+         given={Bobbi},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SB1}
+    \strng{fullhash}{SB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Networking - The Complete Reference, 3rd edition}
+    \field{pages}{40\bibrangedash 65}
+    \field{title}{The OSI Reference Model}
+    \field{year}{2015}
+  \endentry
+
+  \entry{ietf_ip}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=I}{%
+         family={{Internet Engineering Task Force (IETF)}},
+         familyi={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{I1}
+    \strng{fullhash}{I1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://datatracker.ietf.org/doc/html/rfc791}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{Internet Protocol}}
+  \endentry
+
+  \entry{iph}{misc}{}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://www4.cs.fau.de/Projects/JX/Projects/TCP/jxtcp.html}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{TCP/IP Header}}
+  \endentry
+
+  \entry{ietf_icmp}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=I}{%
+         family={{Internet Engineering Task Force (IETF)}},
+         familyi={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{I1}
+    \strng{fullhash}{I1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://datatracker.ietf.org/doc/html/rfc792}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{Internet Control Message Protocol}}
+  \endentry
+
+  \entry{icmp_man}{misc}{}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://man7.org/linux/man-pages/man7/icmp.7.html}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{Linux man page - icmp}}
+  \endentry
+
+  \entry{ietf_tcp}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=I}{%
+         family={{Internet Engineering Task Force (IETF)}},
+         familyi={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{I1}
+    \strng{fullhash}{I1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://datatracker.ietf.org/doc/html/rfc793}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{Transmission Control Protocol}}
+  \endentry
+
+  \entry{ietf_udp}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=I}{%
+         family={{Internet Engineering Task Force (IETF)}},
+         familyi={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{I1}
+    \strng{fullhash}{I1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://datatracker.ietf.org/doc/html/rfc768}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{User Datagram Protocol}}
+  \endentry
+
   \entry{Prasad2003}{article}{}
     \name{author}{4}{}{%
       {{hash=PR}{%
@@ -54,30 +168,86 @@
     \field{year}{2003}
   \endentry
 
-  \entry{mnHome}{misc}{}
-    \field{labeltitlesource}{title}
-    \field{howpublished}{\url{http://mininet.org/}}
-    \field{note}{[Online; accessed 2021]}
-    \field{title}{{Mininet Home}}
-  \endentry
-
-  \entry{ttl_hop_limit}{misc}{}
+  \entry{tcp_raw_sockets}{misc}{}
     \name{author}{1}{}{%
-      {{hash=IS}{%
-         family={Iveson},
-         familyi={I\bibinitperiod},
-         given={Steven},
-         giveni={S\bibinitperiod},
+      {{hash=S}{%
+         family={{Silver Moon}},
+         familyi={S\bibinitperiod},
       }}%
     }
-    \strng{namehash}{IS1}
-    \strng{fullhash}{IS1}
+    \strng{namehash}{S1}
+    \strng{fullhash}{S1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-  \field{howpublished}{\url{https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/}}
-    \field{title}{{IP Time to Live (TTL) and Hop Limit Basics}}
-    \field{month}{05}
-    \field{year}{2019}
+  \field{howpublished}{\url{https://www.binarytides.com/raw-sockets-c-code-linux/}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{How to Code Raw Sockets in C on Linux}}
+  \endentry
+
+  \entry{iperf}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=D}{%
+         family={{Dugan et al}},
+         familyi={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{D1}
+    \strng{fullhash}{D1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://iperf.fr/}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{iPerf - The ultimate speed test tool for TCP, UDP and SCTP}}
+  \endentry
+
+  \entry{Abut2018}{article}{}
+    \name{author}{1}{}{%
+      {{hash=AF}{%
+         family={Abut},
+         familyi={A\bibinitperiod},
+         given={Fatih},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AF1}
+    \strng{fullhash}{AF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{\sc{CSMA/CA}} Through the Diversity of Bandwidth-Related
+  Metrics, Estimation Techniques and Tools: An Overview}
+    \field{month}{08}
+    \field{year}{2018}
+  \endentry
+
+  \entry{pathrate2004}{article}{}
+    \name{author}{3}{}{%
+      {{hash=DC}{%
+         family={Dovrolis},
+         familyi={D\bibinitperiod},
+         given={Constantinos},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=RP}{%
+         family={Ramanathan},
+         familyi={R\bibinitperiod},
+         given={Parameswaran},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=MD}{%
+         family={Moore},
+         familyi={M\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DCRPMD1}
+    \strng{fullhash}{DCRPMD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Pathrate: Packet-Dispersion Techniques and a
+  Capacity-Estimation Methodology}
+    \field{month}{12}
+    \field{year}{2004}
   \endentry
 
   \entry{pprate2006}{article}{}
@@ -126,6 +296,39 @@
       {Technische Universit\"{a}t M\"{u}nchen}%
     }
     \field{type}{B.Sc. Thesis}
+    \field{year}{2019}
+  \endentry
+
+  \entry{tcpdump_man}{misc}{}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://www.tcpdump.org/manpages/tcpdump.1-4.99.1.html}}
+    \field{note}{[Online; accessed 11.2021]}
+    \field{title}{{TCPDUMP man page}}
+  \endentry
+
+  \entry{mnHome}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{http://mininet.org/}}
+    \field{note}{[Online; accessed 2021]}
+    \field{title}{{Mininet Home}}
+  \endentry
+
+  \entry{ttl_hop_limit}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=IS}{%
+         family={Iveson},
+         familyi={I\bibinitperiod},
+         given={Steven},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{IS1}
+    \strng{fullhash}{IS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/}}
+    \field{title}{{IP Time to Live (TTL) and Hop Limit Basics}}
+    \field{month}{05}
     \field{year}{2019}
   \endentry
 

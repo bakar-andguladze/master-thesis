@@ -37,12 +37,11 @@ The figure \ref{topology} represents the template of the network that we have us
 	 \includegraphics[width=\textwidth]{topology}
  \caption{The template network topology}
  \label{topology}
-
 \end{figure}
 
 As a reader can see from the Figure \ref{topology}, the main hosts (sender and receiver) are connected with a sequence of \texttt{n} routers, each consisting of four interfaces and each having its own subnetwork. The number of routers and, therefore, the number of top and bottom hosts is dynamic and configurable. The routes from and to all hosts are statically configured.
 
-The measurements are conducted based on the main path, which is the one that consists of the routers \texttt(1...n) and connects the sender to the receiver. The top and the bottom hosts are used for generating cross-traffic in later experiments. The cross-traffic interferes with the main flow of packets and has a significant influence on the accuracy of capacity estimations.
+The measurements are conducted based on the main path, which is the one that consists of the routers \texttt(1...n) and connects the sender to the receiver. The top and the bottom hosts are used for generating cross-traffic in later experiments. The cross-traffic interferes with the main flow of packets and can have a significant influence on the accuracy of capacity estimations.
 
 The measuring node is the "Sender", as using our tool only makes sense if the measuring node is the one that generates the traffic. All the necessary traffic is captured at this node with the \texttt{tcpdump} command and subsequently analyzed by our program that delivers the final result.
 
@@ -351,7 +350,7 @@ The Figure \ref{icmp_1000} presents the results of the estimation with the train
 \begin{figure}[H]
  \centering
  \includegraphics[width=0.7\textwidth]{icmp_ratelimit/icmp_1000_10k.png}
- \caption{The impact of long packet trains against ICMP rate limit}
+ \caption{The impact of long packet trains against ICMP rate limit of 1000ms}
  \label{icmp_1000}
 \end{figure}
 
@@ -368,27 +367,104 @@ In the next section we will try to test our framework in a close to real life sc
 
 \section{Evaluation during Cross-Traffic}
 \label{section_ct}
-We have conducted the previous experiments on empty networks without any cross-traffic. However this is not the case in the real Internet that we use on daily basis. 
-Cross traffic seems to affect the test results significantly. 
-What does 1.0 mean?
-How our cross traffic works. - Formula of cross traffic
+We have conducted the previous experiments on empty networks without any flow interference. However this is not the case in the real Internet. The packets in real networks can be prone to higher rate of loss and/or delays which can distort the accuracy of our measurements.\\
+Therefore it is vital to test our methodology in networks where routers are used by other hosts too. 
+
+We have implemented the emulation of the cross-traffic in our Mininet topologies in a way that is depicted in the figure \ref{ct_flow}. Each $B_{i}$ host communicates with $T_{i+1}$. 
+This means that the router interfaces are used not only by our test packets but also those sent by the $T_{i}$ hosts. This could cause congestion at router interfaces and affect the accuracy of our estimations. 
+
+
+\begin{figure}[h]
+ \centering
+	 \includegraphics[width=\textwidth]{cross_traffic_flow}
+ \caption{Flow of the cross traffic packets}
+ \label{ct_flow}
+\end{figure}
+
+For generating the cross-traffic we use \texttt{iPerf}\cite{iperf}. The traffic load per each hop is generated based on the hop capacity. \\
+Moreover, based on the results from empty network measurements we decided to reduce the packet size from 1500 to 1000 bytes by default.
+
+We first conducted measurements with different cross-traffic loads, namely 50\%, 80\% and 100\%. The results were varying in all three cases. 
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.7\textwidth]{cross_traffic/ct_05.png}
+ \caption{Cross traffic with 50\% load}
+ \label{ct_05}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.7\textwidth]{cross_traffic/ct_05_error.png}
+ \caption{Cross traffic with 50\% load relative error  rate}
+ \label{ct_05_error}
+\end{figure}
+
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.7\textwidth]{cross_traffic/ct_08.png}
+ \caption{Cross traffic with 80\% load}
+ \label{ct_08}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.7\textwidth]{cross_traffic/ct_08_error.png}
+ \caption{Cross traffic with 80\% load relative error  rate}
+ \label{ct_08_error}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.7\textwidth]{cross_traffic/ct_1.png}
+ \caption{Cross traffic with 100\% load}
+ \label{ct_10}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.7\textwidth]{cross_traffic/ct_1_error.png}
+ \caption{Cross traffic with 100\% load relative error  rate}
+ \label{ct_1_error}
+\end{figure}
+
+As one can see from the figures \ref{ct_05}, \ref{ct_05_error}, \ref{ct_08}, \ref{ct_08_error}, \ref{ct_10} and \ref{ct_1_error} the results are mostly unreliable and despite similar circumstances apart from the cross-traffic load no obvious pattern can be recognized among these results.\\
+
 
 \subsection{Packet Size}
+We have tested different packet sizes in networks with 100\% cross traffic load and as it appears increasing packet size does not much improve the accuracy. 
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.7\textwidth]{cross_traffic/ct_packet_size_all.png}
+ \caption{Impact of packet size during 100\% cross traffic load}
+ \label{ct_packet_size_all}
+\end{figure}
 
 \subsection{Train Length}
+Testing train length gave relatively good results, however the maximum value of relative error was 621\%.
 
-\subsection{Optimal Intrusion during Cross-Traffic}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.7\textwidth]{cross_traffic/train_length_5k.png}
+ \caption{Impact of packet train length during 100\% cross traffic load}
+ \label{ct_packet_size_all}
+\end{figure}
 
 \subsection{Path Length}
+To check the effects of the path length on the estimation resuts during cross-traffic, we conducted measurements on a 63-router path once again. This time with 80\% cross traffic load. 
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.7\textwidth]{cross_traffic/path_length_63_300.png}
+ \caption{Measurement results on 63-router path with 80\% load}
+ \label{ct_packet_size_all}
+\end{figure}
 
-\subsection{Capacity Range}
 
 \subsection{Packet Loss}
+It is worth mentioning that the packet loss during cross traffic experiments was over 50\% most of the time regardless the configuration.
 
-\subsection{ICMP Rate Limiting}
 
 \subsection{Summary}
-
-
-\section{Data Replication}
-One option to try to see if it can help
+To summarize this section, the results from the cross-traffic tests were not as good as we expected. Despite a significant amount of correct estimations, the overall results look quite random and fail to achieve the desirable accuracy levels. However there is still 

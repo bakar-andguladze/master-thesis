@@ -1,20 +1,49 @@
 \chapter{Related Work}
 
+\section{Capacity Estimation}
+
+There have been various researches conducted on capacity and bandwidth estimation and there are different approaches and tools in existence.  In this section we will briefly categorize capacity estimation tools and discuss their differences, advantages and disadvantages.
+
+
+\subsection{Types of Capacity Estimation Tools}
+In his paper "Through the Diversity of Bandwidth-Related Metrics, Estimation Techniques and Tools: An Overview" Abut\cite{Abut2018} defines several characteristics of capacity estimation tools. 
+
+First, he classifies them into \textit{active} and \textit{passive} ones. Active tools conduct their estimations by injecting certain amount of test packets in the target network. In contrast, passive tools rely on observation of the traffic in real networks and analyzing it without interfering in any way. \\
+It is also important that active tools can be further subdivided based on the amount of traffic load they cause in networks they are trying to measure. Active tools are called intrusive if impose high pressure on a network and non-intrusive otherwise. 
+
+Furthermore, capacity estimation tools can deliver end-to-end or hop-by-hop results. End-to-end estimation tools are only able to tell the capacity of the whole path and are only able to locate the narrow link if it is located at either end of a path.\\
+Hop-by-hop estimation tools, on the other hand, are able to estimate capacities of each hop in a path\cite{Abut2018}
+
+Lastly, capacity measurements between two hosts can be conducted from either one end or both ends, which further classifies tools into single-ended and both-ended types\cite{Abut2018}
+
 \section{Existing Approaches}
 
-\subsection{Variable Packet Size Probing}
+\subsection{Variable Packet Size}
+\acl{vps} (VPS) probing is one of simple active hop-by-hop capacity estimation methods. The concept of this methodology is to send \acl{ttl} exceeding packets to each hop on the path up until the destination and measure the \acl{rtt} (RTT) values of the ICMP time exceeded packets received from those hops\cite{Prasad2003}. 
 
-\subsection{Packet Pair/Train Probing}
+Such approach however is vulnerable to queuing delays at intermediary hosts that can occur independently from the sender. According to Prasad et al.\cite{Prasad2003} in order to handle this issue, VPS sends multiple probe packets of a fixed size to each router on the path and gather with the expectation that at least one will survive delays.
 
-\subsection{Pathchar}
+As a result, the minimum of these RTTs should be measured. Prasad et al\cite{Prasad2003} provide the equation for this measurement:
+
+\[ T_{i}(L) = \alpha + \sum_{k=1}^{i} \frac{L}{C_k} \]
+
+where $T_{i}$ is the minimum RTT, $L$ is a packet size, $\alpha$ denotes delays up to $i$-th hop and $C_k$ - capacity of the $k$-th link.
+
+
+\subsection{Packet Pair Dispersion}
+Another very important capacity estimation method is \acl{pptd}. In contrast to \acl{vps} it is an end-to-end technique. The main idea of PP is to send a same-sized packet pair to the target host. Once they encounter the narrow link the time difference between them after they pass through will be 
+
+\[\Delta t = \frac{s}{C_{bottleneck}}  \]
+
+where $s$ denotes the packet size and $C$ - capacity of the bottleneck link.
+The time difference is also called 'dispersion'.
+Moreover, for valid results packet pairs must follow same paths and need to be served by First in, First out principle\cite{Abut2018}
+
+Packet pair dispersion method can be modified by sending packet trains instead of just two packets in order to increase the accuracy, however the research of Dovrolis et al. reject this hypothesis by stating that it leads to asymptotic dispersion rate, which has a value between the capacity and available bandwidth\cite{pathrate2004}.
 
 \subsection{PPrate}
+One of the most prominent examples of packet pair dispersion based tools is PPrate, proposed by En-Najjary and Urvoy-Keller\cite{pprate2006}. It is a passive end-to-end capacity estimation algorithm which takes inter-arrival times of packets as an input along with a packet size and has high accuracy rates.\\
+However, it is only able to provide end-to-end estimation results and does not give us 
 
+In the next chapters we will use the PPrate implementation of Brzoza\cite{Brzoza} to find out whether this tool can be used for hop-by-hop estimations by passing ICMP packet inter-arrival times to it and evaluate the results.
 
-\subsection*{Notes}
-Direct TCP to routers is blocked by routers. (find a source to prove this)\\
-This thesis will find out whether the PPrate algorithm is also useful in hop-by-hop estimations.\\
-\acl{mss}
-\sc{tcp}\\
-blablabla
-\sc{TCP}

@@ -3,26 +3,26 @@
 \BOOKMARK [1][-]{section.1.2}{Research Questions}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.3}{Outline}{chapter.1}% 4
 \BOOKMARK [0][-]{chapter.2}{Background}{}% 5
-\BOOKMARK [1][-]{section.2.1}{Terminology}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.2}{Network Layers}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.3}{TCP}{chapter.2}% 8
-\BOOKMARK [1][-]{section.2.4}{UDP}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.5}{ICMP}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.6}{Traffic Generation}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.7}{Capacity Estimation}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.7.1}{End-to-End vs Hop-by-Hop Capacity Estimation}{section.2.7}% 13
-\BOOKMARK [2][-]{subsection.2.7.2}{Active vs Passive Capacity Estimation}{section.2.7}% 14
+\BOOKMARK [1][-]{section.2.1}{OSI Model and Network Layers}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Network Layer Protocols}{chapter.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.1}{Internet Protocol \(IP\)}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.2}{Internet Control Message Protocol \(ICMP\)}{section.2.2}% 9
+\BOOKMARK [1][-]{section.2.3}{Transport Layer Protocols}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.3.1}{Transmission Control Protocol \(TCP\)}{section.2.3}% 11
+\BOOKMARK [2][-]{subsection.2.3.2}{User Datagram Protocol \(UDP\)}{section.2.3}% 12
+\BOOKMARK [1][-]{section.2.4}{Terminology}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.5}{Traffic Generation}{chapter.2}% 14
 \BOOKMARK [0][-]{chapter.3}{Related Work}{}% 15
-\BOOKMARK [1][-]{section.3.1}{Existing Approaches}{chapter.3}% 16
-\BOOKMARK [2][-]{subsection.3.1.1}{Variable Packet Size Probing}{section.3.1}% 17
-\BOOKMARK [2][-]{subsection.3.1.2}{Packet Pair/Train Probing}{section.3.1}% 18
-\BOOKMARK [2][-]{subsection.3.1.3}{Pathchar}{section.3.1}% 19
-\BOOKMARK [2][-]{subsection.3.1.4}{PPrate}{section.3.1}% 20
-\BOOKMARK [0][-]{chapter.4}{Implementation}{}% 21
-\BOOKMARK [1][-]{section.4.1}{Analysis}{chapter.4}% 22
-\BOOKMARK [1][-]{section.4.2}{Approach}{chapter.4}% 23
-\BOOKMARK [1][-]{section.4.3}{Traffic Generation}{chapter.4}% 24
-\BOOKMARK [1][-]{section.4.4}{Capturing the Traffic and Estimating Capacities}{chapter.4}% 25
+\BOOKMARK [1][-]{section.3.1}{Capacity Estimation}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.1.1}{Types of Capacity Estimation Tools}{section.3.1}% 17
+\BOOKMARK [1][-]{section.3.2}{Existing Approaches}{chapter.3}% 18
+\BOOKMARK [2][-]{subsection.3.2.1}{Variable Packet Size}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.2}{Packet Pair Dispersion}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.3}{PPrate}{section.3.2}% 21
+\BOOKMARK [0][-]{chapter.4}{Implementation}{}% 22
+\BOOKMARK [1][-]{section.4.1}{Approach}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.2}{Traffic Generation}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.3}{Capturing the Traffic and Estimating Capacities}{chapter.4}% 25
 \BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 26
 \BOOKMARK [1][-]{section.5.1}{Test Environment and Setup}{chapter.5}% 27
 \BOOKMARK [1][-]{section.5.2}{Evaluation in Empty Network}{chapter.5}% 28
@@ -37,20 +37,16 @@
 \BOOKMARK [1][-]{section.5.3}{Evaluation during Cross-Traffic}{chapter.5}% 37
 \BOOKMARK [2][-]{subsection.5.3.1}{Packet Size}{section.5.3}% 38
 \BOOKMARK [2][-]{subsection.5.3.2}{Train Length}{section.5.3}% 39
-\BOOKMARK [2][-]{subsection.5.3.3}{Optimal Intrusion during Cross-Traffic}{section.5.3}% 40
-\BOOKMARK [2][-]{subsection.5.3.4}{Path Length}{section.5.3}% 41
-\BOOKMARK [2][-]{subsection.5.3.5}{Capacity Range}{section.5.3}% 42
-\BOOKMARK [2][-]{subsection.5.3.6}{Packet Loss}{section.5.3}% 43
-\BOOKMARK [2][-]{subsection.5.3.7}{ICMP Rate Limiting}{section.5.3}% 44
-\BOOKMARK [2][-]{subsection.5.3.8}{Summary}{section.5.3}% 45
-\BOOKMARK [1][-]{section.5.4}{Data Replication}{chapter.5}% 46
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 47
-\BOOKMARK [1][-]{section.6.1}{Evaluation Results}{chapter.6}% 48
-\BOOKMARK [1][-]{section.6.2}{Answers to the Research Questions}{chapter.6}% 49
-\BOOKMARK [1][-]{section.6.3}{Future Work}{chapter.6}% 50
-\BOOKMARK [0][-]{appendix.A}{Reproducibility}{}% 51
-\BOOKMARK [1][-]{section.A.1}{The Source Code Repository}{appendix.A}% 52
-\BOOKMARK [1][-]{section.A.2}{Setup}{appendix.A}% 53
-\BOOKMARK [1][-]{section.A.3}{Running Tests}{appendix.A}% 54
-\BOOKMARK [0][-]{appendix.B}{List of acronyms}{}% 55
-\BOOKMARK [0][-]{appendix*.24}{Bibliography}{}% 56
+\BOOKMARK [2][-]{subsection.5.3.3}{Path Length}{section.5.3}% 40
+\BOOKMARK [2][-]{subsection.5.3.4}{Packet Loss}{section.5.3}% 41
+\BOOKMARK [2][-]{subsection.5.3.5}{Summary}{section.5.3}% 42
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 43
+\BOOKMARK [1][-]{section.6.1}{Evaluation Results}{chapter.6}% 44
+\BOOKMARK [1][-]{section.6.2}{Answers to the Research Questions}{chapter.6}% 45
+\BOOKMARK [1][-]{section.6.3}{Future Work}{chapter.6}% 46
+\BOOKMARK [0][-]{appendix.A}{Reproducibility}{}% 47
+\BOOKMARK [1][-]{section.A.1}{The Source Code Repository}{appendix.A}% 48
+\BOOKMARK [1][-]{section.A.2}{Setup}{appendix.A}% 49
+\BOOKMARK [1][-]{section.A.3}{Running Tests}{appendix.A}% 50
+\BOOKMARK [0][-]{appendix.B}{List of acronyms}{}% 51
+\BOOKMARK [0][-]{appendix*.39}{Bibliography}{}% 52
