@@ -4,17 +4,19 @@ In this thesis we have implemented a hop-by-hop capacity estimation methodology 
 The following sections will shortly summarize our work throughout the timespan of the thesis and address all the concerns and questions that we had in the beginning.
 
 \section{Evaluation Results}
-Sum up whether this method can actually be used in practice\\
+The evaluation has shown that our proposed methodology is significantly flawed when it comes to the inspection of overloaded networks. On the other hand, it delivers high accuracy when it does not face the flow interference. Therefore, like passive capacity estimation tools, ours also depends on the network that has to be measured. 
+
+Moreover, our tool is unable to work as supposed when it communicates with ICMP rate limited routers and requires improvements in terms of this problem. 
 
 \section{Answers to the Research Questions}
 After the careful and thorough research we can already answer the questions we were aiming to address in the beginning of this thesis: \\
 \begin{itemize}
   \item \textbf{How to measure network capacity hop-by-hop?}
-  \\ 
+  \\ We have developed a way to estimate capacity hop-by-hop by sending ttl-exceeding packets to all the routers on the path to the destination. The
   \item \textbf{How to optimize the trade-off between accuracy and intrusiveness regarding large-scale measurements?}
-  \\
-  \item \textbf{How robust is the proposed solution regarding the handling of cross-traffic, flow-interference and sudden path parameter changes?}
-  \\
+  \\When it comes to the empty networks, we have managed to find an optimal rate of intrusion of around 700 packets with the train length less than 100. (We were able to get accurate results with as few as 10 packets per train). However we do not guarantee the consistency of these numbers. 
+  \item \textbf{How robust is the proposed solution regarding the handling of flow-interference, such as cross-traffic?}
+  \\The robustness in terms of cross traffic has appeared to be a big problem in our measurements. So far we cannot recommend our solution for the networks that handle large traffic on regular basis.
   \item \textbf{Are we able to locate the capacity bottlenecks of a network?}
   \\ The answer to this question greatly depends on the accuracy of the hop-by-hop estimation. As we have seen in the Evaluation chapter, there are situations when we get accurate results and there are cases when the results are somewhat inaccurate or not reliable at all. In case of the reliable results, the answer will be 'yes'. We can locate the capacity bottlenecks based on the first smallest capacity value from the sequence of results. 
   
@@ -22,6 +24,8 @@ After the careful and thorough research we can already answer the questions we w
 \end{itemize}
 
 \section{Future Work}
-As our evaluation has shown, there is a lot of room for improvement for our methodology.\\
-First and foremost, we have not conducted any test runs on a real network, which can be done in order to see how our tool handles the real traffic in the Internet.\\
-Moreover, further research is required to handle the inaccuracy problem with cross-traffic as it is the key factor when it comes to the real-life usage of our framework.\\
+As our evaluation has shown, there still is a lot of room for improvement for our methodology.\\
+First and foremost, we have not conducted any test runs on a real network, as the performance of Mininet greatly depends on the machine it runs on and this could compromise the accuracy of the tool. Therefore, internet measurements should be performed in order to see how our tool handles the real traffic in the Internet.\\
+Secondly, further research is necessary for handling the random inaccuracy issues with cross-traffic as it is the key factor when it comes to the real-life usage of our framework.\\
+And finally, ICMP rate limiting represents the biggest challenge to our tool. This problem has been tackled by several researchers, most importantly, Guo and Heidemann who developed the ICMP rate limit detection software - FADER\cite{fader2017}.
+

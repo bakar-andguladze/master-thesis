@@ -1,4 +1,4 @@
-\chapter{Appendix}
+\chapter{Reproducibility}
 This chapter describes the source code repository and provides the information and  instructions of how to use, alter and/or improve the current version of the Hop-by-hop measurement framework. 
 
 \section{The Source Code Repository}
@@ -61,7 +61,7 @@ The measurements must be run with a \texttt{JSON} config file containing all the
 
 The following script executes the experiment:
 \begin{lstlisting}[language=bash]
-  $ sudo python run_test.py <config file>
+  $ sudo python run_test.py config.json
 \end{lstlisting}
 
 The following \texttt{JSON} serves as an example of a configuration file used for experiments.
@@ -80,3 +80,4 @@ It contains default parameter values, each of which will be manipulated respecti
 }
 \end{lstlisting}
 
+\textit{\textbf{Disclaimer:} \texttt{packet\textunderscore loss} is a probability, therefore it does not always cause the packet loss during test runs; On the other hand, regular test runs with \texttt{packet\textunderscore loss = 0} can result in lost packets.}

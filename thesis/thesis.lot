@@ -13,13 +13,25 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces ICMP message types \cite {icmp_man}\relax }}{8}{table.caption.6}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5.1}{\ignorespaces Error Statistics of paths with different lengths\relax }}{14}{table.caption.6}%
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.1}{\ignorespaces Relative error statistics of the baseline measurement\relax }}{27}{table.caption.13}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.2}{\ignorespaces Relative error stats of paths with different lengths.\relax }}{29}{table.caption.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.3}{\ignorespaces Relative error rate statistics for packet size\relax }}{31}{table.caption.19}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.4}{\ignorespaces Relative error statistics for packet train length\relax }}{32}{table.caption.20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.5}{\ignorespaces Relative error statistics for optimal intrusion\relax }}{33}{table.caption.21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.6}{\ignorespaces Relative error statistics for the ICMP rate limiting\relax }}{37}{table.caption.26}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

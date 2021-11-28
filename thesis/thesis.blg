@@ -24,52 +24,49 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: thesis-blx.bib
 Database file #2: bib/IEEEfull.bib
 Database file #3: bib/litnew.bib
-Warning--string name "tum" is undefined
---line 67 of file bib/litnew.bib
 Warning--I didn't find a database entry for "IEEEexample:BSTcontrol"
-Warning--I didn't find a database entry for "prasad"
 Biblatex version: 3.15
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 4 entries,
+You've used 25 entries,
             6393 wiz_defined-function locations,
-            1829 strings with 28113 characters,
-and the built_in function-call counts, 8176 in all, are:
-= -- 376
-> -- 156
-< -- 50
-+ -- 123
-- -- 49
-* -- 323
-:= -- 723
+            1911 strings with 30630 characters,
+and the built_in function-call counts, 88602 in all, are:
+= -- 5306
+> -- 1795
+< -- 509
++ -- 1547
+- -- 572
+* -- 5314
+:= -- 7763
 add.period$ -- 0
-call.type$ -- 4
-change.case$ -- 26
-chr.to.int$ -- 42
-cite$ -- 6
-duplicate$ -- 868
-empty$ -- 970
-format.name$ -- 45
-if$ -- 1829
+call.type$ -- 25
+change.case$ -- 239
+chr.to.int$ -- 66
+cite$ -- 48
+duplicate$ -- 9548
+empty$ -- 9322
+format.name$ -- 977
+if$ -- 19227
 int.to.chr$ -- 0
-int.to.str$ -- 5
+int.to.str$ -- 54
 missing$ -- 0
-newline$ -- 55
-num.names$ -- 55
-pop$ -- 1018
+newline$ -- 435
+num.names$ -- 826
+pop$ -- 8029
 preamble$ -- 1
-purify$ -- 29
+purify$ -- 319
 quote$ -- 0
-skip$ -- 391
+skip$ -- 3597
 stack$ -- 0
-substring$ -- 458
-swap$ -- 237
-text.length$ -- 56
+substring$ -- 8070
+swap$ -- 2333
+text.length$ -- 443
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 119
+type$ -- 833
 warning$ -- 0
-while$ -- 109
+while$ -- 992
 width$ -- 0
-write$ -- 52
-(There were 3 warnings)
+write$ -- 411
+(There was 1 warning)

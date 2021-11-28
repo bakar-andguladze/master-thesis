@@ -1,5 +1,15 @@
 \small
 
-\blindtext
+This thesis proposes a hop-by-hop capacity estimation methodology  with active probing.
 
-\blindtext
+We use the passive capacity measurement tool PPrate, which is based packet-pair technique and is used for end-to-end capacity estimations.
+
+We have developed a traffic generation tool with adjustable Time-To-Live values, which enables us to generate traffic to each router on the network path one by one and take advantage of the ICMP messages received back at the host.
+
+We further process the received time-exceeded ICMP messages, derive inter-arrival times from this data and estimate capacities of each hop with PPrate using these inter-arrival times.
+
+Subsequently we evaluate the methodology in empty networks without any flow interference, which shows good results in most of the cases.
+
+Then we conduct experiments in a busy path congested with cross-traffic.
+
+Our technique, along with desired results, has shown some significant flaws too.

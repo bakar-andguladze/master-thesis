@@ -13,23 +13,73 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Comparison of OSI and TCP/IP Models\relax }}{6}{figure.caption.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Structure of IP header\relax }}{7}{figure.caption.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Sample network path and link capacities\relax }}{10}{figure.caption.7}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces The template network topology\relax }}{12}{figure.caption.4}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The basic idea of the capacity estimation method\relax }}{18}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Path length: 3 Routers\relax }}{13}{figure.caption.5}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Flow of the capacity estimation tool\relax }}{18}{figure.caption.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Path length: 32 Routers\relax }}{13}{figure.caption.5}%
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces The template network topology\relax }}{25}{figure.caption.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The baseline measurement results\relax }}{26}{figure.caption.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces The baseline measurement error rate\relax }}{27}{figure.caption.12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Path length: 3 Routers\relax }}{28}{figure.caption.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Path length: 63 Routers\relax }}{28}{figure.caption.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Error rates on different path lengths\relax }}{28}{figure.caption.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Comparison of the measurement results with different packet sizes\relax }}{30}{figure.caption.17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Error rates by packet size\relax }}{30}{figure.caption.18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.9}{\ignorespaces The impact of the capacity range on accuracy\relax }}{34}{figure.caption.22}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Error rates by capacity range\relax }}{34}{figure.caption.23}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.11}{\ignorespaces The impact of over 15\% packet loss on capacity estimation\relax }}{35}{figure.caption.24}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Effects of ICMP rate limiting on the accuracy\relax }}{37}{figure.caption.25}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.13}{\ignorespaces The impact of long packet trains against ICMP rate limit of 1000ms\relax }}{38}{figure.caption.27}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Flow of the cross traffic packets\relax }}{39}{figure.caption.28}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Cross traffic with 50\% load\relax }}{40}{figure.caption.29}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Cross traffic with 50\% load relative error rate\relax }}{40}{figure.caption.30}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Cross traffic with 80\% load\relax }}{41}{figure.caption.31}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Cross traffic with 80\% load relative error rate\relax }}{41}{figure.caption.32}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Cross traffic with 100\% load\relax }}{42}{figure.caption.33}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Cross traffic with 100\% load relative error rate\relax }}{42}{figure.caption.34}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Impact of packet size during 100\% cross traffic load\relax }}{43}{figure.caption.35}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Impact of packet train length during 100\% cross traffic load\relax }}{44}{figure.caption.36}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Measurement results on 63-router path with 80\% load\relax }}{45}{figure.caption.37}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.1}{\ignorespaces The architecture of the framework\relax }}{20}{figure.caption.7}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces The architecture of the framework\relax }}{52}{figure.caption.38}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \babel@toc {english}{}

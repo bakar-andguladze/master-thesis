@@ -3,7 +3,7 @@ This master thesis presents the capacity estimation method for hop-by-hop measur
 We will test the developed tool in regard to various metrics, such as packet size, intrusion rate, cross-traffic and flow-interference and finally, analyze the test results in order to conclude whether our approach is actually capable of delivering accurate results efficiently. 
 
 \section{Motivation}
-As the Internet is becoming increasingly essential part of our day-to-day lives, it is ever more important for the Internet providers to enhance the quality of networks in order to create a better user experience. One of the means to achieve this goal is to have a better picture of the network they aim to improve. Therefore, we are going to create a tool that measures the capacity of the path between two hosts. The intended field of application is, for instance, enhancing the performance of network, traffic analysis, network monitoring, etc. 
+As the Internet is becoming an increasingly essential part of our day-to-day life, it is even more important for Internet providers to enhance the quality of networks in order to create a better user experience. One of the means to achieve this goal is to have a better picture of the network they aim to improve. Therefore, we are going to create a tool that measures the capacity of the path between two hosts. The intended field of application is, for instance,  traffic analysis and network monitoring, which provides the ground for enhancing network performance. 
 
 There are quite a few capacity estimation methodologies and tools available, that will be discussed in chapters below. However, the current State-of-the-Art methods have some significant flaws and limitations regarding our measurement goals, such as  
 \begin{itemize}
@@ -25,18 +25,18 @@ This thesis is supposed to answer the following research questions:
   \item \textbf{How to measure network capacity hop-by-hop?}
   \\In order to measure the path capacity hop-by-hop, we need to estimate capacities to each router on the path until the destination host is reached. 
   \item \textbf{How to optimize the trade-off between accuracy and intrusiveness regarding large-scale measurements?}
-  \\Certain level of intrusion into the network will be necessary for the measurements. However there is an important factor to consider: too high intrusion could disrupt the traffic in the network and too low could lead to unreliable results. Therefore an optimal middle ground has to be found: What will be the optimal amount of packets to send to each router to get correct results?
-  \item \textbf{How robust is the proposed solution regarding the handling of cross-traffic, flow-interference and sudden path parameter changes?}
-  \\Real networks are usually quite complex and different challenges might arise when we are trying to measure the path capacity. We need to find out whether our solution is feasible when it faces cross-traffic, flow-interference or when the path parameters suddenly change.
+  \\Certain level of intrusion into the network will be necessary for the measurements. However, there is an important factor to consider: the research shows that too high intrusion could disrupt the traffic in the network and too low could lead to unreliable results. Therefore an optimal trade-off has to be found: What will be the optimal amount of packets to send to each router to get correct results?
+  \item \textbf{How robust is the proposed solution regarding the handling of flow-interference, such as cross-traffic?}
+  \\Real networks are usually quite complex and different challenges might arise when we are trying to measure the path capacity. We need to find out whether our solution is feasible when it faces cross-traffic and analyze its effects on the final results.
   \item \textbf{Are we able to locate the capacity bottlenecks of a network?}
   \\ We are interested to find the location of the weakest link in the given network. This can be achieved by finding the capacities to each hop. The weakest link will 
 \end{itemize}
 
 \section{Outline}
-This section introduces the structure of the thesis.
+The remainder of this thesis is structured as follows:
 \\Chapter 2 defines the necessary terminology for understanding this thesis. Namely, capacity, TCP, ICMP, Raw sockets, etc. 
-\\Chapter 3 describes the related work - what has been done in regard to capacity estimations and some drawbacks and limitations to the existing approaches
+\\Chapter 3 describes the related work: what has been done in regard to capacity estimations and some drawbacks and limitations to the existing approaches.
 \\Chapter 4 describes the approach and the tool that we have developed to implement it. 
 \\Chapter 5 reviews the test setup and test environment in which the experiments are conducted.
-\\Chapter 6 evaluates our approach based on several parameters. It reviews the different factors that might affect the measurements and to what extent. Namely, how packet length influences the measurement results, what is the optimal rate of intrusion in the network and whether the cross-traffic and the flow-interference cause higher inaccuracy. Based on how the proposed approach handles these challenges we can state whether it is reliable or not.
+\\Chapter 6 evaluates our approach based on several parameters. It reviews the different factors that might affect the measurements and to what extent.
 \\Finally, chapter 7 concludes our thesis and subsequently discusses the future work - what can be done afterwards to further extend our methodology. 

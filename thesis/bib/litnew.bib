@@ -61,406 +61,191 @@
 @STRING{ieee_wts= {{\sc{IEEE}} Wireless Telecommunications Symposium (\sc{WTS})} }
 
 
-@MastersThesis{	  Brzoza,
+@MastersThesis{Brzoza,
   author	= {Brzoza, Patryk},
   title		= {Implementation and {E}valuation of Passive Capacity Estimation},
-  school	= TUM,
-  year		= 2019,
+  school	= school_tum,
+  year		= {2019},
   type		= {B.Sc. Thesis},
   address	= {Munich, Germany},
 }
 
+@Article{pprate2006,
+  author	= {En-Najjary, Taoufik and Urvoy-Keller, Guillaume},
+  title		= {PPrate: A Passive Capacity Estimation Tool},
+  year		= {2006},
+  month		= {5}
+}
+
+@Article{pathrate2004,
+  author	= {Dovrolis, Constantinos and Ramanathan, Parameswaran and Moore, David},
+  title		= {Pathrate: Packet-Dispersion Techniques and a Capacity-Estimation Methodology},
+  year		= {2004},
+  month		= {12}
+}
+
+@Article{Prasad2003,
+  author	= {Prasad, R. and Murray, C. and Dovrolis, C. and Claffy, K.},
+  title		= {{\sc{CSMA/CA}} {B}andwidth {E}stimation: {M}etrics, {M}easurement {T}echniques, and {T}ools
+},
+  year		= {2003},
+  month		= {12}
+}
+
+@Article{Abut2018,
+  author	= {Abut, Fatih},
+  title		= {{\sc{CSMA/CA}} Through the Diversity of Bandwidth-Related Metrics, Estimation Techniques and Tools: An Overview},
+  year		= {2018},
+  month		= {8},
+}
+
+@Article{Pathchar1999,
+  author	= {Downey, Allen B. },
+  title		= {{\sc{CSMA/CA}} Using Pathchar to Estimate Internet Link Characteristics},
+  year		= {1999},
+  month		= {8},
+  school	= {Colby College}
+}
+
+@Article{RaUrBa_icmp, 
+  author	= {Ravaioli, Ricardo and Urvoy-Keller, Guillaume and Barakat Chadi},
+  title		= {Characterizing ICMP Rate Limitation on Routers},
+  year		= {2015},
+  school	= {Universite Nice Sophia Antipolis}
+
+}
+@Article{fader2017,
+  author	= {Guo, Hang and Heidemann, John},
+  title		= {Detecting ICMP Rate Limiting in the Internet(Extended)},
+  year		= {2017},
+  month		= {4},
+  school 	= {Information Sciences Institute}
+}
+
+@Article{capest2019,
+  author	= {Kagami, Nicolas and Tavares da Costa Filho, Roberto Iraj´a and Paschoal Gaspary, Luciano},
+  title		= {CAPEST: Offloading Network Capacity and Available Bandwidth Estimation to Programmable Data Planes},
+  year		= {2019},
+  month		= {4},
+  school 	= {Federal University of Rio Grande do Sul (UFRGS)},
+  address	= {Brazil}
+}
+
+
+@InProceedings{ osi_model_ref,
+  author	= {Sandberg, Bobbi},
+  title		= {The OSI Reference Model},
+  booktitle	= {Networking - The Complete Reference, 3rd edition},
+  year		= {2015},
+  pages		= {40-65}
+}
+
+
+
+
+@misc{ ttl_hop_limit,
+  author 	= {Steven Iveson},
+  title 	= {{IP Time to Live (TTL) and Hop Limit Basics}},
+  howpublished = "\url{https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/}",
+  year		= {2019},
+  month		= {5}
+}
 
 @misc{mnHome,
   title = {{Mininet Home}},
-  howpublished = "\url{http://mininet.org//}",
+  howpublished = "\url{http://mininet.org/}",
   note = "[Online; accessed 2021]"
 }
 
 @misc{mnInstall,
   title = {{Mininet Installation}},
-  howpublished = "\url{http://mininet.org/download//}",
+  howpublished = "\url{http://mininet.org/download/}",
   note = "[Online; accessed 11.2021]"
 }
 
-
-
-
-@misc{bworld,
-  author = {Ingo Lütkebohle},
-  title = {{BWorld Robot Control Software}},
-  howpublished = "\url{http://aiweb.techfak.uni-bielefeld.de/content/bworld-robot-control-software/}",
-  year = {2008}, 
-  note = "[Online; accessed 19-July-2008]"
+@misc{tcp_raw_sockets,
+  author	= {{Silver Moon}},
+  title		= {{How to Code Raw Sockets in C on Linux}},
+  howpublished = "\url{https://www.binarytides.com/raw-sockets-c-code-linux/}",
+  note 		= "[Online; accessed 11.2021]"
 }
 
-@InProceedings{	  JuPeSi2003,
-  author	= {Jun, Jangeun and Peddabachagari, Pushkin and Sichitiu,
-		  Mihail},
-  title		= {{T}heoretical {M}aximum {T}hroughput of {\sc{IEEE}[802.11]}
-		  and its {A}pplications},
-  booktitle	= ieee_nca,
-  year		= 2003,
-  month		= {4},
-  pages		= {249-256},
-  address	= {Cambridge, MA, USA}
+@misc{icmp_ratemask,
+  title		= {{icmp - Linux IPv4 ICMP kernel module}},
+  howpublished = "\url{https://man7.org/linux/man-pages/man7/icmp.7.html}",
+  note 		= "[Online; accessed 11.2021]"
 }
 
-@InProceedings{	  YoSuKyHy2004,
-  author	= {Kim, Youngsoo and Choi, Sunghyun and Jang, Kyunghun and
-		  Hwang, Hyosun},
-  title		= {Throughput {E}nhancement of \sc{IEEE}[802.11] \sc{WLAN}
-		   via {F}rame {A}ggregation},
-  booktitle	= ieee_vtc,
-  year		= 2004,
-  month		= {9},
-  volume	= 4,
-  pages		= {3030-3034},
-  address	= {Los Angeles, CA, USA}
+@misc{packet_loss_explained,
+  author	= {{Alexander S. Gillis}},
+  title		= {{Packet Loss}},
+  howpublished = "\url{https://www.techtarget.com/searchnetworking/definition/packet-loss/}",
+  note 		= "[Online; accessed 11.2021]"
+}
+
+@misc{juniper,
+  author	= {{Juniper Networks}},
+  title		= {{icmp - Error Message Rate Limit}},
+  howpublished = "\url{https://www.juniper.net/documentation/us/en/software/junos/transport-ip/topics/ref/statement/icmp-edit-chassis.html/}",
+  note 		= "[Online; accessed 11.2021]"
 }
 
 
-@Article{	  KaRaHuKa2008,
-  author	= {Katti, Sachin and Rahul, Hariharan and Hu, Wenjun and
-		  Katabi, Dina and M{\'e}dard, Muriel and Crowcroft, Jon},
-  title		= {\sc*{XOR}s in the {A}ir: {P}ractical {W}ireless {N}etwork
-		  {C}oding},
-  journal	= ieee_j_net,
-  year		= 2008,
-  month		= {6},
-  volume	= 16,
-  number	= 3,
-  pages		= {497-510},
+@misc{osi_iso,
+  author	= {{ISO}},
+  title		= {{Information technology — Open Systems Interconnection — Basic Reference Model: The Basic Model}},
+  howpublished = "\url{https://standards.iso.org/ittf/PubliclyAvailableStandards/index.html/}",
+  note 		= "[Online; accessed 11.2021]"
 }
 
-@InProceedings{	  DeVeKaBa2012,
-  author	= {Dely, Peter and Vestin, Jonathan and Kassler, Aandreas and
-		  Bayer, Nico and Einsiedler, Hans and Peylo, Christoph},
-  booktitle	= {Broadband Wireless Access Workshop ({\sc{IEEE}} Globecom
-  Workshops)},
-  title		= {{\sc*{}[Cloud]\sc{MAC}} -- {A}n {O}pen{F}low based
-		  {A}rchitecture for {\sc{}[802.11]} {\sc{MAC}} {L}ayer
-		  {P}rocessing in the {C}loud},
-  pages		= {186-191},
-  year		= 2012,
-  month		= {12},
-  address	= {Anaheim, USA}
+@misc{iperf,
+  author	= {{Dugan et al}},
+  title		= {{iPerf - The ultimate speed test tool for TCP, UDP and SCTP}},
+  howpublished = "\url{https://iperf.fr/}",
+  note 		= "[Online; accessed 11.2021]"
 }
 
-
-@InProceedings{	  KyVa2003,
-  author	= {Kyasanur, Pradeep and Vaidya, Nitin H.},
-  title		= {{D}etection and {H}andling of {\sc{MAC}} {L}ayer
-		  {M}isbehavior in {W}ireless {N}etworks},
-  booktitle	= ieee_dsn,
-  year		= 2003,
-  month		= {6},
-  pages		= {173-182},
-  address	= {San Francisco, CA, USA}
+@misc{tcpdump_man,
+  title		= {{TCPDUMP man page}},
+  howpublished = "\url{https://www.tcpdump.org/manpages/tcpdump.1-4.99.1.html}",
+  note 		= "[Online; accessed 11.2021]"
 }
 
-@InProceedings{	  HoCh1996,
-  author	= {Ho, Tien-Shin and Chen, Kwang-Cheng},
-  title		= {{P}erformance {A}nalysis of {\sc{IEEE}[802.11]}
-		  {\sc{CSMA/CA}} {M}edium {A}ccess {C}ontrol {P}rotocol},
-  booktitle	= ieee_pimrc,
-  year		= 1996,
-  month		= {10},
-  volume	= 2,
-  pages		= {407-411},
-  address	= {Taipei, China}
+@misc{ietf_ip,
+  author 	= {{Internet Engineering Task Force (IETF)}},
+  title		= {{Internet Protocol}},
+  howpublished = "\url{https://datatracker.ietf.org/doc/html/rfc791}",
+  note 		= "[Online; accessed 11.2021]"
+}
+@misc{ietf_icmp,
+  author 	= {{Internet Engineering Task Force (IETF)}},
+  title		= {{Internet Control Message Protocol}},
+  howpublished = "\url{https://datatracker.ietf.org/doc/html/rfc792}",
+  note 		= "[Online; accessed 11.2021]"
+}
+@misc{ietf_tcp,
+  author 	= {{Internet Engineering Task Force (IETF)}},
+  title		= {{Transmission Control Protocol}},
+  howpublished = "\url{https://datatracker.ietf.org/doc/html/rfc793}",
+  note 		= "[Online; accessed 11.2021]"
+}
+@misc{ietf_udp,
+  author 	= {{Internet Engineering Task Force (IETF)}},
+  title		= {{User Datagram Protocol}},
+  howpublished = "\url{https://datatracker.ietf.org/doc/html/rfc768}",
+  note 		= "[Online; accessed 11.2021]"
 }
 
-@Article{	  ZiAn2002,
-  author	= {Ziouva, Eustathia and Antonakopoulos, Theodore},
-  title		= {{\sc{CSMA/CA}} {P}erformance under {H}igh {T}raffic
-		  {C}onditions: {T}hroughput and {D}elay {A}nalysis},
-  journal	= cc,
-  year		= 2002,
-  month		= {2},
-  volume	= 25,
-  number	= 3,
-  pages		= {313-321}
+@misc{iph,
+  title		= {{TCP/IP Header}},
+  howpublished = "\url{https://www4.cs.fau.de/Projects/JX/Projects/TCP/jxtcp.html}",
+  note 		= "[Online; accessed 11.2021]"
 }
 
-@Article{	  DaSu2012,
-  author	= {Dai, Lin and Sun, Xinghua},
-  title		= {{A} {U}nified {A}nalysis of {\sc{IEEE}[802.11]} {\sc{DCF}}
-		  {N}etworks: {S}tability, {T}hroughput and {D}elay},
-  journal	= ieee_j_mc,
-  year		= 2012,
-  month		= {6},
-  volume	= 12,
-  number	= 8,
-  pages		= {1558-1572}
-}
-
-@Article{	  Bi2000,
-  author	= {Bianchi, Giuseppe},
-  title		= {{P}erformance {A}nalysis of the {\sc{IEEE}[802.11]}
-		  {D}istributed {C}oordination {F}unction},
-  journal	= ieee_j_jsac,
-  year		= 2000,
-  month		= {3},
-  volume	= 18,
-  number	= 3,
-  pages		= {535-547}
-}
-
-@MastersThesis{	  Ch2002,
-  author	= {Chambers, Benjamin A.},
-  title		= {{T}he {G}rid {R}oofnet: {A} {R}ooftop {A}d {H}oc
-		  {W}ireless {N}etwork},
-  school	= school_mit,
-  year		= 2002,
-  type		= {M.Sc. Thesis},
-  address	= {Cambridge, MA, USA},
-}
-
-@Article{	  KoMoChJa2000,
-  author	= {Kohler, Eddie and Morris, Robert and Chen, Benjie and
-		  Jannotti, John and Kaashoek, M. Frans},
-  title		= {{T}he {C}lick {M}odular {R}outer},
-  journal	= acm_j_cs,
-  year		= 2000,
-  month		= {8},
-  volume	= 18,
-  number	= 3,
-  pages		= {263-297}
-}
-
-@InProceedings{	  ChJeKaKa2007,
-  author	= {Chachulski, Szymon and Jennings, Michael and Katti, Sachin
-		  and Katabi, Dina},
-  title		= {{T}rading {S}tructure for {R}andomness in {W}ireless
-		  {O}pportunistic {R}outing},
-  booktitle	= acm_sigcomm,
-  year		= 2007,
-  month		= {8},
-  pages		= {169-180},
-  address	= {Kyoto, Japan},
-}
-
-@InProceedings{	  ShRaYoBa2008,
-  author	= {Shrivastava, Vivek and Rayanchu, Shravan and Yoonj, Jongwoon
-		  and Banerjee, Suman},
-  title		= {802.11n under the {M}icroscope},
-  booktitle	= acm_imc,
-  year		= 2008,
-  month		= {10},
-  pages		= {105-110},
-  address	= {Vouliagmeni, Greece}
-}
-
-@InProceedings{	  ChMu2006,
-  author	= {Chen, Bo and Muthukkumarasamy, Vallipuram},
-  title		= {{D}enial of {S}ervice {A}ttacks against {\sc{}[802.11]}
-		  {\sc{DCF}}},
-  year		= 2006,
-  month		= {2},
-  booktitle	= iadis,
-  address	= {San Sebastian, Spain},
-}
-
-@InProceedings{	  SoSa2012,
-  author	= {Soryal, Joseph and Saadawi, Tarek},
-  title		= {{\sc{IEEE}[802.11]} {D}enial of {S}ervice {A}ttack
-		  {D}etection in {\sc{MANET}}},
-  booktitle	= ieee_wts,
-  year		= 2012,
-  month		= {4},
-  address	= {London, United Kingdom},
-}
-
-@Article{	  MaAzGhDe2009,
-  author	= {Malekzadeh, Mina and Ghani, Abdul Azim Abdul and Desa,
-		  Jalil and Subramaniam, Shamala},
-  title		= {{E}mpirical {A}nalysis of {V}irtual {C}arrier {S}ense
-		  {F}looding {A}ttacks over {W}ireless {L}ocal {A}rea
-		  {N}etwork},
-  journal	= sp_j_cs,
-  year		= 2009,
-  month		= {3},
-  volume	= 5,
-  number	= 3,
-  pages		= {214-220}
-}
-
-@InProceedings{	  ZuSo2012,
-  author	= {Zubow, Anatolij and Sombrutzki, Robert},
-  title		= {{A} {L}ow-cost {\sc{MIMO}} {M}esh {T}estbed based on
-		  \sc*{}[802.11n]},
-  booktitle	= ieee_wcnc,
-  year		= 2012,
-  month		= {4},
-  pages		= {3171-3176},
-  address	= {Paris, France},
-}
-
-@InProceedings{	  PlGrMi2013,
-  author	= {Plank, James S. and Greenan, Kevin M. and Miller, Ethan L.},
-  title		= {{S}creaming {F}ast {G}alois {F}ield {A}rithmetic using
-		  {I}ntel {SIMD} {I}nstructions},
-  booktitle	= usenix_fast,
-  year		= 2013,
-  month		= {2},
-  pages		= {299-306},
-  address	= {Santa Clara, CA, USA},
-}
-
-@Misc{		  An2004,
-  author	= {Anvin, H. Peter},
-  title		= {{T}he {M}athematics of \sc*{RAID}-\sc{}[6]},
-  year		= 2004,
-  month		= {1}
-}
-
-@InProceedings{	  GrMiSc2008,
-  author	= {Greenan, Kevin M. and Miller, Ethan L. and Schwarz, Thomas
-		  J. E.},
-  title		= {{O}ptimizing {G}alois {F}ield {A}rithmetic for {D}iverse
-		  {P}rocessor {A}rchitectures and {A}pplications},
-  booktitle	= ieee_mascots,
-  year		= 2008,
-  month		= {9},
-  pages		= {257-266},
-  address	= {Baltimore, MD, USA},
-}
-
-@Book{		  HaMeVa2004,
-  author	= {Hankerson, Darrel and Menezes, Alfred J. and Vanstone,
-		  Scott},
-  title		= {{G}uide to {E}lliptic {C}urve {C}ryptography},
-  year		= 2004,
-  month		= {1},
-  edition	= {1},
-  publisher	= {Springer Professional Computing}
-}
-
-@InProceedings{	  PeHeFi2011,
-  author	= {Pedersen, Morten Videb{\ae}k and Heide, Janus and Fitzek,
-		  Frank H. P.},
-  title		= {{K}odo: {A}n {O}pen and {R}esearch {O}riented {N}etwork
-		  {C}oding {L}ibrary},
-  booktitle	= ifip_nw,
-  year		= 2011,
-  month		= {5},
-  pages		= {145-152},
-  address	= {Valencia, Spain}
-}
-
-@InProceedings{	  NaScRa2010,
-  author	= {Nagarajan, Aishwarya and Schulte, Michael J. and Ramanathan,
-		  Parameswaran},
-  title		= {{G}alois {F}ield {H}ardware {A}rchitectures for {N}etwork
-		  {C}oding},
-  booktitle	= ieee_ancs,
-  year		= 2010,
-  month		= {10},
-  where		= {San Diego, CA, USA},
-}
-
-@InProceedings{	  FeMaHuZh2013,
-  author	= {Feng, Kai and Ma, Wentao and Huang, Wei and Zhang, Qing and
-		  Gong, Yili},
-  title		= {{S}peeding {U}p {G}alois {F}ield {A}rithmetic on {I}ntel
-		  {MIC} {A}rchitecture},
-  booktitle	= ifip_npc,
-  year		= 2013,
-  month		= {9},
-  pages		= {143-154},
-  address	= {Guiyang, China},
-}
-
-@Article{	  LeRo2012,
-  author	= {Lee, Sangpil and Ro, Won W.},
-  title		= {{A}ccelerated {N}etwork {C}oding with {D}ynamic {S}tream
-		  {D}ecomposition on {G}raphics {P}rocessing {U}nit},
-  journal	= cj,
-  volume	= 55,
-  year		= 2012,
-  month		= {1},
-  pages		= {21-34}
-}
-
-@InBook{	  ViFi2010,
-  chapter	= {{I}mplementation of {R}andom {L}inear {N}etwork {C}oding
-		  using {\sc*{NVIDIA}\kern-0.1em's} {\sc{CUDA}}
-		  {T}oolkit},
-  author	= {Vingelmann, P{\'e}ter and Fitzek, Frank H. P.},
-  title		= {Networks for Grid Applications},
-  year		= 2010,
-  volume	= 25,
-  series	= {Lecture Notes of the Institute for Computer Sciences,
-		  Social Informatics and Telecommunications Engineering},
-  pages		= {131-138},
-  publisher	= {Springer Berlin Heidelberg},
+@misc{icmp_man,
+  title		= {{Linux man page - icmp}},
+  howpublished = "\url{https://man7.org/linux/man-pages/man7/icmp.7.html}",
+  note 		= "[Online; accessed 11.2021]"
 }
 
 
-@InProceedings{	  WaLi2006,
-  author	= {Wang, Mea and Li, Baochun},
-  title		= {{H}ow {P}ractical is {N}etwork {C}oding?},
-  booktitle	= {IEEE International Workshop on Quality of Service},
-  year		= 2006,
-  month		= {6},
-  pages		= {274-278},
-  address	= {New Haven, CT, USA},
-}
-
-@Article{	  AhCaLiYe2000,
-  author	= {Ahlswede, Rudolf and Cai, Ning and Li, Shuo-Yen Robert and
-		  Yeung, Raymond W.},
-  title		= {{N}etwork {I}nformation {F}low},
-  journal	= ieee_j_it,
-  year		= 2000,
-  month		= {7},
-  volume	= 46,
-  number	= 4,
-  pages		= {1204-1216},
-}
-
-@InProceedings{	  LiLiLi2008,
-  author	= {Lin, Yunfeng and Li, Baochun and Liang, Ben},
-  title		= {\sc{CodeOR}: {O}pportunistic {R}outing in {W}ireless {M}esh
-		  {N}etworks with {S}egmented {N}etwork {C}oding},
-  booktitle	= ieee_icnp,
-  year		= 2008,
-  month		= {10},
-  pages		= {13-22},
-  address	= {Orlando, Florida, USA},
-}
-
-@Article{	  LuRaMdKt2006,
-  author	= {Lun, Desmond S. and Ratnakar, Niranjan and M{\'e}dard,
-		  Muriel and Koetter, Ralf and Karger, David R. and Ho, Tracey
-		  and Ahmed, Ebad and Zhao, Fang},
-  title		= {{M}inimum-cost {M}ulticast over {C}oded {P}acket
-		  {N}etworks},
-  journal	= ieee_j_it,
-  year		= 2006,
-  month		= {6},
-  volume	= 52,
-  number	= 6,
-  pages		= {2608-2623},
-}
-
-@MastersThesis{	  Ch2007,
-  author	= {Chachulski, Szymon},
-  title		= {{T}rading {S}tructure for {R}andomness in {W}ireless
-		  {O}pportunistic {R}outing},
-  school	= school_mit,
-  year		= 2007,
-  type		= {M.Sc. Thesis},
-  address	= {Cambridge, MA, USA},
-}
-
-
-@InProceedings{ShJo2009,
-  author       = {Brooke Shrader and Nathaniel M. Jones},
-  title        = {{S}ystematic {W}ireless {N}etwork {C}oding},
-  booktitle    = milcom,
-  year         = 2009,
-  month        = {10},
-  address      = {Boston, MA, USA},
-}
