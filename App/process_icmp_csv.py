@@ -69,10 +69,11 @@ def calculate_capacities():
     results = []
     for key in sorted(streams):
         streams[key][0] = calculate_iats(streams[key][0])
-        if len(streams[key][0]) <= 5:
-            iats = replicate_iats(streams[key][0])
-        # cap = pp.find_capacity(packet_size, streams[key][0])
-        cap = pp.find_capacity(packet_size, iats)
+        # iats = streams[key][0]
+        # if len(streams[key][0]) <= 5:
+        #     iats = replicate_iats(streams[key][0])
+        cap = pp.find_capacity(packet_size, streams[key][0])
+        # cap = pp.find_capacity(packet_size, iats)
         cap = bit_to_mbit(cap)
         streams[key][2] = cap
         results.append(cap)

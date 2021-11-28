@@ -4,7 +4,7 @@
   "capacity_delta": 5,
   "packet_size": 1500,
   "packets_per_hop": 300,
-  "icmp_ratelimit": 0,
+  "icmp_ratelimit": 1000,
   "packet_loss": 0,
   "cross_traffic": 0.0,
   "repeat_test": 20
