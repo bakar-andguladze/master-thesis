@@ -55,7 +55,7 @@ def calculate_iats(timestamps):
 def replicate_iats(iats, limit=300):
     new_iats = []
     while len(new_iats) < limit:
-        new_iats.append(iats)
+        new_iats.extend(iats)
     return new_iats
 
 def calculate_capacities():
@@ -69,7 +69,8 @@ def calculate_capacities():
     results = []
     for key in sorted(streams):
         streams[key][0] = calculate_iats(streams[key][0])
-        iats = replicate_iats(streams[key][0])
+        if len(streams[key][0]) <= 5:
+            iats = replicate_iats(streams[key][0])
         # cap = pp.find_capacity(packet_size, streams[key][0])
         cap = pp.find_capacity(packet_size, iats)
         cap = bit_to_mbit(cap)
