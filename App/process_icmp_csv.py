@@ -52,6 +52,12 @@ def calculate_iats(timestamps):
     # print(iats)
     return iats
 
+def replicate_iats(iats, limit=300):
+    new_iats = []
+    while len(new_iats) < limit:
+        new_iats.append(iats)
+    return new_iats
+
 def calculate_capacities():
     pcap_to_csv()
     filepath = dir_path + "/results/icmp.csv"
@@ -63,7 +69,9 @@ def calculate_capacities():
     results = []
     for key in sorted(streams):
         streams[key][0] = calculate_iats(streams[key][0])
-        cap = pp.find_capacity(packet_size, streams[key][0])
+        iats = replicate_iats(streams[key][0])
+        # cap = pp.find_capacity(packet_size, streams[key][0])
+        cap = pp.find_capacity(packet_size, iats)
         cap = bit_to_mbit(cap)
         streams[key][2] = cap
         results.append(cap)

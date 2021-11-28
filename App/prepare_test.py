@@ -21,8 +21,8 @@ def generate_capacities(min, max, n_links, capacity_delta=5):
             capacity = min
         finally:
             capacities.append(capacity)
-
-    capacities = sorted(capacities, reverse=True)
+    
+    # capacities = sorted(capacities, reverse=True)
     save_capacities_to_file(capacities, topo_caps)
     return capacities
 
