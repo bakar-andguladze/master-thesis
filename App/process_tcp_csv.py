@@ -7,6 +7,9 @@ from prepare_test import get_packet_size
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 def pcap_to_csv():
+    """
+    Convert captured pcap file to csv
+    """
     os.system("tshark -r results/tcp.pcap -T fields -E header=y -E separator=, -E quote=d -E occurrence=f -e frame.time_epoch -e ip.src -e ip.dst -e ip.len -e tcp.len -e tcp.flags.ack> results/tcp.csv")
 
 def read_from_csv(file_path):
@@ -72,6 +75,9 @@ def calculate_total_capacity(data, flows, size):
     return bit_to_mbit(pp.find_capacity(size, iats))
 
 def get_network_capacity(size):
+    """
+    Wrap-up method that reads data from file and returns the total capacity of the network
+    """
     filepath = dir_path + '/results/tcp.csv'
     pcap_to_csv()
     flows = {}
@@ -80,6 +86,9 @@ def get_network_capacity(size):
     return cap
 
 def bit_to_mbit(bits):
+    """
+    Convert bits to megabits
+    """
     return bits / 1000000
 
 if __name__ == '__main__':

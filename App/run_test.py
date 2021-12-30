@@ -8,12 +8,20 @@ from process_icmp_csv import get_results
 from process_tcp_csv import get_network_capacity
 
 def run(**test_parameters):
+    """
+    Run the experiment based on test parameters read from .json file
+    :param test_parameters: test parameters read from config.json file
+    """
     run_topo(**test_parameters)
     get_results()
     total_capacity = get_network_capacity(test_parameters['topo_size'])
     print("end-to-end capacity = {}mbps".format(total_capacity))
 
 def analyze_packet_loss(**test_parameters):
+    """
+    Print the received/sent packets ratio after the test run
+    :param test_parameters: test parameters passed via .json file
+    """
     total_packects = test_parameters['topo_size']*test_parameters['packets_per_hop']
     captured_packets = open("results/icmp.csv")
     lines = captured_packets.readlines()
@@ -23,6 +31,11 @@ def analyze_packet_loss(**test_parameters):
     print(packet_loss_details)
 
 def main():
+    """
+    Wrap-up method. 
+    - Read arguments from .json file
+    - Run tests and deliver results
+    """
     # Argument parser
     parser = argparse.ArgumentParser()
     parser.add_argument('config', help='Path to the config file')

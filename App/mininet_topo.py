@@ -25,8 +25,9 @@ def rp_disable(host):
        if iface != 'lo': host.cmd('sysctl net.ipv4.conf.' + iface + '.rp_filter=0')
 
 class LinuxRouter( Node ):
-    "A Node with IP forwarding enabled."
-
+    """
+    A Node with IP forwarding enabled.
+    """
     # pylint: disable=arguments-differ
     def config( self, **params ):
         super( LinuxRouter, self).config( **params )
@@ -39,6 +40,10 @@ class LinuxRouter( Node ):
 
 # ================= Build and configure ================= #
 def build_topo(size=1):
+    """
+    Build mininet network with left and right hosts, routers between them and top and bottom hosts 
+    :param size: number of routers between left and right hosts (and number of top and bottom hosts too)
+    """
     net = Mininet()
     h1 = net.addHost('h1', ip='10.0.0.10')
     h2 = net.addHost('h2', ip='10.0.{}.10'.format(size))
@@ -66,6 +71,11 @@ def build_topo(size=1):
     return net
 
 def configure_routers(net, **test_parameters):
+    """
+    configures all the routers in the network
+    :param net: network instance
+    :param test_parameters: test parameters passed via .json file
+    """
     # test parameters
     size = test_parameters['topo_size']
     icmp_ratelimit = test_parameters['icmp_ratelimit']
@@ -106,6 +116,12 @@ def configure_routers(net, **test_parameters):
             apply_packet_loss(router, packet_loss)
 
 def configure_cross_hosts(net, size):
+    """
+    Configure the connection between top and bottom hosts. 
+    Each T{i} communicates with B{i+1} and T{last} with B{1}
+    :param net: network instance
+    :param size: network size
+    """
     for i in range(1, size+1):
         topHost = net.get('t{}'.format(i))
         topHost.setIP('10.1.{}.20'.format(i), intf='t{}-eth0'.format(i))
@@ -184,6 +200,11 @@ def set_capacities(net, n_routers, capacities):
         # router.cmd("tc qdisc add dev r{}-eth1 parent 1:1 handle 10: netem limit 1000 loss {}%".format(i, 10))
 
 def configure_icmp_ratelimit(router, rate_limit=1000):
+    """
+    Set icmp_ratelimit if it exists.
+    :param router: the router that is modified
+    :param rate_limit: the rate limit value
+    """
     disable_icmp_ratemask = "sysctl -w net.ipv4.icmp_ratemask=0"
     set_icmp_ratelimit = "sysctl -w net.ipv4.icmp_ratelimit={}".format(rate_limit)
 
@@ -193,12 +214,24 @@ def configure_icmp_ratelimit(router, rate_limit=1000):
         router.cmd(disable_icmp_ratemask)
 
 def apply_packet_loss(host, packet_loss):
+    """
+    Apply artificial packet loss to routers
+    :param host: target host
+    :param packet_loss: percentage of packets to be lost 
+    """
     apply_packet_loss = "tc qdisc add dev {}-eth{} parent 1:1 handle 10: netem limit 10000 loss {}%"
     host.cmd(apply_packet_loss.format(host, 0, packet_loss))
     host.cmd(apply_packet_loss.format(host, 1, packet_loss))
 
 # ========================= Run ========================= #
 def cross_traffic(net, ct, duration=10, router_count=3):
+    """
+    Apply cross traffic to the network
+    :param net: network instance
+    :param ct: cross traffic load
+    :param duration: experiment duration
+    :param router_count: number of routers
+    """
     capacities = get_assigned_capacities()
     topHost = net.get("t1")
     bottomHost = net.get("b2")
@@ -209,7 +242,6 @@ def cross_traffic(net, ct, duration=10, router_count=3):
     # Prefer UDP traffic (-u parameter)
     # cmd_bottom= "iperf -s -u -t {} -B 10.2.{}.40"
     # cmd_top= "iperf -c 10.2.{}.40 -u -t {} -B 10.1.{}.20 -b {}M"
-
 
     lastTop = net.get("t{}".format(router_count))
     firstBottom = net.get("b1")
@@ -240,8 +272,14 @@ def cross_traffic(net, ct, duration=10, router_count=3):
     t1.cmd("pkill tcpdump")
     b2.cmd("pkill tcpdump")
 
-
 def inject_and_capture(sender_host, receiver_host, routers=3, packets=300):
+    """
+    Wrap-up function that injects traffic into network and captures it with tcpdump
+    :param sender_host: sender host IP address
+    :param receiver_host: receiver host IP address
+    :param routers: number of routers in the network
+    :param packets: number of packets to target each router
+    """
     h1 = sender_host.IP()
     h2 = receiver_host.IP()
 
@@ -255,6 +293,10 @@ def inject_and_capture(sender_host, receiver_host, routers=3, packets=300):
     sender_host.cmd("pkill tcpdump")
 
 def run_topo(**test_parameters):
+    """
+    Run the experiment
+    :param test_parameters: test parameters from the .json file
+    """
     size = test_parameters['topo_size']
     packet_size = test_parameters['packet_size']
     packets = test_parameters['packets_per_hop']

@@ -27,18 +27,30 @@ def generate_capacities(min, max, n_links, capacity_delta=5):
     return capacities
 
 def save_capacities_to_file(capacities, file=topo_caps):
+    """
+    Save capacity distribution to a file
+    :param capacities: list of link capacities 
+    :param file: target file
+    """
     textfile = open(file, "w")
     for element in capacities:
         textfile.write(str(element) + "\n")
     textfile.close()
 
 def set_packet_size(size):
+    """
+    Set packet size that should be injected into the network
+    :param size: packet size
+    """
     f = open("data/packet_data.txt", "w")
     for i in range(size - 40): 
         f.write("A")
     f.close()
 
 def get_packet_size():
+    """
+    Read packet size from the file
+    """
     f = open("data/packet_data.txt", "r")
     packet = f.read()
     f.close()
