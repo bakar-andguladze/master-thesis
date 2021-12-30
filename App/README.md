@@ -11,3 +11,5 @@ Run `install.sh` file in order to install the following dependencies:
 - Pandas
 - tshark
 as well as compile `TrafficGenerator.c` file
+
+**Functionality**
