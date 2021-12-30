@@ -13,3 +13,5 @@ Run `install.sh` file in order to install the following dependencies:
 as well as compile `TrafficGenerator.c` file
 
 **Functionality**
+
+![alt text]()
