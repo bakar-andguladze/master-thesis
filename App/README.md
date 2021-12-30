@@ -1,4 +1,12 @@
 **Hop-by-Hop Capacity Estimation Framework**
 
-PPrate implementation and TCP algorithm belong to P. Brzoza
+_PPrate implementation and TCP algorithm belong to P. Brzoza_
 
+**Getting Started**
+Run `install.sh` file in order to install the following dependencies:
+- Mininet
+- numpy
+- scipy
+- Pandas
+- tshark
+as well as compile `TrafficGenerator.c` file
