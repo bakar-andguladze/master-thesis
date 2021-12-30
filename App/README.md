@@ -10,6 +10,7 @@ Run `install.sh` file in order to install the following dependencies:
 - scipy
 - Pandas
 - tshark
+
 as well as compile `TrafficGenerator.c` file
 
 **Functionality**
@@ -17,6 +18,7 @@ as well as compile `TrafficGenerator.c` file
 ![alt text](../thesis/images/architecture.png)
 
 **Usage**
+
 The measurements must be run with a JSON config file containing all the parameters that are interesting and important for our measurements. Manipulating these parameters gives us a better picture about strengths and weaknesses of our approach.
 
 The following script executes the experiment:
@@ -24,8 +26,7 @@ The following script executes the experiment:
 `$ sudo python run_test.py config.json`
 
 The following JSON serves as an example of a configuration file used for experiments.
-It contains default parameter values, each of which will be manipulated respectively in
-upcoming sections:
+It contains default parameter values, each of which can be manipulated during test runs:
 ```
 {
  "topo_size": 3,
