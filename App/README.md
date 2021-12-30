@@ -16,4 +16,4 @@ as well as compile `TrafficGenerator.c` file
 
 ![alt text]()
 
-[](url)
+[](../thesis/images/architecture)
